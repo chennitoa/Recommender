@@ -9,8 +9,7 @@ public class Create {
   
     public static void createNewDatabase(String fileName) {  
    
-        String url = "jdbc:sqlite:C:/sqlite/" + fileName;  //Needs to figure out how to set up 
-        												   //an online DB so everyone who runs the application can connect to the DB
+        String url = "jdbc:sqlite:" + fileName;  
    
         try {  
             Connection conn = DriverManager.getConnection(url);  
@@ -22,9 +21,13 @@ public class Create {
    
         } catch (SQLException e) {  
             System.out.println(e.getMessage());  
-        }  
+        	}  
+        
+        DBManager obj = new DBManager();
+        obj.createTable(fileName);
     }  
     public static void main(String[] args) {  
         createNewDatabase("password.db");  
+        
     }  
 }
