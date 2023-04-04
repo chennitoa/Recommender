@@ -23,11 +23,13 @@ public class Create {
             System.out.println(e.getMessage());  
         	}  
         
-        DBManager obj = new DBManager();
-        obj.createTable(fileName);
+        DBManager obj = new DBManager(fileName);
+        obj.createTable();
     }  
-    public static void main(String[] args) {  
+    public static void main(String[] args) throws SQLException {  
         createNewDatabase("password.db");  
-        
+        DBManager obj = new DBManager("jdbc:sqlite:password.db");
+        obj.insert("TestingPW");
+        obj.query();
     }  
 }
