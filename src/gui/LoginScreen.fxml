@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="107.0" prefWidth="600.0">
+         <children>
+            <Label layoutY="3.0" prefHeight="104.0" prefWidth="490.0" style="-fx-label-padding: 20;" text="Recommender">
+               <font>
+                  <Font name="Lucida Fax Regular" size="54.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="411.0" layoutY="61.0" prefHeight="7.0" prefWidth="44.0" style="-fx-label-padding: 0;" text="v.0.5">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </AnchorPane>
+      <BorderPane prefHeight="44.0" prefWidth="600.0">
+         <center>
+            <PasswordField prefHeight="25.0" prefWidth="462.0" promptText="password" BorderPane.alignment="CENTER" />
+         </center>
+         <left>
+            <Pane prefHeight="87.0" prefWidth="22.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="87.0" prefWidth="42.0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+      <AnchorPane prefHeight="71.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="453.0" layoutY="26.0" text="First Time?" />
+            <Label layoutX="546.0" layoutY="26.0" text="Help" />
+            <Label layoutX="22.0" layoutY="6.0" text="Hint: Enter default password &quot;p&quot; to continue..." />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
