@@ -17,6 +17,10 @@ public class LoginManager {
 		return pw.checkPassword(enteredPassword);
 	}
 	
+	/**
+	 * Given the new password and that it is first time reseting the password,
+	 * returns true if password is succesfully reset, false otherwise
+	 */
 	public boolean resetFirstPassword(String newPassword) throws IOException {
 		if (isFirstLogin) {
 			return pw.changePassword("p", newPassword);
@@ -26,9 +30,14 @@ public class LoginManager {
 		}
 	}
 	
+	/**
+	 * Resets the password given the old password and the new password,
+	 * returns true if the password is succesfully reset, false otherwise
+	 */
 	public boolean resetPassword(String oldPassword, String newPassword) throws IOException {
 		return pw.changePassword(oldPassword, newPassword);
 	}
+	
 	
 	public static void main(String args[]) throws IOException, FileNotFoundException {
 		LoginManager loginSession = new LoginManager();
