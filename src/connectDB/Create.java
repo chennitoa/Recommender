@@ -29,7 +29,7 @@ public class Create {  //Needs to be only called once
         obj.createTable();
     }  
     public static void main(String[] args) throws SQLException {  
-        createNewDatabase("password.db");  
+        createNewDatabase("password.db");  //Apply Singleton design pattern
         DBManager obj = new DBManager("password.db");
 //        obj.insert("TestingPW55");
         obj.query();
