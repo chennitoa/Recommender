@@ -1,5 +1,7 @@
 /bin/
 /.settings/
+/.vscode/
 /password.txt
+password.db
 /.classpath
 /.project
