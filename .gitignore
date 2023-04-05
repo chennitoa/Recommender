@@ -1,8 +1,7 @@
 /bin/
 /.settings/
+/.vscode/
 /password.txt
-.classpath
-.vscode/settings.json
-.classpath
-src/login/PasswordManager.java
 password.db
+/.classpath
+/.project
