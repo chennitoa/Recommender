@@ -13,10 +13,10 @@ public class DBManager {
 	
 	
 	public DBManager(String fileName){
-		this.fileName = fileName;
+		this.fileName = "jdbc:sqlite:" + fileName;
 	}
 	public void createTable() { //Just once, called in Create class
-		String url = "jdbc:sqlite:" + this.fileName;
+		String url = this.fileName;
 		String sql = "CREATE TABLE IF NOT EXISTS passwordTable (\n"  
 	                + " password text\n);";
 	          
@@ -30,7 +30,8 @@ public class DBManager {
 	        }  
 	}  
 	
-	public void insert(String password) {
+	public void insert(String password) {  //Assumes there are no duplicate,
+										//duplicate will be verified before calling this function
         Connection conn = null;  
         try {  
             conn = DriverManager.getConnection(this.fileName);  
@@ -76,6 +77,18 @@ public class DBManager {
             System.out.println(rs.getString("password"));  
         }  
     } 
+	
+	public void deleteTable() { 
+        String sqlDelete = "DROP TABLE IF EXISTS passwordTable;";
+        try {  
+            Connection conn = DriverManager.getConnection(this.fileName);  
+            Statement stmt = conn.createStatement();  
+            stmt.execute(sqlDelete);  
+        } 
+        catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+	}
 }
 
 	

@@ -5,8 +5,10 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;  
 import java.sql.SQLException;  
    
-public class Create {  
+public class Create {  //Needs to be only called once
   
+	
+	
     public static void createNewDatabase(String fileName) {  
    
         String url = "jdbc:sqlite:" + fileName;  
@@ -28,8 +30,9 @@ public class Create {
     }  
     public static void main(String[] args) throws SQLException {  
         createNewDatabase("password.db");  
-        DBManager obj = new DBManager("jdbc:sqlite:password.db");
-        obj.insert("TestingPW");
+        DBManager obj = new DBManager("password.db");
+//        obj.insert("TestingPW55");
         obj.query();
+//        obj.deleteTable();
     }  
 }
