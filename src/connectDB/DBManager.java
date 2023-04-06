@@ -1,27 +1,20 @@
 package connectDB;
 
-import java.sql.Connection;  
-import java.sql.DriverManager;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;  
+import java.sql.SQLException;
 import java.sql.Statement;  
 
 
-public class DBManager {
-	private String fileName;
+public class DBManager implements PasswordDAO{
+	static Connection conn = DBConnection.getConnection();
 	
-	
-	public DBManager(String fileName){
-		this.fileName = "jdbc:sqlite:" + fileName;
-	}
-	public void createTable() { //Just once, called in Create class
-		String url = this.fileName;
+	public void createTable() { 
 		String sql = "CREATE TABLE IF NOT EXISTS passwordTable (\n"  
 	                + " password text\n);";
 	          
 	        try {  
-	            Connection conn = DriverManager.getConnection(url);  
 	            Statement stmt = conn.createStatement();  
 	            stmt.execute(sql);  
 	        } 
@@ -32,14 +25,6 @@ public class DBManager {
 	
 	public void insert(String password) {  //Assumes there are no duplicate,
 										//duplicate will be verified before calling this function
-        Connection conn = null;  
-        try {  
-            conn = DriverManager.getConnection(this.fileName);  
-        } catch (SQLException e) {  
-            System.out.println(e.getMessage()); 
-            return;
-        }  
-        //Connection established
         String sqlInsert = "INSERT INTO passwordTable(password) VALUES(?);";
         
         try{  
@@ -53,24 +38,7 @@ public class DBManager {
 
 	}
 	public void query() throws SQLException {
-		Connection conn = null;  
-        try {  
-            conn = DriverManager.getConnection(this.fileName);  
-        } catch (SQLException e) {  
-            System.out.println(e.getMessage()); 
-            return;
-        }  
-        String sqlQuery = "SELECT * FROM passwordTable;";
-//        String sqlQuery = "SELECT FROM passwordTable where password = '?';";
-//        try{  
-//            PreparedStatement pstmt = conn.prepareStatement(sqlQuery);  
-//            pstmt.setString(1, password);  
-//            pstmt.executeUpdate();  
-//        } catch (SQLException e) {  
-//            System.out.println(e.getMessage());  
-//            return;
-//        }  
-        
+        String sqlQuery = "SELECT * FROM passwordTable;";      
         Statement stmt  = conn.createStatement();  
         ResultSet rs    = stmt.executeQuery(sqlQuery);  
         while (rs.next()) {  
@@ -81,7 +49,6 @@ public class DBManager {
 	public void deleteTable() { 
         String sqlDelete = "DROP TABLE IF EXISTS passwordTable;";
         try {  
-            Connection conn = DriverManager.getConnection(this.fileName);  
             Statement stmt = conn.createStatement();  
             stmt.execute(sqlDelete);  
         } 
