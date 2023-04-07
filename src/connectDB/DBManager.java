@@ -101,7 +101,7 @@ public class DBManager implements PasswordDAO{
 
 	}
 	
-	public boolean exists(String password) throws SQLException {
+	public boolean passwordExists(String password) throws SQLException {
 		String sqlSelect = "SELECT * FROM passwordTable where password = '" + password + "';";
 		Statement stmt  = conn.createStatement();  
         ResultSet rs    = stmt.executeQuery(sqlSelect);  
