@@ -2,6 +2,8 @@ package gui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,6 +29,8 @@ public class LoginScreen {
 	VBox root;
 	LoginManager loginM;
 	
+	Main m;
+	
 	public LoginScreen() throws IOException {
 		try {
 			loginM = new LoginManager();
@@ -49,7 +53,15 @@ public class LoginScreen {
 		loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			String passwordAttempt = password.getCharacters().toString();
 			if (loginM.login(passwordAttempt)) {
-				//TODO: Redirect to next screen
+				if (m != null) {
+					try {
+						System.out.println("Changing Scenes!");
+						m.changeScene("Menu");
+					}
+					catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
 				System.out.println("Login button clicked, password is correct!");
 			}
 			else {
@@ -61,9 +73,18 @@ public class LoginScreen {
 		});
 		
 		passwordChange.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			//TODO: Change to password reset scene
+			try {
+				m.changeScene("Reset");
+			}
+			catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		});
 		
+	}
+	
+	public void setMain(Main m) {
+		this.m = m;
 	}
 	
 }
