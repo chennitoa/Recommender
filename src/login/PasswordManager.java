@@ -34,7 +34,7 @@ final class PasswordManager {
 	}
 	
 	boolean changePassword(String oldPassword, String newPassword) throws IOException {
-		if (oldPassword.equals(password)) {
+		if (checkPassword(oldPassword)) {
 			password = newPassword;
 			if (isFirstTimePassword) {
 				passwordFile.createNewFile();

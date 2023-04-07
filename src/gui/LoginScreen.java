@@ -9,27 +9,24 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import login.LoginManager;
 
-public class LoginScreen {
+public class LoginScreen implements ApplicationScreen {
 	
 	@FXML
-	PasswordField password;
+	private PasswordField password;
 	@FXML
-	Button loginButton;
+	private Button loginButton;
 	@FXML
-	Label firstAid;
+	private Label firstAid;
 	@FXML
-	Label info;
+	private Label info;
 	@FXML
-	Label passwordChange;
-	
-	VBox root;
-	LoginManager loginM;
-	
-	Main m;
+	private Label passwordChange;
+
+	private LoginManager loginM;
+	private Main m;
 	
 	public LoginScreen() throws IOException {
 		try {
@@ -73,16 +70,12 @@ public class LoginScreen {
 		});
 		
 		passwordChange.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			try {
-				m.changeScene("Reset");
-			}
-			catch (Exception e1) {
-				e1.printStackTrace();
-			}
+			m.changeScene("Reset");
 		});
 		
 	}
 	
+	@Override
 	public void setMain(Main m) {
 		this.m = m;
 	}
