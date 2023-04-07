@@ -2,8 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollBar?>
-<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,8 +12,8 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuScreen">
   <children>
-      <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-         <items>
+      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
                <children>
                   <Label fx:id="newLetter" layoutX="47.0" layoutY="91.0" text="NEW">
@@ -27,10 +26,10 @@
                         <Font name="Leelawadee UI" size="48.0" />
                      </font>
                   </Label>
-                  <Label fx:id="settings" layoutX="79.0" layoutY="367.0" text="Settings" />
+                  <Label fx:id="settings" layoutX="79.0" layoutY="369.0" text="Settings" AnchorPane.bottomAnchor="14.0" />
                </children>
             </AnchorPane>
-            <VBox prefHeight="375.0" prefWidth="426.0">
+            <VBox prefHeight="375.0" prefWidth="426.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Recent Files">
                      <font>
@@ -46,28 +45,32 @@
                      </VBox.margin>
                   </TextField>
                   <BorderPane prefHeight="323.0" prefWidth="426.0" VBox.vgrow="ALWAYS">
-                     <right>
-                        <ScrollBar fx:id="recentScroll" orientation="VERTICAL" BorderPane.alignment="CENTER" />
-                     </right>
                      <center>
-                        <VBox fx:id="recentLetters" prefHeight="323.0" prefWidth="412.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <HBox maxHeight="40.0" prefHeight="40.0" prefWidth="412.0" style="-fx-background-color: Gray;">
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-background-color: transparent;" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                           <content>
+                              <VBox fx:id="recentLetters" prefHeight="323.0" prefWidth="412.0">
                                  <children>
-                                    <Label text="Filename 1">
-                                       <HBox.margin>
-                                          <Insets left="5.0" top="10.0" />
-                                       </HBox.margin>
-                                    </Label>
+                                    <HBox maxHeight="40.0" prefHeight="40.0" prefWidth="412.0" style="-fx-background-color: Gray;" VBox.vgrow="NEVER">
+                                       <children>
+                                          <Label text="Filename 1">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children>
-                              </HBox>
-                           </children>
-                        </VBox>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
                      </center>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </BorderPane>
                </children>
             </VBox>
-         </items>
-      </SplitPane>
+         </children>
+      </HBox>
   </children>
 </VBox>

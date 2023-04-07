@@ -36,6 +36,9 @@ public class ResetScreen implements ApplicationScreen {
 	
 	@FXML
 	public void initialize() {
+		
+		info.setVisible(false);
+		
 		reset.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			
 			String oldPass = oldPassword.getCharacters().toString();
