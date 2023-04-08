@@ -6,33 +6,32 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginScreen">
    <children>
-      <AnchorPane prefHeight="107.0" prefWidth="600.0">
+      <AnchorPane prefHeight="68.0" prefWidth="600.0">
          <children>
-            <Label layoutY="3.0" prefHeight="104.0" prefWidth="490.0" style="-fx-label-padding: 20;" text="Recommender">
+            <Label layoutY="3.0" prefHeight="65.0" prefWidth="393.0" text="Recommender" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="Lucida Fax Regular" size="54.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="411.0" layoutY="61.0" prefHeight="7.0" prefWidth="44.0" style="-fx-label-padding: 0;" text="v.0.5">
+            <Label alignment="CENTER" layoutX="411.0" layoutY="61.0" prefHeight="7.0" prefWidth="44.0" text="v.0.5" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="47.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Label>
          </children>
       </AnchorPane>
-      <BorderPane prefHeight="44.0" prefWidth="600.0">
+      <BorderPane prefHeight="113.0" prefWidth="600.0">
          <center>
-            <PasswordField fx:id="password" prefHeight="25.0" prefWidth="462.0" promptText="password" BorderPane.alignment="CENTER" />
+            <PasswordField fx:id="password" prefHeight="25.0" prefWidth="462.0" promptText="Password" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" />
+               </BorderPane.margin></PasswordField>
          </center>
-         <left>
-            <Pane prefHeight="87.0" prefWidth="22.0" BorderPane.alignment="CENTER" />
-         </left>
          <right>
             <BorderPane prefHeight="42.0" prefWidth="81.0" BorderPane.alignment="CENTER">
                <center>
@@ -41,11 +40,11 @@
             </BorderPane>
          </right>
       </BorderPane>
-      <AnchorPane prefHeight="71.0" prefWidth="600.0">
+      <AnchorPane prefHeight="99.0" prefWidth="600.0">
          <children>
-            <Label fx:id="firstAid" layoutX="405.0" layoutY="26.0" text="First Time?" />
-            <Label fx:id="info" layoutX="28.0" layoutY="-2.0" text="Initial text" />
-            <Label fx:id="passwordChange" layoutX="490.0" layoutY="26.0" text="Change Password" />
+            <Label fx:id="firstAid" layoutX="397.0" layoutY="37.0" text="First Time?" />
+            <Label fx:id="info" layoutX="28.0" layoutY="-2.0" text="Initial text" AnchorPane.leftAnchor="20.0" />
+            <Label fx:id="passwordChange" layoutX="481.0" layoutY="37.0" text="Change Password" />
          </children>
       </AnchorPane>
    </children>
