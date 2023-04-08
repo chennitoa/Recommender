@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 
 
-public class DBManager implements PasswordDAO{
+public class DBManager{
 	static Connection conn = DBConnection.getConnection();
 	
 	public void createInfoTable() { //Creating a that is related to the user
