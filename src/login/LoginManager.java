@@ -3,12 +3,15 @@ package login;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import connectDB.DBManager;
+import connectDB.PasswordDAO;
+
 public class LoginManager {
 	private boolean isFirstLogin;
-	private PasswordManager pw;
+	private PasswordDAO pw;
 	
 	public LoginManager() throws FileNotFoundException {
-		pw = new PasswordManager();
+		pw = DBManager.getDBManager();
 		isFirstLogin = pw.isFirstLogin();
 	}
 	

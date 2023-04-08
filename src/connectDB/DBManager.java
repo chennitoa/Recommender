@@ -7,8 +7,19 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 
 
-public class DBManager implements PasswordDAO{
+public class DBManager implements PasswordDAO {
+	
 	static Connection conn = DBConnection.getConnection();
+	private static DBManager DBM;
+	
+	private DBManager() {}
+	
+	public static DBManager getDBManager() {
+		if (DBM == null) {
+			DBM = new DBManager();
+		}
+		return DBM;
+	}
 	
 	public void createInfoTable() { //Creating a that is related to the user
 		String sql = "CREATE TABLE IF NOT EXISTS infoTable (stuID integer PRIMARY KEY, ID_FK integer references passwordTable(ID), "
@@ -85,7 +96,7 @@ public class DBManager implements PasswordDAO{
 	            System.out.println(e.getMessage());  
 	        }  
 	}  
-	
+
 	public void storePassword(String password) {  //Assumes there are no duplicate,
 										//duplicate will be verified before calling this function
         String sqlInsert = "INSERT INTO passwordTable(password) VALUES(?);";
