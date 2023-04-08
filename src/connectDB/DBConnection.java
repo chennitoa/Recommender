@@ -8,7 +8,7 @@ public class DBConnection {
 	private static Connection conn = null;
 	
 	/*
-	 * Singleton design
+	 * Singleton design, the connection and passwordTable will be established just once.
 	 */
 	private DBConnection(){ 
 		String url = "jdbc:sqlite:password.db";
@@ -19,6 +19,8 @@ public class DBConnection {
 			System.out.println("Error connecting to database.");
 			System.exit(1);
 		}
+		DBManager create = new DBManager();
+		create.createTable();
 	}
 	
 	/*
