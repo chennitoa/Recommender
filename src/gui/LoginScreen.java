@@ -1,39 +1,34 @@
 package gui;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import login.LoginManager;
 
-public class LoginScreen {
+public class LoginScreen implements ApplicationScreen {
 	
 	@FXML
-	PasswordField password;
+	private PasswordField password;
 	@FXML
-	Button loginButton;
+	private Button loginButton;
 	@FXML
-	Label firstAid;
+	private Label firstAid;
 	@FXML
-	Label info;
+	private Label info;
 	@FXML
-	Label passwordChange;
-	
-	VBox root;
-	LoginManager loginM;
+	private Label passwordChange;
+
+	private LoginManager lm;
+	private Main m;
 	
 	public LoginScreen() throws IOException {
-		try {
-			loginM = new LoginManager();
-		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		lm = LoginManager.getLoginManager();
 	}
 	
 	@FXML
@@ -48,8 +43,27 @@ public class LoginScreen {
 		
 		loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			String passwordAttempt = password.getCharacters().toString();
-			if (loginM.login(passwordAttempt)) {
-				//TODO: Redirect to next screen
+			if (lm.checkPassword(passwordAttempt)) {
+				if (m != null) {
+					if (lm.getFirstLogin()) {
+						try {
+							System.out.println("Changing Scenes!");
+							m.changeScene("Menu");
+						}
+						catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+					else {
+						try {
+							System.out.println("Changing Scenes!");
+							m.changeScene("Reset");
+						}
+						catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
 				System.out.println("Login button clicked, password is correct!");
 			}
 			else {
@@ -61,9 +75,14 @@ public class LoginScreen {
 		});
 		
 		passwordChange.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			//TODO: Change to password reset scene
+			m.changeScene("Reset");
 		});
 		
+	}
+	
+	@Override
+	public void setMain(Main m) {
+		this.m = m;
 	}
 	
 }

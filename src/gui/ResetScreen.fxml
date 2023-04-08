@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ResetScreen">
+   <children>
+      <AnchorPane prefHeight="54.0" prefWidth="600.0">
+         <children>
+            <Label layoutY="3.0" prefHeight="48.0" prefWidth="490.0" text="Recommender" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="Lucida Fax Regular" size="54.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="410.0" layoutY="47.0" prefHeight="7.0" prefWidth="44.0" text="v.0.5" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="47.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </AnchorPane>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="96.0" prefWidth="600.0">
+               <children>
+                  <PasswordField fx:id="oldPassword" prefHeight="25.0" prefWidth="462.0" promptText="Old Password">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="5.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <PasswordField fx:id="newPassword" prefHeight="25.0" prefWidth="462.0" promptText="New Password">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="5.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <PasswordField fx:id="newConfirm" prefHeight="25.0" prefWidth="462.0" promptText="Confirm New Password">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="5.0" />
+                     </VBox.margin>
+                  </PasswordField>
+               </children>
+            </VBox>
+            <BorderPane prefHeight="105.0" prefWidth="166.0">
+               <center>
+                  <Button fx:id="reset" mnemonicParsing="false" text="Reset" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="71.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="info" layoutX="24.0" layoutY="3.0" text="Initial text" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="3.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
