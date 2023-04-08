@@ -7,8 +7,10 @@ import java.sql.SQLException;
 public class DBConnection {
 	private static Connection conn = null;
 	
-	
-	private DBConnection(){ //Singleton design pattern
+	/*
+	 * Singleton design, the connection and passwordTable will be established just once.
+	 */
+	private DBConnection(){ 
 		String url = "jdbc:sqlite:password.db";
 		try {
 			conn = DriverManager.getConnection(url);
@@ -17,8 +19,13 @@ public class DBConnection {
 			System.out.println("Error connecting to database.");
 			System.exit(1);
 		}
+		DBManager create = new DBManager();
+		create.createTable();
 	}
 	
+	/*
+	 * If no connection in use, create the one and only. Otherwise just connect to the existing connection.
+	 */
 	public static Connection getConnection() {
 		if(conn == null)
 			new DBConnection();

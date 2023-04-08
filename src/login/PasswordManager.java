@@ -1,51 +1,76 @@
 package login;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import connectDB.DBConnection;
 
 final class PasswordManager {
+	private static Connection conn = DBConnection.getConnection();
 	private String password;
-	private File passwordFile;
 	private boolean isFirstTimePassword;
 	
-	PasswordManager() throws FileNotFoundException {
-		passwordFile = new File("password.txt");
-		if (passwordFile.exists()) {
-			Scanner scnr = new Scanner(passwordFile);
-			password = scnr.nextLine();
-			scnr.close();
-			isFirstTimePassword = false;
-		}
-		else {
-			password = "p";
-			isFirstTimePassword = true;
-		}
+	
+	/*
+	 * Singleton design, only one login manager will be used throughout the life of this application
+	 */
+	private PasswordManager(){}
+	
+	/**
+	 * This method returns true if the password entered exists in the database, isFirstTimePassword will be set to false
+	 * This method returns false otherwise and setting isFirstTimePassword to true and setting password to p. 
+	 */
+	boolean passwordExists(String password) throws SQLException {
+		String sqlSelect = "SELECT * FROM passwordTable where password = '" + password + "';";
+		Statement stmt  = conn.createStatement();  
+        ResultSet rs    = stmt.executeQuery(sqlSelect);  
+        while (rs.next()) {  
+        	isFirstTimePassword = false;
+        	password = rs.getString("password");
+            return true;  
+        }  
+        isFirstTimePassword = true;
+        password = "p";
+		return false;
 	}
 	
+	/*
+	 * Returns true if it is first time, false otherwise
+	 */
 	boolean isFirstLogin() {
 		return isFirstTimePassword;
 	}
 	
+	/**
+	 * If it is not the first time login, this function will 
+	 * be used to check if the password entered matches the password in db or not.
+	 */
 	boolean checkPassword(String enteredPassword) {
-		return (enteredPassword.equals(password));
+		return enteredPassword.equals(this.password);
 	}
 	
-	boolean changePassword(String oldPassword, String newPassword) throws IOException {
-		if (oldPassword.equals(password)) {
-			password = newPassword;
-			if (isFirstTimePassword) {
-				passwordFile.createNewFile();
-			}
-			PrintWriter passwordWriter = new PrintWriter(passwordFile);
-			passwordWriter.print(password);
-			passwordWriter.close();
-			return true;
-		}
-		else {
-			return false;
-		}
+	/*
+	 * Returns the password.
+	 */
+	String getPassword() {
+		return this.password;
+	}
+	
+	/*
+	 * Given a newPassword, we update the database.
+	 */
+	void changePassword(String newPassword){
+		String sqlUpdate = "UPDATE passwordTable SET password = ?";
+		try{  
+            PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);  
+            pstmt.setString(1, newPassword); 
+            pstmt.executeUpdate();  
+		} 
+		catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
 	}
 }
