@@ -27,7 +27,7 @@ public class ResetScreen implements ApplicationScreen {
 	
 	public ResetScreen() {
 		try {
-			loginM = new LoginManager();
+			loginM = LoginManager.getLoginManager();
 		}
 		catch (Exception e1) {
 			e1.printStackTrace();

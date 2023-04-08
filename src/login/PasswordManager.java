@@ -1,27 +1,35 @@
 package login;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import database.DBConnection;
+import database.DBManager;
 
 final class PasswordManager {
 	
-	private static Connection conn = DBConnection.getConnection();
 	private static PasswordManager pw;
 	
 	private String password;
 	private boolean isFirstTimePassword;
+	private DBManager dbM;
 	
 	
 	/*
-	 * Singleton design, only one login manager will be used throughout the life of this application
+	 * Singleton design, only one password manager will be used throughout the life of this application
 	 */
-	private PasswordManager() {
-		
+	private PasswordManager() throws SQLException {
+		dbM = DBManager.getDBManager();
+		dbM.query(
+			"CREATE TABLE IF NOT EXISTS password (" +
+					"Lock char(1) not null DEFAULT 'X'," +
+					"passwordString string NOT NULL," +
+					"constraint PK_T1 PRIMARY KEY (Lock)," +
+					"constraint CK_T1_Locked CHECK (Lock='X')" +
+			");"
+		);
+		password = dbM.query("SELECT * FROM password;").getString("passwordString");
+		if (password == null) {
+			isFirstTimePassword = true;
+		}
 	}
 	
 	/*
@@ -29,63 +37,36 @@ final class PasswordManager {
 	 */
 	public static PasswordManager getPasswordManager() {
 		if (pw == null) {
-			pw = new PasswordManager();
+			try {
+				pw = new PasswordManager();
+			}
+			catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		return pw;
 	}
-	
 	/*
-	 * This method returns true if the password entered exists in the database, isFirstTimePassword will be set to false
-	 * This method returns false otherwise and setting isFirstTimePassword to true and setting password to p. 
+	 * Returns true if no password has been set, false otherwise
 	 */
-	boolean passwordExists(String password) throws SQLException {
-		String sqlSelect = "SELECT * FROM passwordTable where password = '" + password + "';";
-		Statement stmt  = conn.createStatement();  
-        ResultSet rs    = stmt.executeQuery(sqlSelect);  
-        while (rs.next()) {  
-        	isFirstTimePassword = false;
-        	password = rs.getString("password");
-            return true;  
-        }  
-        isFirstTimePassword = true;
-        password = "p";
-		return false;
-	}
-	
-	/*
-	 * Returns true if it is first time, false otherwise
-	 */
-	boolean isFirstLogin() {
+	public boolean isFirstLogin() {
 		return isFirstTimePassword;
 	}
 	
 	/*
-	 * If it is not the first time login, this function will 
-	 * be used to check if the password entered matches the password in db or not.
+	 * Returns the password as a string
 	 */
-	boolean checkPassword(String enteredPassword) {
-		return enteredPassword.equals(this.password);
+	public String getPassword() {
+		return password;
 	}
 	
 	/*
-	 * Returns the password.
+	 * Given newPassword, inserts new password into SQL database and changes password String in object
 	 */
-	String getPassword() {
-		return this.password;
+	public void setPassword(String newPassword) {
+		dbM.query("DELETE FROM password;");
+		password = newPassword;
+		dbM.query(String.format("INSERT INTO password (passwordString) VALUES ('%s');", newPassword));
 	}
-	
-	/*
-	 * Given a newPassword, we update the database.
-	 */
-	void changePassword(String newPassword){
-		String sqlUpdate = "UPDATE passwordTable SET password = ?";
-		try{  
-            PreparedStatement pstmt = conn.prepareStatement(sqlUpdate);  
-            pstmt.setString(1, newPassword); 
-            pstmt.executeUpdate();  
-		} 
-		catch (SQLException e) {  
-            System.out.println(e.getMessage());  
-        }  
-	}
+
 }

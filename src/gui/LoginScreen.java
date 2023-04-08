@@ -1,6 +1,5 @@
 package gui;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import application.Main;
@@ -25,16 +24,11 @@ public class LoginScreen implements ApplicationScreen {
 	@FXML
 	private Label passwordChange;
 
-	private LoginManager loginM;
+	private LoginManager lm;
 	private Main m;
 	
 	public LoginScreen() throws IOException {
-		try {
-			loginM = new LoginManager();
-		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		lm = LoginManager.getLoginManager();
 	}
 	
 	@FXML
@@ -49,14 +43,25 @@ public class LoginScreen implements ApplicationScreen {
 		
 		loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			String passwordAttempt = password.getCharacters().toString();
-			if (loginM.login(passwordAttempt)) {
+			if (lm.checkPassword(passwordAttempt)) {
 				if (m != null) {
-					try {
-						System.out.println("Changing Scenes!");
-						m.changeScene("Menu");
+					if (lm.getFirstLogin()) {
+						try {
+							System.out.println("Changing Scenes!");
+							m.changeScene("Menu");
+						}
+						catch (Exception e1) {
+							e1.printStackTrace();
+						}
 					}
-					catch (Exception e1) {
-						e1.printStackTrace();
+					else {
+						try {
+							System.out.println("Changing Scenes!");
+							m.changeScene("Reset");
+						}
+						catch (Exception e1) {
+							e1.printStackTrace();
+						}
 					}
 				}
 				System.out.println("Login button clicked, password is correct!");

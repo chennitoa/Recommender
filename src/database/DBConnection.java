@@ -41,9 +41,4 @@ public class DBConnection {
 		return conn;
 	}
 	
-	public static void main(String args[]) {
-		DBConnection dbConn = DBConnection.getDBConnection();
-		Connection conn = dbConn.getConnection();
-	}
-	
 }
