@@ -6,10 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import connectDB.DBConnection;
+import database.DBConnection;
 
 final class PasswordManager {
+	
 	private static Connection conn = DBConnection.getConnection();
+	private static PasswordManager pw;
+	
 	private String password;
 	private boolean isFirstTimePassword;
 	
@@ -17,9 +20,21 @@ final class PasswordManager {
 	/*
 	 * Singleton design, only one login manager will be used throughout the life of this application
 	 */
-	private PasswordManager(){}
+	private PasswordManager() {
+		
+	}
 	
-	/**
+	/*
+	 * Returns the singleton instance of PasswordManager, creating one if one does not exist already
+	 */
+	public static PasswordManager getPasswordManager() {
+		if (pw == null) {
+			pw = new PasswordManager();
+		}
+		return pw;
+	}
+	
+	/*
 	 * This method returns true if the password entered exists in the database, isFirstTimePassword will be set to false
 	 * This method returns false otherwise and setting isFirstTimePassword to true and setting password to p. 
 	 */
@@ -44,7 +59,7 @@ final class PasswordManager {
 		return isFirstTimePassword;
 	}
 	
-	/**
+	/*
 	 * If it is not the first time login, this function will 
 	 * be used to check if the password entered matches the password in db or not.
 	 */

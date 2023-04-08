@@ -1,14 +1,12 @@
-package connectDB;
+package database;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;  
 
 
 public class DBManager{
-	static Connection conn = DBConnection.getConnection();
+	private static Connection conn;
 	
 	public void createTable() { 
 		String sql = "CREATE TABLE IF NOT EXISTS passwordTable (ID integer PRIMARY KEY AUTOINCREMENT, password text\n);";
