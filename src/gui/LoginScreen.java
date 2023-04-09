@@ -28,11 +28,17 @@ public class LoginScreen implements ApplicationScreen {
 	private Main m;
 	private boolean isFirstLogin;
 	
+	/*
+	 * Grabs singleton instance of LoginManager and checks whether it is the first login
+	 */
 	public LoginScreen() throws IOException {
 		lM = LoginManager.getLoginManager();
 		isFirstLogin = lM.getFirstLogin();
 	}
 	
+	/*
+	 * Adds functionality to the help, login, and reset password buttons
+	 */
 	@FXML
 	public void initialize() {
 		info.setVisible(false);
@@ -47,6 +53,10 @@ public class LoginScreen implements ApplicationScreen {
 			info.setVisible(true);
 		});
 		
+		/*
+		 * Checks if password is correct, redirects to Menu normally but to Reset if it is the first time logging in
+		 * Modifies text at bottom that gives information
+		 */
 		loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			String passwordAttempt = password.getCharacters().toString();
 			password.clear();
@@ -77,6 +87,9 @@ public class LoginScreen implements ApplicationScreen {
 		
 	}
 	
+	/*
+	 * Sets main for navigation
+	 */
 	@Override
 	public void setMain(Main m) {
 		this.m = m;

@@ -27,10 +27,16 @@ public class AccountTab {
 	private LoginManager lM;
 	private Main m;
 	
+	/*
+	 * Grabs singleton instance of LoginManager
+	 */
 	public AccountTab() {
 		lM = LoginManager.getLoginManager();
 	}
 	
+	/*
+	 * Initializes info text and adds functionality to reset button
+	 */
 	public void initialize() {
 		
 		info.setVisible(false);
@@ -77,6 +83,9 @@ public class AccountTab {
 		
 	}
 	
+	/*
+	 * Sets main for navigation
+	 */
 	public void setMain(Main m) {
 		this.m = m;
 	}

@@ -35,6 +35,10 @@ public class MenuScreen implements ApplicationScreen {
 		
 	}
 	
+	/*
+	 * Adds settings and logout functionality as well
+	 * TODO: Create open letter and new letter functionality
+	 */
 	@FXML
 	public void initialize() {
 		
@@ -59,6 +63,9 @@ public class MenuScreen implements ApplicationScreen {
 		
 	}
 	
+	/*
+	 * Sets main for navigation
+	 */
 	@Override
 	public void setMain(Main m) {
 		this.m = m;

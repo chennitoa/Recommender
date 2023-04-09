@@ -28,16 +28,17 @@ public class ResetScreen implements ApplicationScreen {
 	private Main m;
 	private boolean isFirstReset;
 	
+	/*
+	 * Grabs the singleton instance of LoginManager and checks whether it is the first login
+	 */
 	public ResetScreen() {
-		try {
-			lM = LoginManager.getLoginManager();
-		}
-		catch (Exception e1) {
-			e1.printStackTrace();
-		}
+		lM = LoginManager.getLoginManager();
 		isFirstReset = lM.getFirstLogin();
 	}
 	
+	/*
+	 * Adds functionality to the reset button 
+	 */
 	@FXML
 	public void initialize() {
 		
@@ -47,6 +48,9 @@ public class ResetScreen implements ApplicationScreen {
 			oldPassword.setVisible(false);
 		}
 		
+		/*
+		 * Checks if the old password is correct, and the two new passwords are the same
+		 */
 		reset.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			
 			String oldPass = oldPassword.getCharacters().toString();
@@ -58,7 +62,10 @@ public class ResetScreen implements ApplicationScreen {
 			newConfirm.clear();
 			
 			if (!newPass.equals(newConf)) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
 				info.setText("New Passwords Are Different: Try Again");
+				info.setVisible(true);
 			}
 			else {
 				if (!isFirstReset) {
@@ -95,6 +102,9 @@ public class ResetScreen implements ApplicationScreen {
 		});
 	}
 	
+	/*
+	 * Sets main for navigation
+	 */
 	@Override
 	public void setMain(Main m) {
 		this.m = m;

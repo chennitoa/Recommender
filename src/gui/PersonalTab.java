@@ -30,10 +30,16 @@ public class PersonalTab {
 	
 	private SettingsManager sM;
 	
+	/*
+	 * Grabs the singleton instance of SettingsManager
+	 */
 	public PersonalTab() {
 		sM = SettingsManager.getSettingsManager();
 	}
 	
+	/*
+	 * Adds functionality to the currentinfo tab
+	 */
 	public void initialize() {
 		
 		info.setVisible(false);
@@ -48,6 +54,9 @@ public class PersonalTab {
 			department.setText(currentInfo.getDepartment());
 		}
 		
+		/*
+		 * Grabs text from all the text boxes and saves it as a ProfessorInfo object
+		 */
 		save.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			
 			String nameInfo = name.getCharacters().toString();
