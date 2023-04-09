@@ -41,6 +41,7 @@
 		<AnchorPane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="585.0">
 			<children>
 				<Button fx:id="save" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="430.0" mnemonicParsing="false" text="Save" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0" />
+            <Label fx:id="info" layoutX="14.0" layoutY="6.0" text="Initial Text" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="6.0" />
 			</children>
 		</AnchorPane>
 	</children>

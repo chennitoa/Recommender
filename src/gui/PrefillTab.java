@@ -6,8 +6,10 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import settings.SettingsManager;
 
 public class PrefillTab {
@@ -24,6 +26,8 @@ public class PrefillTab {
 	private TextArea academic;
 	@FXML
 	private Button save;
+	@FXML
+	private Label info;
 	
 	private SettingsManager sM;
 	
@@ -64,6 +68,8 @@ public class PrefillTab {
 	 */
 	public void initialize() {
 		
+		info.setVisible(false);
+		
 		semesters.setText(getTextAreaFormat(sM.getSemesters()));
 		courses.setText(getTextAreaFormat(sM.getCourses()));
 		programs.setText(getTextAreaFormat(sM.getPrograms()));
@@ -85,6 +91,11 @@ public class PrefillTab {
 			sM.setPersonalCharacteristics(personalList);
 			sM.setAcademicCharacteristics(academicList);
 			
+			
+			info.setVisible(false);
+			info.setTextFill(Color.color(0, 1, 0));
+			info.setText("Prefill information has been succesfully saved");
+			info.setVisible(true);
 		});
 		
 	}
