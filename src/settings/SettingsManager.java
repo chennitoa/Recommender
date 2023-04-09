@@ -1,6 +1,8 @@
 package settings;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import database.DBManager;
@@ -78,6 +80,10 @@ public class SettingsManager {
 
 	public void setSemesters(List<String> semesters) {
 		this.semesters = semesters;
+		dbM.query("DELETE FROM semesters;");
+		for(String s : semesters){
+			dbM.query(String.format("INSERT INTO semesters values(%s);", s));
+		}
 	}
 
 	public List<String> getCourses() {
@@ -86,6 +92,10 @@ public class SettingsManager {
 
 	public void setCourses(List<String> courses) {
 		this.courses = courses;
+		dbM.query("DELETE FROM courses;");
+		for(String s : courses){
+			dbM.query(String.format("INSERT INTO courses values(%s);", s));
+		}
 	}
 
 	public List<String> getPrograms() {
@@ -94,6 +104,10 @@ public class SettingsManager {
 
 	public void setPrograms(List<String> programs) {
 		this.programs = programs;
+		dbM.query("DELETE FROM programs;");
+		for(String s : programs){
+			dbM.query(String.format("INSERT INTO programs values(%s);", s));
+		}
 	}
 
 	public List<String> getPersonalCharacteristics() {
@@ -102,6 +116,10 @@ public class SettingsManager {
 
 	public void setPersonalCharacteristics(List<String> personalCharacteristics) {
 		this.personalCharacteristics = personalCharacteristics;
+		dbM.query("DELETE FROM personalCharacteristics;");
+		for(String s : personalCharacteristics){
+			dbM.query(String.format("INSERT INTO personalCharacteristics values(%s);", s));
+		}
 	}
 
 	public List<String> getAcademicCharacteristics() {
@@ -110,25 +128,36 @@ public class SettingsManager {
 
 	public void setAcademicCharacteristics(List<String> academicCharacteristics) {
 		this.academicCharacteristics = academicCharacteristics;
+		dbM.query("DELETE academicCharacteristics semesters;");
+		for(String s : academicCharacteristics){
+			dbM.query(String.format("INSERT INTO academicCharacteristics values(%s);", s));
+		}
 	}
 	
-//	public static void main(String args[]) throws SQLException {
-////		SettingsManager sM = SettingsManager.getSettingsManager();
-////		System.out.println(dbM.query("INSERT INTO semesters values('Spring');"));
-////		System.out.println(dbM.query("SELECT * FROM semesters;").getString("semester"));
-//		
-//		
-//		
-////		semesters = Arrays.asList("Spring" , "Fall", "Summer");
-////		courses = Arrays.asList("CS151: Object-Oriented Design","CS166: Information Security",
-////				"CS154: Theory of Computation","CS160: Software Engineering","CS256: Cryptography","CS146: Data Structures and Algorithms",
-////				"CS152: Programming Languages Paradigm");
-////		programs = Arrays.asList("Master of science (MS)","Master of business administration (MBA)",
-////				"Doctor of philosophy (PhD)");
-////		personalCharacteristics = Arrays.asList("very passionate","very enthusiastic","punctual","attentive","polite");
-////		academicCharacteristics = Arrays.asList("submitted well-written asisgnments", "participated in all of my class activities",
-////				"worked hard", "was very well prepared for every exam and assignment", "picked up new skills quickly",
-////				"was able to excel academically at the top of my class");
-//	}
+	public static void main(String args[]) throws SQLException {
+		SettingsManager sM = SettingsManager.getSettingsManager();
+		System.out.println(dbM.query("INSERT INTO semesters values('Spring');"));
+		System.out.println(dbM.query("SELECT * FROM semesters;").getString("semester"));
+		List<String> ls = new ArrayList<>();
+		ls.add("fall");
+		ls.add("summer");
+		sM.setSemesters(ls);
+		System.out.println(dbM.query("SELECT * FROM semesters;").getString("semester"));
+
+
+		
+		
+		
+		// semesters = Arrays.asList("Spring" , "Fall", "Summer");
+		// courses = Arrays.asList("CS151: Object-Oriented Design","CS166: Information Security",
+		// 		"CS154: Theory of Computation","CS160: Software Engineering","CS256: Cryptography","CS146: Data Structures and Algorithms",
+		// 		"CS152: Programming Languages Paradigm");
+		// programs = Arrays.asList("Master of science (MS)","Master of business administration (MBA)",
+		// 		"Doctor of philosophy (PhD)");
+		// personalCharacteristics = Arrays.asList("very passionate","very enthusiastic","punctual","attentive","polite");
+		// academicCharacteristics = Arrays.asList("submitted well-written asisgnments", "participated in all of my class activities",
+		// 		"worked hard", "was very well prepared for every exam and assignment", "picked up new skills quickly",
+		// 		"was able to excel academically at the top of my class");
+	}
 	
 }
