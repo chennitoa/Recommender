@@ -1,18 +1,23 @@
 package settings;
 
 public class ProfessorInfo {
-	private String name = "Ahmad Yazdankhah";
-	private String title = "Lecturer";
-	private String schoolName = "SJSU";
-	private String department = "CS Department";
-	private String email = "ahmad.yazdankhah@sjsu.edu";
-	private String phoneNumber = "(123) 456-7890";
+	private String name;
+	private String title;
+	private String schoolName;
+	private String department;
+	private String email;
+	private String phoneNumber;
 	
 	/*
 	 * Default constructor
 	 */
 	public ProfessorInfo() {
-		
+		this.setName("Ahmad Yazdankhah");
+		this.setTitle("Lecturer");
+		this.setSchool("SJSU");
+		this.setDepartment("CS Department");
+		this.setEmail("ahmad.yazdankhah@sjsu.edu");
+		this.setPhone("(123) 456-7890");
 	}
 	
 	/*
@@ -21,10 +26,10 @@ public class ProfessorInfo {
 	public ProfessorInfo(String name, String title, String schoolName, String department, String phoneNumber, String email) {
 		this.setName(name);
 		this.setTitle(title);
-		this.setSchoolName(schoolName);
+		this.setSchool(schoolName);
 		this.setDepartment(department);
 		this.setEmail(email);
-		this.setPhoneNumber(phoneNumber);
+		this.setPhone(phoneNumber);
 	}
 
 	/*
@@ -39,11 +44,11 @@ public class ProfessorInfo {
 		this.name = name;
 	}
 
-	public String getSchoolName() {
+	public String getSchool() {
 		return schoolName;
 	}
 
-	public void setSchoolName(String schoolName) {
+	public void setSchool(String schoolName) {
 		this.schoolName = schoolName;
 	}
 
@@ -55,17 +60,11 @@ public class ProfessorInfo {
 		this.department = department;
 	}
 
-	public String getPhoneNumber() {
+	public String getPhone() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-//		StringBuilder sb = new StringBuilder();
-//		for(char c : phoneNumber.toCharArray()) {
-//			sb.append(c);
-//		}
-//		sb.append("(", 0, 1);
-		
+	public void setPhone(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

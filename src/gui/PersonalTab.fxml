@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="40.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PersonalTab">
+	<children>
+		<AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+			<children>
+				<Label layoutX="26.0" layoutY="12.0" text="Name" AnchorPane.topAnchor="12.0" />
+				<TextField fx:id="name" layoutX="144.0" layoutY="8.0" promptText="First Name Last Name" AnchorPane.topAnchor="8.0" />
+			</children>
+		</AnchorPane>
+      <AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+         <children>
+            <Label layoutX="26.0" layoutY="12.0" text="Title" AnchorPane.topAnchor="12.0" />
+            <TextField fx:id="title" layoutX="144.0" layoutY="8.0" promptText="Title" AnchorPane.topAnchor="8.0" />
+         </children>
+      </AnchorPane>
+		<AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+			<children>
+				<Label layoutX="26.0" layoutY="12.0" text="Email" AnchorPane.topAnchor="12.0" />
+				<TextField fx:id="email" layoutX="144.0" layoutY="8.0" promptText="XXXXX@XXX.XXX" AnchorPane.topAnchor="8.0" />
+			</children>
+		</AnchorPane>
+		<AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+			<children>
+				<Label layoutX="26.0" layoutY="12.0" text="Phone Number" AnchorPane.topAnchor="12.0" />
+				<TextField fx:id="phone" layoutX="144.0" layoutY="7.0" promptText="(XXX) XXX-XXXX" AnchorPane.topAnchor="8.0" />
+			</children>
+		</AnchorPane>
+		<AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+			<children>
+				<Label layoutX="26.0" layoutY="12.0" text="School Name" AnchorPane.topAnchor="12.0" />
+				<TextField fx:id="school" layoutX="144.0" layoutY="2.0" promptText="School Name" AnchorPane.topAnchor="8.0" />
+			</children>
+		</AnchorPane>
+		<AnchorPane maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+			<children>
+				<Label layoutX="26.0" layoutY="12.0" text="Department Name" AnchorPane.topAnchor="12.0" />
+				<TextField fx:id="department" layoutX="144.0" layoutY="3.0" promptText="Department Name" AnchorPane.topAnchor="8.0" />
+			</children>
+		</AnchorPane>
+		<AnchorPane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="585.0">
+			<children>
+				<Button fx:id="save" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="430.0" mnemonicParsing="false" text="Save" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0" />
+            <Label fx:id="info" layoutX="25.0" layoutY="6.0" text="Initial Text" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="6.0" />
+			</children>
+		</AnchorPane>
+	</children>
+</VBox>

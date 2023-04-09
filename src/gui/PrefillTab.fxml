@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="40.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PrefillTab">
+	<children>
+		<AnchorPane>
+			<children>
+				<Label layoutX="26.0" layoutY="12.0" text="Semesters" AnchorPane.topAnchor="12.0" />
+            <TextArea fx:id="semesters" layoutX="27.0" layoutY="39.0" prefHeight="115.0" prefWidth="545.0" promptText="Seperate each semester by a newline" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0" />
+			</children>
+		</AnchorPane>
+      <AnchorPane>
+         <children>
+            <Label layoutX="26.0" layoutY="12.0" text="Courses" AnchorPane.topAnchor="12.0" />
+            <TextArea fx:id="courses" layoutX="27.0" layoutY="39.0" prefHeight="115.0" prefWidth="545.0" promptText="Seperate each course by a newline" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane>
+         <children>
+            <Label layoutX="26.0" layoutY="12.0" text="Programs" AnchorPane.topAnchor="12.0" />
+            <TextArea fx:id="programs" layoutX="27.0" layoutY="39.0" prefHeight="115.0" prefWidth="545.0" promptText="Seperate each program by a newline" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane>
+         <children>
+            <Label layoutX="26.0" layoutY="12.0" text="Personal Characteristics" AnchorPane.topAnchor="12.0" />
+            <TextArea fx:id="personal" layoutX="27.0" layoutY="39.0" prefHeight="115.0" prefWidth="545.0" promptText="Seperate each characteristic by a newline" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane>
+         <children>
+            <Label layoutX="26.0" layoutY="12.0" text="Academic Characteristics" AnchorPane.topAnchor="12.0" />
+            <TextArea fx:id="academic" layoutX="27.0" layoutY="39.0" prefHeight="115.0" prefWidth="545.0" promptText="Seperate each characteristic by a newline" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0" />
+         </children>
+      </AnchorPane>
+		<AnchorPane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="585.0">
+			<children>
+				<Button fx:id="save" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="430.0" mnemonicParsing="false" text="Save" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0" />
+            <Label fx:id="info" layoutX="14.0" layoutY="6.0" text="Initial Text" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="6.0" />
+			</children>
+		</AnchorPane>
+	</children>
+</VBox>

@@ -27,6 +27,7 @@
                      </font>
                   </Label>
                   <Label fx:id="settings" layoutX="79.0" layoutY="369.0" text="Settings" AnchorPane.bottomAnchor="14.0" />
+                  <Label fx:id="logout" layoutX="81.0" layoutY="337.0" text="Logout" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="81.0" />
                </children>
             </AnchorPane>
             <VBox prefHeight="375.0" prefWidth="426.0" HBox.hgrow="ALWAYS">

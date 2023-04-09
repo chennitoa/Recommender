@@ -1,0 +1,19 @@
+Button {
+	-fx-focus-traversable: false
+}
+
+Label {
+	-fx-focus-traversable: false
+}
+
+PasswordField {
+	-fx-focus-traversable: false
+}
+
+TextArea {
+	-fx-focus-traversable: false
+}
+
+TextField {
+	-fx-focus-traversable: false
+}

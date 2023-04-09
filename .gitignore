@@ -2,7 +2,7 @@
 /.settings/
 /.vscode/
 /password.txt
-/password.db
+/application.db
 /.classpath
 /.project
 /src/connectDB/Driver.java

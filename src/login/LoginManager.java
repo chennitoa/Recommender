@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class LoginManager {
 	
-	private static LoginManager lm;
+	private static LoginManager lM;
 	
 	private boolean isFirstLogin;
 	private PasswordManager pw;
@@ -22,17 +22,28 @@ public class LoginManager {
 	 * Returns the singleton instance of LoginManager, creating one if one does not exist already
 	 */
 	public static LoginManager getLoginManager() {
-		if (lm == null) {
-			lm = new LoginManager();
+		if (lM == null) {
+			lM = new LoginManager();
 		}
-		return lm;
+		return lM;
 	}
 	
 	/*
 	 * Checks if the password is correct, returns true if correct, false otherwise
 	 */
 	public boolean checkPassword(String enteredPassword) {
-		return enteredPassword.equals(pw.getPassword());
+		if (isFirstLogin) {
+			if (enteredPassword.equals("p")) {
+				isFirstLogin = false;
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return enteredPassword.equals(pw.getPassword());
+		}
 	}
 	
 	/*
@@ -43,8 +54,7 @@ public class LoginManager {
 	}
 	
 	/**
-	 * Given the new password and that it is first time reseting the password,
-	 * returns true if password is succesfully reset, false otherwise
+	 * Given the new password and that it is first time reseting the password, resets the password
 	 */
 	public void resetFirstPassword(String newPassword) throws IOException {
 		pw.setPassword(newPassword);
