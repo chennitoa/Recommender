@@ -26,7 +26,8 @@
                         <Font name="Leelawadee UI" size="48.0" />
                      </font>
                   </Label>
-                  <Label fx:id="settings" layoutX="79.0" layoutY="369.0" text="Settings" AnchorPane.bottomAnchor="14.0" />
+                  <Label fx:id="settings" layoutX="79.0" layoutY="343.0" text="Settings" AnchorPane.bottomAnchor="40.0" />
+                  <Label fx:id="logout" layoutX="81.0" layoutY="369.0" text="Logout" AnchorPane.bottomAnchor="14.0" />
                </children>
             </AnchorPane>
             <VBox prefHeight="375.0" prefWidth="426.0" HBox.hgrow="ALWAYS">

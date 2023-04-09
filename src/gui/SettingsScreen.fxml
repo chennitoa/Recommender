@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SettingsScreen">
    <children>
       <AnchorPane prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: gray;" VBox.vgrow="NEVER">
          <children>
@@ -19,43 +21,42 @@
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-         <content>
-            <VBox maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="585.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="307.0" prefWidth="158.0" style="-fx-background-color: GHOSTWHITE;">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane>
                      <children>
-                        <Label layoutX="26.0" layoutY="12.0" text="Name" />
-                        <TextField layoutX="144.0" layoutY="8.0" />
+                        <Label fx:id="personal" text="Personal Info" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                        </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane>
                      <children>
-                        <Label layoutX="26.0" layoutY="12.0" text="Email" />
-                        <TextField layoutX="144.0" layoutY="8.0" />
+                        <Label fx:id="prefill" text="Recommendation Prefills" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                        </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane>
                      <children>
-                        <Label layoutX="26.0" layoutY="12.0" text="Phone Number" />
-                        <TextField layoutX="144.0" layoutY="7.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="26.0" layoutY="12.0" text="School Name" />
-                        <TextField layoutX="144.0" layoutY="2.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="26.0" layoutY="12.0" text="Department Name" />
-                        <TextField layoutX="144.0" layoutY="3.0" />
+                        <Label fx:id="account" text="Account" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
-         </content>
-      </ScrollPane>
+            <ScrollPane fx:id="content" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="ALWAYS" HBox.hgrow="ALWAYS">
+            </ScrollPane>
+         </children>
+      </HBox>
    </children>
 </VBox>

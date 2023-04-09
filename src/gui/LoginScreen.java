@@ -23,17 +23,23 @@ public class LoginScreen implements ApplicationScreen {
 	private Label info;
 	@FXML
 	private Label passwordChange;
-
-	private LoginManager lm;
+	
+	private LoginManager lM;
 	private Main m;
+	private boolean isFirstLogin;
 	
 	public LoginScreen() throws IOException {
-		lm = LoginManager.getLoginManager();
+		lM = LoginManager.getLoginManager();
+		isFirstLogin = lM.getFirstLogin();
 	}
 	
 	@FXML
 	public void initialize() {
 		info.setVisible(false);
+		
+		if (!isFirstLogin) {
+			firstAid.setVisible(false);
+		}
 		
 		firstAid.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			info.setTextFill(Color.color(0, 0, 0));
@@ -43,39 +49,30 @@ public class LoginScreen implements ApplicationScreen {
 		
 		loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			String passwordAttempt = password.getCharacters().toString();
-			if (lm.checkPassword(passwordAttempt)) {
+			password.clear();
+			if (lM.checkPassword(passwordAttempt)) {
 				if (m != null) {
-					if (lm.getFirstLogin()) {
-						try {
-							System.out.println("Changing Scenes!");
-							m.changeScene("Menu");
-						}
-						catch (Exception e1) {
-							e1.printStackTrace();
-						}
+					if (!isFirstLogin) {
+						m.changeScene("Menu");
 					}
 					else {
-						try {
-							System.out.println("Changing Scenes!");
-							m.changeScene("Reset");
-						}
-						catch (Exception e1) {
-							e1.printStackTrace();
-						}
+						m.changeScene("Reset");
 					}
 				}
-				System.out.println("Login button clicked, password is correct!");
+				info.setVisible(false);
+				firstAid.setVisible(false);
+				isFirstLogin = false;
 			}
 			else {
 				info.setTextFill(Color.color(1, 0, 0));
 				info.setText("Password Incorrect: Try Again");
 				info.setVisible(true);
-				System.out.println("Login button clicked, wrong password!");
 			}
 		});
 		
 		passwordChange.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			m.changeScene("Reset");
+			password.clear();
 		});
 		
 	}

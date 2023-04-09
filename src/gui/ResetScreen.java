@@ -1,5 +1,7 @@
 package gui;
 
+import java.io.IOException;
+
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,16 +24,18 @@ public class ResetScreen implements ApplicationScreen {
 	@FXML
 	private Label info;
 	
-	private LoginManager loginM;
+	private LoginManager lM;
 	private Main m;
+	private boolean isFirstReset;
 	
 	public ResetScreen() {
 		try {
-			loginM = LoginManager.getLoginManager();
+			lM = LoginManager.getLoginManager();
 		}
 		catch (Exception e1) {
 			e1.printStackTrace();
 		}
+		isFirstReset = lM.getFirstLogin();
 	}
 	
 	@FXML
@@ -39,37 +43,60 @@ public class ResetScreen implements ApplicationScreen {
 		
 		info.setVisible(false);
 		
+		if (isFirstReset) {
+			oldPassword.setVisible(false);
+		}
+		
 		reset.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			
 			String oldPass = oldPassword.getCharacters().toString();
 			String newPass = newPassword.getCharacters().toString();
 			String newConf = newConfirm.getCharacters().toString();
 			
+			oldPassword.clear();
+			newPassword.clear();
+			newConfirm.clear();
+			
 			if (!newPass.equals(newConf)) {
 				info.setText("New Passwords Are Different: Try Again");
 			}
 			else {
-				boolean b = false;
-				try {
-					b = loginM.resetPassword(oldPass, newPass);
-				}
-				catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				if (!b) {
-					info.setVisible(false);
-					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Password Incorrect: Try Again");
-					info.setVisible(true);
+				if (!isFirstReset) {
+					boolean resetSuccessful = false;
+					try {
+						resetSuccessful = lM.resetPassword(oldPass, newPass);
+					}
+					catch (Exception e1) {
+						e1.printStackTrace();
+					}
+					if (!resetSuccessful) {
+						info.setVisible(false);
+						info.setTextFill(Color.color(1, 0, 0));
+						info.setText("Password Incorrect: Try Again");
+						info.setVisible(true);
+					}
+					else {
+						m.changeScene("Login");
+					}
 				}
 				else {
-					m.changeScene("Login");
+					try {
+						lM.resetFirstPassword(newPass);
+						isFirstReset = false;
+						oldPassword.setVisible(true);
+						m.changeScene("Login");
+					}
+					catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 			
+			
+			
 		});
 	}
-
+	
 	@Override
 	public void setMain(Main m) {
 		this.m = m;

@@ -21,6 +21,8 @@ public class MenuScreen implements ApplicationScreen {
 	@FXML
 	private Label settings;
 	@FXML
+	private Label logout;
+	@FXML
 	private TextField search;
 	@FXML
 	private ScrollBar recentScroll;
@@ -35,14 +37,26 @@ public class MenuScreen implements ApplicationScreen {
 	
 	@FXML
 	public void initialize() {
+		
 		newLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			m.changeScene("Draft");
 		});
+		
 		openLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
 			FileChooser letterFileChooser = new FileChooser();
 			letterFileChooser.setTitle("Open Letter File");
 			File f = letterFileChooser.showOpenDialog(new Stage());
+			System.out.println(f.getPath());
 		});
+		
+		settings.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+			m.changeScene("Settings");
+		});
+		
+		logout.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+			m.logout();
+		});
+		
 	}
 	
 	@Override

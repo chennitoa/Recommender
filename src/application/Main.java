@@ -21,6 +21,11 @@ public class Main extends Application {
 		sceneMap = new HashMap<String, Scene>();
 	}
 	
+	public void logout() {
+		mainStage.close();
+		System.exit(0);
+	}
+	
 	public void changeScene(String sceneName) {
 		if (sceneName.equals("Menu")) {
 			mainStage.close();
@@ -43,18 +48,21 @@ public class Main extends Application {
 			VBox loginRoot = loginLoader.load();
 			LoginScreen loginController = loginLoader.getController();
 	        Scene loginScene = new Scene(loginRoot);
+	        loginScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        loginController.setMain(this);
 	        
 	        FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("../gui/MenuScreen.fxml"));
 	        VBox menuRoot = menuLoader.load();
 	        MenuScreen menuController = menuLoader.getController();
 	        Scene menuScene = new Scene(menuRoot);
+	        menuScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        menuController.setMain(this);
 	        
 	        FXMLLoader resetLoader = new FXMLLoader(getClass().getResource("../gui/ResetScreen.fxml"));
 	        VBox resetRoot = resetLoader.load();
 	        ResetScreen resetController = resetLoader.getController();
 	        Scene resetScene = new Scene(resetRoot);
+	        resetScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        resetController.setMain(this);
 	        
 	        sceneMap.put("Login", loginScene);
