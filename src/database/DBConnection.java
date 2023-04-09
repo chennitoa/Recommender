@@ -14,7 +14,7 @@ public class DBConnection {
 	 * Singleton design, the connection and passwordTable will be established just once.
 	 */
 	private DBConnection() { 
-		String url = "jdbc:sqlite:password.db";
+		String url = "jdbc:sqlite:application.db";
 		try {
 			conn = DriverManager.getConnection(url);
 		}

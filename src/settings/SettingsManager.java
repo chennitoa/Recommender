@@ -1,8 +1,8 @@
 package settings;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import database.DBManager;
@@ -12,12 +12,27 @@ public class SettingsManager {
 	private static SettingsManager sM;
 	private static DBManager dbM;
 	
+	private ProfessorInfo pI;
 	private List<String> semesters;
 	private List<String> courses;
 	private List<String> programs;
 	private List<String> personalCharacteristics;
 	private List<String> academicCharacteristics;
 	
+	/*
+	 * Given results of query, parses them into a list, returns null if list would be empty
+	 */
+	public static List<String> parseToList(ResultSet rs, String columnTitle) throws SQLException {
+		if (rs == null || rs.next() == false) {
+			return null;
+		}
+		ArrayList<String> resultsList = new ArrayList<String>();
+		resultsList.add(rs.getString(columnTitle));
+		while (rs.next() == true) {
+			resultsList.add(rs.getString(columnTitle));
+		}
+		return resultsList;
+	}
 	
 	/*
 	 * Singleton design
@@ -25,17 +40,50 @@ public class SettingsManager {
 	private SettingsManager() {
 		dbM = DBManager.getDBManager();
 		
-		dbM.query("CREATE TABLE IF NOT EXISTS semesters(semester text);"); 
-		dbM.query("CREATE TABLE IF NOT EXISTS courses(course text);");
-		dbM.query("CREATE TABLE IF NOT EXISTS programs(program text");
-		dbM.query("CREATE TABLE IF NOT EXISTS personalCharacteristics(characteristics text");
-		dbM.query("CREATE TABLE IF NOT EXISTS academicCharacteristics(characteristics text");
+		dbM.query(
+				"CREATE TABLE IF NOT EXISTS professorInfo ("
+				+ "Lock char(1) not null DEFAULT 'X',"
+				+ "name string,"
+				+ "title string,"
+				+ "school string,"
+				+ "department string,"
+				+ "phone string,"
+				+ "email string,"
+				+ "constraint PK_T1 PRIMARY KEY (Lock),"
+				+ "constraint CK_T1_Locked CHECK (Lock='X')"
+				+ ");"
+		);
+		dbM.query("CREATE TABLE IF NOT EXISTS semesters(semester string);"); 
+		dbM.query("CREATE TABLE IF NOT EXISTS courses(course string);");
+		dbM.query("CREATE TABLE IF NOT EXISTS programs(program string);");
+		dbM.query("CREATE TABLE IF NOT EXISTS personalCharacteristics(characteristic string);");
+		dbM.query("CREATE TABLE IF NOT EXISTS academicCharacteristics(characteristic string);");
 		
-		dbM.query("SELECT * FROM semesters;");
-		dbM.query("SELECT * FROM courses;");
-		dbM.query("SELECT * FROM programs;");
-		dbM.query("SELECT * FROM personalCharacteristics;");
-		dbM.query("SELECT * FROM academicCharacteristics;");
+		try {
+			ResultSet rs = dbM.query("SELECT * FROM professorInfo");
+			if (rs.getString("name") == null) {
+				pI = null;
+			}
+			else {
+				pI = new ProfessorInfo(
+						rs.getString("name"),
+						rs.getString("title"),
+						rs.getString("school"),
+						rs.getString("department"),
+						rs.getString("phone"),
+						rs.getString("email")
+				);
+			}
+			
+			semesters = parseToList(dbM.query("SELECT * FROM semesters;"), "semester");
+			courses = parseToList(dbM.query("SELECT * FROM courses;"), "course");
+			programs = parseToList(dbM.query("SELECT * FROM programs;"), "program");
+			personalCharacteristics = parseToList(dbM.query("SELECT * FROM personalCharacteristics;"), "characteristic");
+			academicCharacteristics = parseToList(dbM.query("SELECT * FROM academicCharacteristics;"), "characteristic");
+		}
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	/*
@@ -51,113 +99,115 @@ public class SettingsManager {
 	/*
 	 * Returns a professor java bean with initial data
 	 */
-	ProfessorInfo getProfessorInfo() {
-		ProfessorInfo prof = new ProfessorInfo();
-		return prof;
+	public ProfessorInfo getProfessorInfo() {
+		return pI;
 	}
-	
-	
 	
 	/*
 	 * Change professor info
 	 */
-	void changeProfessorInfo(ProfessorInfo prof, String name, String title, String school, String department, String email, String phone) {
-		prof.setName(name);
-		prof.setTitle(title);
-		prof.setSchoolName(school);
-		prof.setDepartment(department);
-		prof.setEmail(email);
-		prof.setPhoneNumber(phone);
+	public void setProfessorInfo(ProfessorInfo prof) {
+		pI = prof;
+		dbM.query("DELETE FROM professorInfo;");
+		dbM.query(String.format("INSERT INTO professorInfo (name, title, school, department, phone, email)"
+				+ " values('%s', '%s', '%s', '%s', '%s', '%s');",
+				pI.getName(),
+				pI.getTitle(),
+				pI.getSchool(),
+				pI.getDepartment(),
+				pI.getPhone(),
+				pI.getEmail()
+		));
 	}
 	
 	/*
-	 * Getters and setters
+	 * Gets semesters as list of strings
 	 */
-	
 	public List<String> getSemesters() {
 		return semesters;
 	}
 
+	/*
+	 * Sets semesters given list of strings, and saves to database
+	 */
 	public void setSemesters(List<String> semesters) {
 		this.semesters = semesters;
 		dbM.query("DELETE FROM semesters;");
 		for(String s : semesters){
-			dbM.query(String.format("INSERT INTO semesters values(%s);", s));
+			dbM.query(String.format("INSERT INTO semesters (semester) values('%s');", s));
 		}
 	}
 
+	/*
+	 * Gets courses as list of strings
+	 */
 	public List<String> getCourses() {
 		return courses;
 	}
 
+	/*
+	 * Sets courses given list of strings, and saves to database
+	 */
 	public void setCourses(List<String> courses) {
 		this.courses = courses;
 		dbM.query("DELETE FROM courses;");
 		for(String s : courses){
-			dbM.query(String.format("INSERT INTO courses values(%s);", s));
+			dbM.query(String.format("INSERT INTO courses (course) values('%s');", s));
 		}
 	}
 
+	/*
+	 * Gets programs as list of strings
+	 */
 	public List<String> getPrograms() {
 		return programs;
 	}
 
+	/*
+	 * Sets programs given list of strings, and saves to database
+	 */
 	public void setPrograms(List<String> programs) {
 		this.programs = programs;
 		dbM.query("DELETE FROM programs;");
 		for(String s : programs){
-			dbM.query(String.format("INSERT INTO programs values(%s);", s));
+			dbM.query(String.format("INSERT INTO programs (program) values('%s');", s));
 		}
 	}
 
+	/*
+	 * Gets personal characteristics as list of strings
+	 */
 	public List<String> getPersonalCharacteristics() {
 		return personalCharacteristics;
 	}
-
+	
+	/*
+	 * Sets personal characteristics given list of strings, and saves to database
+	 */
 	public void setPersonalCharacteristics(List<String> personalCharacteristics) {
 		this.personalCharacteristics = personalCharacteristics;
 		dbM.query("DELETE FROM personalCharacteristics;");
 		for(String s : personalCharacteristics){
-			dbM.query(String.format("INSERT INTO personalCharacteristics values(%s);", s));
+			dbM.query(String.format("INSERT INTO personalCharacteristics (characteristic) values('%s');", s));
 		}
 	}
 
+	/*
+	 * Gets academic characteristics as list of strings
+	 */
 	public List<String> getAcademicCharacteristics() {
 		return academicCharacteristics;
 	}
-
+	
+	/*
+	 * Sets academic characteristics given list of strings, and saves to database
+	 */
 	public void setAcademicCharacteristics(List<String> academicCharacteristics) {
 		this.academicCharacteristics = academicCharacteristics;
-		dbM.query("DELETE academicCharacteristics semesters;");
+		dbM.query("DELETE FROM academicCharacteristics;");
 		for(String s : academicCharacteristics){
-			dbM.query(String.format("INSERT INTO academicCharacteristics values(%s);", s));
+			dbM.query(String.format("INSERT INTO academicCharacteristics (characteristic) values('%s');", s));
 		}
-	}
-	
-	public static void main(String args[]) throws SQLException {
-		SettingsManager sM = SettingsManager.getSettingsManager();
-		System.out.println(dbM.query("INSERT INTO semesters values('Spring');"));
-		System.out.println(dbM.query("SELECT * FROM semesters;").getString("semester"));
-		List<String> ls = new ArrayList<>();
-		ls.add("fall");
-		ls.add("summer");
-		sM.setSemesters(ls);
-		System.out.println(dbM.query("SELECT * FROM semesters;").getString("semester"));
-
-
-		
-		
-		
-		// semesters = Arrays.asList("Spring" , "Fall", "Summer");
-		// courses = Arrays.asList("CS151: Object-Oriented Design","CS166: Information Security",
-		// 		"CS154: Theory of Computation","CS160: Software Engineering","CS256: Cryptography","CS146: Data Structures and Algorithms",
-		// 		"CS152: Programming Languages Paradigm");
-		// programs = Arrays.asList("Master of science (MS)","Master of business administration (MBA)",
-		// 		"Doctor of philosophy (PhD)");
-		// personalCharacteristics = Arrays.asList("very passionate","very enthusiastic","punctual","attentive","polite");
-		// academicCharacteristics = Arrays.asList("submitted well-written asisgnments", "participated in all of my class activities",
-		// 		"worked hard", "was very well prepared for every exam and assignment", "picked up new skills quickly",
-		// 		"was able to excel academically at the top of my class");
 	}
 	
 }

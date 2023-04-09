@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="40.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AccountTab">
+   <children>
+      <AnchorPane prefHeight="123.0" prefWidth="585.0">
+         <children>
+            <PasswordField fx:id="oldPassword" layoutX="39.0" layoutY="31.0" promptText="Old Password" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0" />
+            <PasswordField fx:id="newPassword" layoutX="68.0" layoutY="88.0" promptText="New Password" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="80.0" />
+            <PasswordField fx:id="newConfirm" layoutX="-3.0" layoutY="104.0" promptText="Confirm New Password" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="120.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="585.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button fx:id="reset" layoutX="43.0" layoutY="41.0" mnemonicParsing="false" text="Reset Password" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="41.0" />
+            <Button fx:id="logout" layoutX="39.0" layoutY="100.0" mnemonicParsing="false" text="Logout" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0" />
+            <Label fx:id="info" layoutX="40.0" layoutY="14.0" text="Initial Text" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

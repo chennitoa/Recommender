@@ -5,8 +5,10 @@ import java.util.HashMap;
 import gui.LoginScreen;
 import gui.MenuScreen;
 import gui.ResetScreen;
+import gui.SettingsScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -21,16 +23,38 @@ public class Main extends Application {
 		sceneMap = new HashMap<String, Scene>();
 	}
 	
+	/*
+	 * Closes application
+	 */
 	public void logout() {
 		mainStage.close();
 		System.exit(0);
 	}
 	
+	/*
+	 * Changes scene to given scene name
+	 */
 	public void changeScene(String sceneName) {
-		if (sceneName.equals("Menu")) {
-			mainStage.close();
-			mainStage = new Stage();
+		if (sceneMap.containsKey(sceneName)) {
+			if (!sceneName.equals("Login") || !sceneName.equals("Reset")) {
+			}
+			mainStage.setScene(sceneMap.get(sceneName));
+			mainStage.show();
 		}
+		else {
+			System.out.println("No such scene");
+		}
+	}
+	
+	/*
+	 * Closes current window and opens a new window with maxmized window size
+	 */
+	public void changeSceneWithNewWindow(String sceneName) {
+		mainStage.close();
+		mainStage = new Stage();
+		mainStage.setMaximized(true);
+		mainStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
+		mainStage.setHeight(Screen.getPrimary().getBounds().getMaxY());
 		if (sceneMap.containsKey(sceneName)) {
 			mainStage.setScene(sceneMap.get(sceneName));
 			mainStage.show();
@@ -40,6 +64,9 @@ public class Main extends Application {
 		}
 	}
 	
+	/*
+	 * Loads all pages, links them to names and opens the primary stage
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -65,14 +92,23 @@ public class Main extends Application {
 	        resetScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        resetController.setMain(this);
 	        
+	        FXMLLoader settingsLoader = new FXMLLoader(getClass().getResource("../gui/SettingsScreen.fxml"));
+	        VBox settingsRoot = settingsLoader.load();
+	        SettingsScreen settingsController = settingsLoader.getController();
+	        Scene settingsScene = new Scene(settingsRoot);
+	        settingsScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        settingsController.setMain(this);
+	        
 	        sceneMap.put("Login", loginScene);
 	        sceneMap.put("Menu", menuScene);
 	        sceneMap.put("Reset", resetScene);
+	        sceneMap.put("Settings", settingsScene);
 
 	        mainStage = primaryStage;
 	        
 			mainStage.setScene(loginScene);
-			mainStage.show();	
+			mainStage.setResizable(false);
+			mainStage.show();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

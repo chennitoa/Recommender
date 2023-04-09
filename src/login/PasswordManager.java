@@ -19,12 +19,12 @@ final class PasswordManager {
 	private PasswordManager() throws SQLException {
 		dbM = DBManager.getDBManager();
 		dbM.query(
-			"CREATE TABLE IF NOT EXISTS password (" +
-					"Lock char(1) not null DEFAULT 'X'," +
-					"passwordString string NOT NULL," +
-					"constraint PK_T1 PRIMARY KEY (Lock)," +
-					"constraint CK_T1_Locked CHECK (Lock='X')" +
-			");"
+				"CREATE TABLE IF NOT EXISTS password ("
+				+ "Lock char(1) not null DEFAULT 'X',"
+				+ "passwordString string NOT NULL,"
+				+ "constraint PK_T1 PRIMARY KEY (Lock),"
+				+ "constraint CK_T1_Locked CHECK (Lock='X')"
+				+ ");"
 		);
 		password = dbM.query("SELECT * FROM password;").getString("passwordString");
 		if (password == null) {

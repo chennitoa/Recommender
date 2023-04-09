@@ -53,7 +53,7 @@ public class LoginScreen implements ApplicationScreen {
 			if (lM.checkPassword(passwordAttempt)) {
 				if (m != null) {
 					if (!isFirstLogin) {
-						m.changeScene("Menu");
+						m.changeSceneWithNewWindow("Menu");
 					}
 					else {
 						m.changeScene("Reset");

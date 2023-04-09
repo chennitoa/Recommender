@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import settings.ProfessorInfo;
+import settings.SettingsManager;
 
 public class PersonalTab {
 	
@@ -23,8 +24,10 @@ public class PersonalTab {
 	@FXML
 	private Button save;
 	
+	private SettingsManager sM;
+	
 	public PersonalTab() {
-		
+		sM = SettingsManager.getSettingsManager();
 	}
 	
 	public void initialize() {
@@ -41,7 +44,7 @@ public class PersonalTab {
 			ProfessorInfo pI = new ProfessorInfo(nameInfo, titleInfo, schoolInfo,
 					departmentInfo, phoneInfo, emailInfo);
 			
-			
+			sM.setProfessorInfo(pI);
 			
 		});
 		
