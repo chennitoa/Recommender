@@ -33,6 +33,9 @@ public class SettingsScreen implements ApplicationScreen {
 	
 	private Main m;
 	
+	/*
+	 * Loads the three different tabs for the settings screen
+	 */
 	public SettingsScreen() {
 		try {
 			personalLoader = new FXMLLoader(getClass().getResource("../gui/PersonalTab.fxml"));
@@ -50,6 +53,9 @@ public class SettingsScreen implements ApplicationScreen {
 		}
 	}
 	
+	/*
+	 * Opens various menus for various different choices
+	 */
 	public void initialize() {
 		
 		content.setContent(personalTab);
@@ -73,6 +79,9 @@ public class SettingsScreen implements ApplicationScreen {
 		
 	}
 	
+	/*
+	 * Sets main for nativation
+	 */
 	public void setMain(Main m) {
 		this.m = m;
 		accountController.setMain(m);
