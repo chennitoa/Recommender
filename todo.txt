@@ -1,0 +1,16 @@
+Instructions:
+Whenever you want to take up one of these tasks, place your name on the task and commit to your own branch.
+Next, open a PR to have todo.txt merged to Main. This will let everyone know you are taking this task.
+
+When you have finished the task, write done next to your name and open a pull request with your completed work.
+
+TODO:
+=======================
+Example Task: Austin (Done)
+Combine Reset and Login to a single Scene:
+Change Logout to go to login screen
+Create fxml file for create letter UI
+Create controller for create letter UI
+Add default options to the database
+Clean up UI
+Clean up error handling
