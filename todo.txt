@@ -8,7 +8,7 @@ TODO:
 =======================
 Example Task: Austin (Done)
 Combine Reset and Login to a single Scene: Austin
-Change Logout to go to login screen
+Change Logout to go to login screen: Aaron
 Create fxml file for create letter UI: Austin
 Create controller for create letter UI: Austin
 Add default options to the database: Austin
