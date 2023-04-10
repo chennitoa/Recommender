@@ -11,6 +11,6 @@ Combine Reset and Login to a single Scene: Austin
 Change Logout to go to login screen: Aaron (Done)
 Create fxml file for create letter UI: Austin
 Create controller for create letter UI: Austin
-Add default options to the database: Austin
+Add default options to the database: Aaron
 Clean up UI
 Clean up error handling
