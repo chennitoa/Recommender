@@ -46,7 +46,7 @@ public class EntryScreen {
 	}
 	
 	public void displayMenuScreen() {
-		main.changeScene("Menu");
+		main.displayMenuScene(true);
 	}
 	
 	public void displayLoginScreen() {

@@ -1,6 +1,4 @@
 package application;
-	
-import java.util.HashMap;
 
 import gui.MenuScreen;
 import gui.SettingsScreen;
@@ -16,67 +14,55 @@ import javafx.scene.layout.VBox;
 public class Main extends Application {
 	
 	private Stage mainStage;
-	private HashMap<String, Scene> sceneMap;
+	
+	private Scene entryScene;
+	private Scene menuScene;
+	private Scene settingsScene;
+	
 	
 	public Main() {
-		sceneMap = new HashMap<String, Scene>();
+		
 	}
 	
 	/*
 	 * Goes back to login screen
 	 */
 	public void logout() {
-		changeLoginWindow();
+		displayEntryScene();
 	}
 	
 	/*
-	 * Changes scene to given scene name
+	 * Diplays minimized entry scene with new stage
 	 */
-	public void changeScene(String sceneName) {
-		if (sceneMap.containsKey(sceneName)) {
-			if (!sceneName.equals("Login") || !sceneName.equals("Reset")) {
-			}
-			mainStage.setScene(sceneMap.get(sceneName));
-			mainStage.show();
-		}
-		else {
-			System.out.println("No such scene");
-		}
+	public void displayEntryScene() {
+		mainStage.close();
+		mainStage = new Stage();
+		mainStage.setScene(entryScene);
+		mainStage.setResizable(false);
+		mainStage.show();
 	}
 	
 	/*
-	 * Upon clicking logout button, the login screen will pop up
+	 * Displays maxmized menu scene with new stage
 	 */
-	public void changeLoginWindow(){
-		mainStage.close();
-		mainStage = new Stage();
-		mainStage.setMaximized(false);
-		if (sceneMap.containsKey("Login")) {
-			mainStage.setScene(sceneMap.get("Login"));
-			mainStage.show();
+	public void displayMenuScene(boolean createNewStage) {
+		if (createNewStage) {
+			mainStage.close();
+			mainStage = new Stage();
 		}
-		else {
-			System.out.println("No such scene");
-		}
-
-	}
-
-	/*
-	 * Closes current window and opens a new window with maxmized window size
-	 */
-	public void changeSceneWithNewWindow(String sceneName) {
-		mainStage.close();
-		mainStage = new Stage();
 		mainStage.setMaximized(true);
 		mainStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
 		mainStage.setHeight(Screen.getPrimary().getBounds().getMaxY());
-		if (sceneMap.containsKey(sceneName)) {
-			mainStage.setScene(sceneMap.get(sceneName));
-			mainStage.show();
-		}
-		else {
-			System.out.println("No such scene");
-		}
+		mainStage.setScene(menuScene);
+		mainStage.show();
+	}
+	
+	/*
+	 * Displays settings scene
+	 */
+	public void displaySettingsScene() {
+		mainStage.setScene(settingsScene);
+		mainStage.show();
 	}
 	
 	/*
@@ -89,33 +75,28 @@ public class Main extends Application {
 			FXMLLoader entryLoader = new FXMLLoader(getClass().getResource("../gui/entry/EntryScreen.fxml"));
 			VBox entryRoot = entryLoader.load();
 			EntryScreen entryController = entryLoader.getController();
-	        Scene entryScene = new Scene(entryRoot);
+	        entryScene = new Scene(entryRoot);
 	        entryScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        entryController.setMain(this);
 	        
 	        FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("../gui/MenuScreen.fxml"));
 	        VBox menuRoot = menuLoader.load();
 	        MenuScreen menuController = menuLoader.getController();
-	        Scene menuScene = new Scene(menuRoot);
+	        menuScene = new Scene(menuRoot);
 	        menuScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        menuController.setMain(this);
 	        
 	        FXMLLoader settingsLoader = new FXMLLoader(getClass().getResource("../gui/SettingsScreen.fxml"));
 	        VBox settingsRoot = settingsLoader.load();
 	        SettingsScreen settingsController = settingsLoader.getController();
-	        Scene settingsScene = new Scene(settingsRoot);
+	        settingsScene = new Scene(settingsRoot);
 	        settingsScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        settingsController.setMain(this);
-	        
-	        sceneMap.put("Entry", entryScene);
-	        sceneMap.put("Menu", menuScene);
-	        sceneMap.put("Settings", settingsScene);
 
 	        mainStage = primaryStage;
 	        
-			mainStage.setScene(entryScene);
-			mainStage.setResizable(false);
-			mainStage.show();
+	        displayEntryScene();
+	        
 		}
 		catch(Exception e) {
 			e.printStackTrace();
