@@ -23,11 +23,10 @@ public class Main extends Application {
 	}
 	
 	/*
-	 * Closes application
+	 * Goes back to login screen
 	 */
 	public void logout() {
-		mainStage.close();
-		System.exit(0);
+		changeLoginWindow();
 	}
 	
 	/*
@@ -45,6 +44,23 @@ public class Main extends Application {
 		}
 	}
 	
+	/*
+	 * Upon clicking logout button, the login screen will pop up
+	 */
+	public void changeLoginWindow(){
+		mainStage.close();
+		mainStage = new Stage();
+		mainStage.setMaximized(false);
+		if (sceneMap.containsKey("Login")) {
+			mainStage.setScene(sceneMap.get("Login"));
+			mainStage.show();
+		}
+		else {
+			System.out.println("No such scene");
+		}
+
+	}
+
 	/*
 	 * Closes current window and opens a new window with maxmized window size
 	 */
