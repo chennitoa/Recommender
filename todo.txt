@@ -12,5 +12,7 @@ Change Logout to go to login screen: Aaron (Done)
 Create fxml file for create letter UI: Austin
 Create controller for create letter UI: Austin
 Add default options to the database: Aaron
+Create class to generate letter as String by table of values: Jason
+Create Icons and Logos: Jason
 Clean up UI
 Clean up error handling
