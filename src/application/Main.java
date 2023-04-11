@@ -2,10 +2,9 @@ package application;
 	
 import java.util.HashMap;
 
-import gui.LoginScreen;
 import gui.MenuScreen;
-import gui.ResetScreen;
 import gui.SettingsScreen;
+import gui.entry.EntryScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Screen;
@@ -71,12 +70,12 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../gui/LoginScreen.fxml"));
-			VBox loginRoot = loginLoader.load();
-			LoginScreen loginController = loginLoader.getController();
-	        Scene loginScene = new Scene(loginRoot);
-	        loginScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
-	        loginController.setMain(this);
+			FXMLLoader entryLoader = new FXMLLoader(getClass().getResource("../gui/entry/EntryScreen.fxml"));
+			VBox entryRoot = entryLoader.load();
+			EntryScreen entryController = entryLoader.getController();
+	        Scene entryScene = new Scene(entryRoot);
+	        entryScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        entryController.setMain(this);
 	        
 	        FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("../gui/MenuScreen.fxml"));
 	        VBox menuRoot = menuLoader.load();
@@ -85,13 +84,6 @@ public class Main extends Application {
 	        menuScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        menuController.setMain(this);
 	        
-	        FXMLLoader resetLoader = new FXMLLoader(getClass().getResource("../gui/ResetScreen.fxml"));
-	        VBox resetRoot = resetLoader.load();
-	        ResetScreen resetController = resetLoader.getController();
-	        Scene resetScene = new Scene(resetRoot);
-	        resetScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
-	        resetController.setMain(this);
-	        
 	        FXMLLoader settingsLoader = new FXMLLoader(getClass().getResource("../gui/SettingsScreen.fxml"));
 	        VBox settingsRoot = settingsLoader.load();
 	        SettingsScreen settingsController = settingsLoader.getController();
@@ -99,14 +91,13 @@ public class Main extends Application {
 	        settingsScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        settingsController.setMain(this);
 	        
-	        sceneMap.put("Login", loginScene);
+	        sceneMap.put("Entry", entryScene);
 	        sceneMap.put("Menu", menuScene);
-	        sceneMap.put("Reset", resetScene);
 	        sceneMap.put("Settings", settingsScene);
 
 	        mainStage = primaryStage;
 	        
-			mainStage.setScene(loginScene);
+			mainStage.setScene(entryScene);
 			mainStage.setResizable(false);
 			mainStage.show();
 		}

@@ -1,8 +1,7 @@
-package gui;
+package gui.entry;
 
 import java.io.IOException;
 
-import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import login.LoginManager;
 
-public class LoginScreen implements ApplicationScreen {
+public class LoginTab {
 	
 	@FXML
 	private PasswordField password;
@@ -25,13 +24,13 @@ public class LoginScreen implements ApplicationScreen {
 	private Label passwordChange;
 	
 	private LoginManager lM;
-	private Main m;
+	private EntryScreen entryScreen;
 	private boolean isFirstLogin;
 	
 	/*
 	 * Grabs singleton instance of LoginManager and checks whether it is the first login
 	 */
-	public LoginScreen() throws IOException {
+	public LoginTab() throws IOException {
 		lM = LoginManager.getLoginManager();
 		isFirstLogin = lM.getFirstLogin();
 	}
@@ -61,13 +60,11 @@ public class LoginScreen implements ApplicationScreen {
 			String passwordAttempt = password.getCharacters().toString();
 			password.clear();
 			if (lM.checkPassword(passwordAttempt)) {
-				if (m != null) {
-					if (!isFirstLogin) {
-						m.changeSceneWithNewWindow("Menu");
-					}
-					else {
-						m.changeScene("Reset");
-					}
+				if (!isFirstLogin) {
+					entryScreen.displayMenuScreen();
+				}
+				else {
+					entryScreen.displayResetScreen();
 				}
 				info.setVisible(false);
 				firstAid.setVisible(false);
@@ -81,18 +78,17 @@ public class LoginScreen implements ApplicationScreen {
 		});
 		
 		passwordChange.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			m.changeScene("Reset");
+			entryScreen.displayResetScreen();
 			password.clear();
 		});
 		
 	}
 	
 	/*
-	 * Sets main for navigation
+	 * Sets EntryScreen for navigation
 	 */
-	@Override
-	public void setMain(Main m) {
-		this.m = m;
+	public void setEntryScreen(EntryScreen entryScreen) {
+		this.entryScreen = entryScreen;
 	}
 	
 }

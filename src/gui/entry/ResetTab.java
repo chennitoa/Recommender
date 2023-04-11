@@ -1,8 +1,7 @@
-package gui;
+package gui.entry;
 
 import java.io.IOException;
 
-import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import login.LoginManager;
 
-public class ResetScreen implements ApplicationScreen {
+public class ResetTab {
 	
 	@FXML
 	private PasswordField oldPassword;
@@ -25,13 +24,13 @@ public class ResetScreen implements ApplicationScreen {
 	private Label info;
 	
 	private LoginManager lM;
-	private Main m;
+	private EntryScreen entryScreen;
 	private boolean isFirstReset;
 	
 	/*
 	 * Grabs the singleton instance of LoginManager and checks whether it is the first login
 	 */
-	public ResetScreen() {
+	public ResetTab() {
 		lM = LoginManager.getLoginManager();
 		isFirstReset = lM.getFirstLogin();
 	}
@@ -83,7 +82,7 @@ public class ResetScreen implements ApplicationScreen {
 						info.setVisible(true);
 					}
 					else {
-						m.changeScene("Login");
+						entryScreen.displayLoginScreen();
 					}
 				}
 				else {
@@ -91,7 +90,8 @@ public class ResetScreen implements ApplicationScreen {
 						lM.resetFirstPassword(newPass);
 						isFirstReset = false;
 						oldPassword.setVisible(true);
-						m.changeScene("Login");
+						
+						entryScreen.displayLoginScreen();
 					}
 					catch (IOException e1) {
 						e1.printStackTrace();
@@ -103,11 +103,10 @@ public class ResetScreen implements ApplicationScreen {
 	}
 	
 	/*
-	 * Sets main for navigation
+	 * Sets EntryScreen for navigation
 	 */
-	@Override
-	public void setMain(Main m) {
-		this.m = m;
+	public void setEntryScreen(EntryScreen entryScreen) {
+		this.entryScreen = entryScreen;
 	}
 
 }
