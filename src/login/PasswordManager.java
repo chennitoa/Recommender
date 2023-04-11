@@ -18,7 +18,7 @@ final class PasswordManager {
 	 */
 	private PasswordManager() throws SQLException {
 		dbM = DBManager.getDBManager();
-		dbM.query(
+		dbM.queryQuiet(
 				"CREATE TABLE IF NOT EXISTS password ("
 				+ "Lock char(1) not null DEFAULT 'X',"
 				+ "passwordString string NOT NULL,"

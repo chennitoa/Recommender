@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class MenuScreen implements ApplicationScreen {
+public class MenuScreen {
 	
 	@FXML
 	private Label newLetter;
@@ -50,7 +50,9 @@ public class MenuScreen implements ApplicationScreen {
 			FileChooser letterFileChooser = new FileChooser();
 			letterFileChooser.setTitle("Open Letter File");
 			File f = letterFileChooser.showOpenDialog(new Stage());
-			System.out.println(f.getPath());
+			if (f != null) {
+				System.out.println(f.getPath());
+			}
 		});
 		
 		settings.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
@@ -66,7 +68,6 @@ public class MenuScreen implements ApplicationScreen {
 	/*
 	 * Sets main for navigation
 	 */
-	@Override
 	public void setMain(Main main) {
 		this.main = main;
 	}

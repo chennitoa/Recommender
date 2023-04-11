@@ -1,4 +1,4 @@
-package gui;
+package gui.settings;
 
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import settings.SettingsManager;
 
-public class PrefillTab {
+public class PresetTab {
 	
 	@FXML
 	private TextArea semesters;
@@ -59,7 +59,7 @@ public class PrefillTab {
 	/*
 	 * Initializes class settings manager
 	 */
-	public PrefillTab() {
+	public PresetTab() {
 		sM = SettingsManager.getSettingsManager();
 	}
 	
@@ -94,7 +94,7 @@ public class PrefillTab {
 			
 			info.setVisible(false);
 			info.setTextFill(Color.color(0, 1, 0));
-			info.setText("Prefill information has been succesfully saved");
+			info.setText("Preset information has been succesfully saved");
 			info.setVisible(true);
 		});
 		
