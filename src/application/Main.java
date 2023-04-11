@@ -1,8 +1,8 @@
 package application;
 
 import gui.MenuScreen;
-import gui.SettingsScreen;
 import gui.entry.EntryScreen;
+import gui.settings.SettingsScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Screen;
@@ -15,9 +15,18 @@ public class Main extends Application {
 	
 	private Stage mainStage;
 	
+	
+	private FXMLLoader entryLoader;
 	private Scene entryScene;
+	private EntryScreen entryController;
+	
+	private FXMLLoader menuLoader;
 	private Scene menuScene;
+	private MenuScreen menuController;
+	
+	private FXMLLoader settingsLoader;
 	private Scene settingsScene;
+	private SettingsScreen settingsController;
 	
 	
 	public Main() {
@@ -72,23 +81,29 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			FXMLLoader entryLoader = new FXMLLoader(getClass().getResource("../gui/entry/EntryScreen.fxml"));
+			//Loading entry page
+			entryLoader = new FXMLLoader(getClass().getResource("../gui/entry/EntryScreen.fxml"));
+			
 			VBox entryRoot = entryLoader.load();
-			EntryScreen entryController = entryLoader.getController();
-	        entryScene = new Scene(entryRoot);
+			entryScene = new Scene(entryRoot);
 	        entryScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        
+	        entryController = entryLoader.getController();
 	        entryController.setMain(this);
 	        
-	        FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("../gui/MenuScreen.fxml"));
+	        
+	        //Loading menu page
+	        menuLoader = new FXMLLoader(getClass().getResource("../gui/MenuScreen.fxml"));
 	        VBox menuRoot = menuLoader.load();
-	        MenuScreen menuController = menuLoader.getController();
+	        menuController = menuLoader.getController();
 	        menuScene = new Scene(menuRoot);
 	        menuScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        menuController.setMain(this);
 	        
-	        FXMLLoader settingsLoader = new FXMLLoader(getClass().getResource("../gui/SettingsScreen.fxml"));
+	        //Loading settings page
+	        settingsLoader = new FXMLLoader(getClass().getResource("../gui/settings/SettingsScreen.fxml"));
 	        VBox settingsRoot = settingsLoader.load();
-	        SettingsScreen settingsController = settingsLoader.getController();
+	        settingsController = settingsLoader.getController();
 	        settingsScene = new Scene(settingsRoot);
 	        settingsScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
 	        settingsController.setMain(this);

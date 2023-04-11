@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class MenuScreen implements ApplicationScreen {
+public class MenuScreen {
 	
 	@FXML
 	private Label newLetter;
@@ -66,7 +66,6 @@ public class MenuScreen implements ApplicationScreen {
 	/*
 	 * Sets main for navigation
 	 */
-	@Override
 	public void setMain(Main main) {
 		this.main = main;
 	}

@@ -1,6 +1,5 @@
-package gui;
+package gui.settings;
 
-import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,14 +23,14 @@ public class AccountTab {
 	@FXML
 	private Label info;
 	
-	private LoginManager lM;
-	private Main m;
+	private LoginManager loginManager;
+	private SettingsScreen settingsScreen;
 	
 	/*
 	 * Grabs singleton instance of LoginManager
 	 */
 	public AccountTab() {
-		lM = LoginManager.getLoginManager();
+		loginManager = LoginManager.getLoginManager();
 	}
 	
 	/*
@@ -57,7 +56,7 @@ public class AccountTab {
 			else {
 				boolean resetSuccessful = false;
 				try {
-					resetSuccessful = lM.resetPassword(oldPass, newPass);
+					resetSuccessful = loginManager.resetPassword(oldPass, newPass);
 				}
 				catch (Exception e1) {
 					e1.printStackTrace();
@@ -78,16 +77,16 @@ public class AccountTab {
 		});
 		
 		logout.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			m.logout();
+			settingsScreen.sendLogoutSignal();
 		});
 		
 	}
 	
 	/*
-	 * Sets main for navigation
+	 * Sets settingsScreen for navigation
 	 */
-	public void setMain(Main m) {
-		this.m = m;
+	public void setSettingsScreen(SettingsScreen settingsScreen) {
+		this.settingsScreen = settingsScreen;
 	}
 	
 	

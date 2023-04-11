@@ -14,20 +14,26 @@
   <children>
       <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: CORNSILK;">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DARKORANGE;">
                <children>
-                  <Label fx:id="newLetter" layoutX="47.0" layoutY="91.0" text="NEW">
+                  <Label fx:id="newLetter" layoutX="47.0" layoutY="91.0" text="NEW" textFill="WHITE">
                      <font>
                         <Font name="Leelawadee UI" size="48.0" />
                      </font>
                   </Label>
-                  <Label fx:id="openLetter" layoutX="38.0" layoutY="208.0" text="OPEN">
+                  <Label fx:id="openLetter" layoutX="38.0" layoutY="208.0" text="OPEN" textFill="WHITE">
                      <font>
                         <Font name="Leelawadee UI" size="48.0" />
                      </font>
                   </Label>
-                  <Label fx:id="settings" layoutX="79.0" layoutY="369.0" text="Settings" AnchorPane.bottomAnchor="14.0" />
-                  <Label fx:id="logout" layoutX="81.0" layoutY="337.0" text="Logout" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="81.0" />
+                  <Label fx:id="settings" layoutX="68.0" layoutY="359.0" text="Settings" textFill="WHITE" AnchorPane.bottomAnchor="14.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="logout" layoutX="72.0" layoutY="327.0" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="72.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                </children>
             </AnchorPane>
             <VBox prefHeight="375.0" prefWidth="426.0" HBox.hgrow="ALWAYS">
@@ -49,19 +55,7 @@
                      <center>
                         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent; -fx-background-color: transparent;" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                            <content>
-                              <VBox fx:id="recentLetters" prefHeight="323.0" prefWidth="412.0">
-                                 <children>
-                                    <HBox maxHeight="40.0" prefHeight="40.0" prefWidth="412.0" style="-fx-background-color: Gray;" VBox.vgrow="NEVER">
-                                       <children>
-                                          <Label text="Filename 1">
-                                             <HBox.margin>
-                                                <Insets left="5.0" top="10.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
+                              <VBox fx:id="recentLetters" prefHeight="323.0" prefWidth="412.0" />
                            </content>
                         </ScrollPane>
                      </center>
