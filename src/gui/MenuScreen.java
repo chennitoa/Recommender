@@ -50,7 +50,9 @@ public class MenuScreen {
 			FileChooser letterFileChooser = new FileChooser();
 			letterFileChooser.setTitle("Open Letter File");
 			File f = letterFileChooser.showOpenDialog(new Stage());
-			System.out.println(f.getPath());
+			if (f != null) {
+				System.out.println(f.getPath());
+			}
 		});
 		
 		settings.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {

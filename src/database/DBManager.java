@@ -32,7 +32,7 @@ public class DBManager {
 	}
 	
 	/*
-	 * Runs query on database with given string
+	 * Runs select query on database with given string
 	 */
 	public ResultSet query(String sqlQuery) {
 		try {
@@ -41,9 +41,22 @@ public class DBManager {
 			return rs;
 		}
 		catch (SQLException e) {
-			
+			e.printStackTrace();
         }
 		return null;
+	}
+	
+	/*
+	 * Runs update, insert, or delete query with given string
+	 */
+	public void queryQuiet(String sqlQuery) {
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(sqlQuery);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
