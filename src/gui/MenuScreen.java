@@ -29,7 +29,7 @@ public class MenuScreen implements ApplicationScreen {
 	@FXML
 	private VBox recentLetters;
 	
-	private Main m;
+	private Main main;
 	
 	public MenuScreen() {
 		
@@ -43,7 +43,7 @@ public class MenuScreen implements ApplicationScreen {
 	public void initialize() {
 		
 		newLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			m.changeScene("Draft");
+//			main.changeScene("Draft");
 		});
 		
 		openLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
@@ -54,11 +54,11 @@ public class MenuScreen implements ApplicationScreen {
 		});
 		
 		settings.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			m.changeScene("Settings");
+			main.displaySettingsScene();
 		});
 		
 		logout.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			m.logout();
+			main.logout();
 		});
 		
 	}
@@ -67,8 +67,8 @@ public class MenuScreen implements ApplicationScreen {
 	 * Sets main for navigation
 	 */
 	@Override
-	public void setMain(Main m) {
-		this.m = m;
+	public void setMain(Main main) {
+		this.main = main;
 	}
 	
 }

@@ -31,7 +31,7 @@ public class SettingsScreen implements ApplicationScreen {
 	
 	private AccountTab accountController;
 	
-	private Main m;
+	private Main main;
 	
 	/*
 	 * Loads the three different tabs for the settings screen
@@ -74,7 +74,7 @@ public class SettingsScreen implements ApplicationScreen {
 		});
 		
 		back.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			m.changeScene("Menu");
+			main.displayMenuScene(false);
 		});
 		
 	}
@@ -82,9 +82,9 @@ public class SettingsScreen implements ApplicationScreen {
 	/*
 	 * Sets main for nativation
 	 */
-	public void setMain(Main m) {
-		this.m = m;
-		accountController.setMain(m);
+	public void setMain(Main main) {
+		this.main = main;
+		accountController.setMain(main);
 	}
 	
 }

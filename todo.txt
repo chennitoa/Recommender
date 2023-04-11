@@ -7,11 +7,11 @@ When you have finished the task, write done next to your name and open a pull re
 TODO:
 =======================
 Example Task: Austin (Done)
-Combine Reset and Login to a single Scene: Austin
+Combine Reset and Login to a single Scene: Austin (Done)
 Change Logout to go to login screen: Aaron (Done)
 Create fxml file for create letter UI: Austin
 Create controller for create letter UI: Austin
-Add default options to the database: Aaron
+Add default options to the database: Aaron (Done)
 Create class to generate letter as String by table of values: Jason
 Create Icons and Logos: Jason
 Clean up UI
