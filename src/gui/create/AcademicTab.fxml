@@ -44,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </MenuButton>
-            <MenuButton fx:id="academic" layoutX="270.0" layoutY="427.0" mnemonicParsing="false" text="Select Academic Characteristics" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="420.0">
+            <MenuButton fx:id="academic" layoutX="270.0" layoutY="427.0" mnemonicParsing="false" text="Select Academic Characteristics..." AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="420.0">
                <font>
                   <Font size="18.0" />
                </font>
