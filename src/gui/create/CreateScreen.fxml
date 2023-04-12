@@ -10,13 +10,18 @@
    <children>
       <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: darkorange;">
          <children>
-            <Label layoutY="19.0" text="Create New Letter" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+            <Label layoutY="19.0" text="Create New Letter" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="80.0">
+               <font>
+                  <Font name="Century Gothic" size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="back" layoutX="14.0" layoutY="40.0" text="&lt;" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="Century Gothic" size="48.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="content" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" />
+      <ScrollPane fx:id="content" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-focus-color: TRANSPARENT; -fx-faint-focus-color: TRANSPARENT;" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" />
    </children>
 </VBox>

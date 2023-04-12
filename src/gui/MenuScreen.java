@@ -43,7 +43,7 @@ public class MenuScreen {
 	public void initialize() {
 		
 		newLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-//			main.changeScene("Draft");
+			main.displayCreateScene();
 		});
 		
 		openLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {

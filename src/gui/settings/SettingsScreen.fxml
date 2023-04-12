@@ -10,16 +10,16 @@
 
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.settings.SettingsScreen">
    <children>
-      <AnchorPane prefHeight="89.0" prefWidth="600.0" style="-fx-background-color: DARKORANGE;" VBox.vgrow="NEVER">
+      <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: DARKORANGE;" VBox.vgrow="NEVER">
          <children>
-            <Label layoutX="104.0" layoutY="4.0" text="Settings" textFill="WHITE" AnchorPane.leftAnchor="104.0" AnchorPane.topAnchor="4.0">
+            <Label layoutX="104.0" layoutY="4.0" text="Settings" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="80.0">
                <font>
-                  <Font size="55.0" />
+                  <Font name="Century Gothic" size="48.0" />
                </font>
             </Label>
-            <Label fx:id="back" layoutX="25.0" layoutY="20.0" text="&lt;" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="20.0">
+            <Label fx:id="back" layoutX="25.0" layoutY="20.0" text="&lt;" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                <font>
-                  <Font name="Century Gothic" size="45.0" />
+                  <Font name="Century Gothic" size="48.0" />
                </font>
             </Label>
          </children>
@@ -72,7 +72,7 @@
                   </AnchorPane>
                </children>
             </VBox>
-            <ScrollPane fx:id="content" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="ALWAYS" HBox.hgrow="ALWAYS">
+            <ScrollPane fx:id="content" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: TRANSPARENT; -fx-focus-color: TRANSPARENT; -fx-faint-focus-color: TRANSPARENT;" vbarPolicy="ALWAYS" HBox.hgrow="ALWAYS">
             </ScrollPane>
          </children>
       </HBox>

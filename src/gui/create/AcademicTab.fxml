@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.create.AcademicTab">
+   <children>
+      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: LIGHTSALMON;" VBox.vgrow="NEVER">
+         <children>
+            <Label text="Next, enter student characteristics..." textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="Berlin Sans FB" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ComboBox fx:id="program" layoutX="195.0" layoutY="47.0" prefWidth="150.0" promptText="Select Program..." style="-fx-font-size: 18;" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="40.0" />
+            <MenuButton fx:id="firstCourse" layoutX="240.0" layoutY="131.0" mnemonicParsing="false" text="Select Courses..." AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </MenuButton>
+            <ComboBox fx:id="semester" layoutX="149.0" layoutY="187.0" prefWidth="150.0" promptText="Select Semester..." style="-fx-font-size: 18;" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="299.0" AnchorPane.topAnchor="180.0" />
+            <TextField fx:id="year" layoutX="434.0" layoutY="180.0" prefHeight="25.0" prefWidth="105.0" promptText="XXXX" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="180.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <MenuButton fx:id="other" layoutX="240.0" layoutY="258.0" mnemonicParsing="false" text="Select Courses..." AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="260.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </MenuButton>
+            <MenuButton fx:id="personal" layoutX="263.0" layoutY="347.0" mnemonicParsing="false" text="Select Personal Characteristics..." AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="340.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </MenuButton>
+            <MenuButton fx:id="academic" layoutX="270.0" layoutY="427.0" mnemonicParsing="false" text="Select Academic Characteristics" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="420.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </MenuButton>
+            <Label layoutX="19.0" layoutY="30.0" text="Applying to..." AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="50.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="93.0" text="First Courses Taken" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="130.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="376.0" layoutY="186.0" text="Year" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="190.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="281.0" text="Other Courses Taken" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="270.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="187.0" text="Semester" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="190.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="397.0" text="Personal Characteristics" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="350.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="146.0" layoutY="480.0" text="Academic Characteristics" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="430.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="compile" layoutX="513.0" layoutY="511.0" mnemonicParsing="false" text="Compile" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="540.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="back" layoutX="335.0" layoutY="540.0" mnemonicParsing="false" text="Back" AnchorPane.rightAnchor="200.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

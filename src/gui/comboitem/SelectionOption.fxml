@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.comboitem.SelectionOption">
+   <children>
+      <CheckBox fx:id="selection" mnemonicParsing="false" text="Default Text" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </CheckBox>
+   </children>
+</AnchorPane>
