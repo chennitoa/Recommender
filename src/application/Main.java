@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import gui.MenuScreen;
 import gui.create.CreateScreen;
 import gui.entry.EntryScreen;
@@ -82,6 +84,12 @@ public class Main extends Application {
 	public void displayCreateScene() {
 		mainStage.setScene(createScene);
 		createController.displayStudentTab();
+		try {
+			createController.resetTabs();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 		mainStage.show();
 	}
 	
