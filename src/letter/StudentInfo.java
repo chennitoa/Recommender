@@ -10,6 +10,9 @@ public class StudentInfo {
 	private String targetSchool;
 	private LocalDate date;
 	
+	/*
+	 *  Java bean for student info, includes all getters and setters
+	 */
 	public StudentInfo(String firstName, String lastName, String gender, String targetSchool, LocalDate date) {
 		this.firstName = firstName;
 		this.lastName = lastName;

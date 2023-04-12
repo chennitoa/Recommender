@@ -64,9 +64,9 @@ final class PasswordManager {
 	 * Given newPassword, inserts new password into SQL database and changes password String in object
 	 */
 	public void setPassword(String newPassword) {
-		dbM.query("DELETE FROM password;");
+		dbM.queryQuiet("DELETE FROM password;");
 		password = newPassword;
-		dbM.query(String.format("INSERT INTO password (passwordString) VALUES ('%s');", newPassword));
+		dbM.queryQuiet(String.format("INSERT INTO password (passwordString) VALUES ('%s');", newPassword));
 	}
 
 }
