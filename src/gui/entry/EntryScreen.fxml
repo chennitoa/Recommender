@@ -23,6 +23,6 @@
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="content" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="NEVER" /> 
+      <ScrollPane fx:id="content" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="600.0" style="-fx-background-color: TRANSPARENT; -fx-focus-color: TRANSPARENT; -fx-faint-focus-color: TRANSPARENT;" vbarPolicy="NEVER" /> 
    </children>
 </VBox>

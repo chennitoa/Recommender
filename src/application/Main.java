@@ -1,12 +1,14 @@
 package application;
 
 import gui.MenuScreen;
+import gui.create.CreateScreen;
 import gui.entry.EntryScreen;
 import gui.settings.SettingsScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import letter.LetterInfo;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 
@@ -15,6 +17,7 @@ public class Main extends Application {
 	
 	private Stage mainStage;
 	
+	private String styleCSS;
 	
 	private FXMLLoader entryLoader;
 	private Scene entryScene;
@@ -29,9 +32,9 @@ public class Main extends Application {
 	private SettingsScreen settingsController;
 	
 	
-	public Main() {
-		
-	}
+	private FXMLLoader createLoader;
+	private Scene createScene;
+	private CreateScreen createController;
 	
 	/*
 	 * Goes back to login screen
@@ -48,6 +51,7 @@ public class Main extends Application {
 		mainStage = new Stage();
 		mainStage.setScene(entryScene);
 		mainStage.setResizable(false);
+		mainStage.setTitle("Recommender Login");
 		mainStage.show();
 	}
 	
@@ -63,6 +67,7 @@ public class Main extends Application {
 		mainStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
 		mainStage.setHeight(Screen.getPrimary().getBounds().getMaxY());
 		mainStage.setScene(menuScene);
+		mainStage.setTitle("Recommender");
 		mainStage.show();
 	}
 	
@@ -74,6 +79,16 @@ public class Main extends Application {
 		mainStage.show();
 	}
 	
+	public void displayCreateScene() {
+		mainStage.setScene(createScene);
+		createController.displayStudentTab();
+		mainStage.show();
+	}
+	
+	public void displayLetterScene(LetterInfo letterInfo) {
+		return;
+	}
+	
 	/*
 	 * Loads all pages, links them to names and opens the primary stage
 	 */
@@ -81,12 +96,14 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
+			styleCSS = getClass().getResource("../gui/style.css").toExternalForm();
+			
 			//Loading entry page
 			entryLoader = new FXMLLoader(getClass().getResource("../gui/entry/EntryScreen.fxml"));
 			
 			VBox entryRoot = entryLoader.load();
 			entryScene = new Scene(entryRoot);
-	        entryScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        entryScene.getStylesheets().add(styleCSS);
 	        
 	        entryController = entryLoader.getController();
 	        entryController.setMain(this);
@@ -97,7 +114,7 @@ public class Main extends Application {
 	        VBox menuRoot = menuLoader.load();
 	        menuController = menuLoader.getController();
 	        menuScene = new Scene(menuRoot);
-	        menuScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        menuScene.getStylesheets().add(styleCSS);
 	        menuController.setMain(this);
 	        
 	        //Loading settings page
@@ -105,9 +122,18 @@ public class Main extends Application {
 	        VBox settingsRoot = settingsLoader.load();
 	        settingsController = settingsLoader.getController();
 	        settingsScene = new Scene(settingsRoot);
-	        settingsScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        settingsScene.getStylesheets().add(styleCSS);
 	        settingsController.setMain(this);
-
+	        
+	        
+	        //Loading create page
+	        createLoader = new FXMLLoader(getClass().getResource("../gui/create/CreateScreen.fxml"));
+	        VBox createRoot = createLoader.load();
+	        createController = createLoader.getController();
+	        createScene = new Scene(createRoot);
+	        createScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        createController.setMain(this);
+	        
 	        mainStage = primaryStage;
 	        
 	        displayEntryScene();

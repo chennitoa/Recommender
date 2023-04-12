@@ -34,20 +34,6 @@ public class SettingsScreen {
 	private Main main;
 	
 	/*
-	 * Display selected label with orange highlight if true, else no highlight
-	 */
-	public void setLabelStyleSelected(Label labelToStyle, boolean isSelected) {
-		if (isSelected) {
-			labelToStyle.setStyle("-fx-background-color: LIGHTSALMON;" +
-					"-fx-text-fill: WHITE");
-		}
-		else {
-			labelToStyle.setStyle("-fx-background-color: TRANSPARENT;" +
-					"-fx-text-fill: BLACK");
-		}
-	}
-	
-	/*
 	 * Loads the three different tabs for the settings screen
 	 */
 	public SettingsScreen() {
@@ -67,6 +53,21 @@ public class SettingsScreen {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 * Display selected label with orange highlight if true, else no highlight
+	 */
+	public void setLabelStyleSelected(Label labelToStyle, boolean isSelected) {
+		if (isSelected) {
+			labelToStyle.setStyle("-fx-background-color: LIGHTSALMON;" +
+					"-fx-text-fill: WHITE");
+		}
+		else {
+			labelToStyle.setStyle("-fx-background-color: TRANSPARENT;" +
+					"-fx-text-fill: BLACK");
+		}
+	}
+	
 	
 	/*
 	 * Opens various menus for various different choices
