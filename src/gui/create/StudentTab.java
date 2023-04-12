@@ -32,10 +32,16 @@ public class StudentTab {
 	
 	private CreateScreen createScreen;
 	
+	/*
+	 * Loads default gender options
+	 */
 	public StudentTab() {
 		genderOptions = Arrays.asList("Male", "Female", "Nonbinary", "Transgender");
 	}
 	
+	/*
+	 * Initializes buttons and dropdowns
+	 */
 	public void initialize() {
 		
 		gender.setItems(FXCollections.observableList(genderOptions));
@@ -58,14 +64,11 @@ public class StudentTab {
 		
 	}
 	
+	/*
+	 * Sets create screen for navigation
+	 */
 	public void setCreateScreen(CreateScreen createScreen) {
 		this.createScreen = createScreen;
-	}
-	
-	public void clearScreen() {
-		first.setText(null);
-		last.setText(null);
-		school.setText(null);
 	}
 	
 }

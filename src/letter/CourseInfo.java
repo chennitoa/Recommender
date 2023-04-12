@@ -3,11 +3,14 @@ package letter;
 public class CourseInfo {
 	
 	private String courseName;
-	private String courseYear;
+	private String courseGrade;
 	
-	public CourseInfo(String courseName, String courseYear) {
+	/*
+	 *  Java bean for course info, includes all getters and setters
+	 */
+	public CourseInfo(String courseName, String courseGrade) {
 		this.courseName = courseName;
-		this.courseYear = courseYear;
+		this.courseGrade = courseGrade;
 	}
 
 	public String getCourseName() {
@@ -18,12 +21,12 @@ public class CourseInfo {
 		this.courseName = courseName;
 	}
 
-	public String getCourseYear() {
-		return courseYear;
+	public String getCourseGrade() {
+		return courseGrade;
 	}
 
-	public void setCourseYear(String courseYear) {
-		this.courseYear = courseYear;
+	public void setCourseGrade(String courseGrade) {
+		this.courseGrade = courseGrade;
 	}
 	
 }

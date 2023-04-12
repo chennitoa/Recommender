@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="40.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.settings.PresetTab">
+<VBox minHeight="40.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.settings.PresetTab">
 	<children>
       <AnchorPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: LIGHTSALMON;">
          <children>

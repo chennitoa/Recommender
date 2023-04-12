@@ -5,13 +5,17 @@ import java.util.List;
 public class AcademicInfo {
 	
 	private String programName;
-	private String firstCourse;
+	private CourseInfo firstCourse;
 	private String semesterName;
 	private String semesterYear;
 	private List<CourseInfo> courseInfoList;
 	private List<String> personalCharacteristicList;
 	private List<String> academicCharacteristicList;
 	
+	
+	/*
+	 *  Java bean for academic info, includes all getters and setters
+	 */
 	public AcademicInfo(String programName, String semesterName, String semesterYear, List<CourseInfo> courseInfoList,
 			List<String> personalCharacteristicList, List<String> academicCharacteristicList) {
 		this.programName = programName;
@@ -30,11 +34,11 @@ public class AcademicInfo {
 		this.programName = programName;
 	}
 	
-	public String getFirstCourse() {
+	public CourseInfo getFirstCourse() {
 		return firstCourse;
 	}
 
-	public void setFirstCourse(String firstCourse) {
+	public void setFirstCourse(CourseInfo firstCourse) {
 		this.firstCourse = firstCourse;
 	}
 

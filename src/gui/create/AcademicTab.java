@@ -101,6 +101,9 @@ public class AcademicTab {
 		buttonToInitialize.getItems().addAll(menuItems);
 	}
 	
+	/*
+	 * Adds functionality to buttons, initializes all the dropdown options
+	 */
 	public void initialize() {
 		
 		program.setItems(FXCollections.observableList(settingsManager.getPrograms()));
@@ -126,6 +129,9 @@ public class AcademicTab {
 		
 	}
 	
+	/*
+	 * Sets create screen for navigation
+	 */
 	public void setCreateScreen(CreateScreen createScreen) {
 		this.createScreen = createScreen;
 	}
