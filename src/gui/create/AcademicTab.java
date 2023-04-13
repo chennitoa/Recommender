@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import settings.SettingsManager;
+import letter.CourseInfo;
 
 public class AcademicTab {
 	
@@ -101,6 +102,16 @@ public class AcademicTab {
 		buttonToInitialize.getItems().addAll(menuItems);
 	}
 	
+	public List<String> parseSelectionOptions(List<SelectionOption> selectionOptions) {
+		//TODO: Finish the method
+		return null;
+	}
+
+	public List<CourseInfo> parseSelectionTextOptions(List<SelectionTextOption> selectionTextOptions) {
+		//TODO: Finish the method.
+		return null;
+	}
+
 	/*
 	 * Adds functionality to buttons, initializes all the dropdown options
 	 */
