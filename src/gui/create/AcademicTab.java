@@ -102,14 +102,31 @@ public class AcademicTab {
 		buttonToInitialize.getItems().addAll(menuItems);
 	}
 	
+	/*
+	 * Returns a list of label which user selected
+	 */
 	public List<String> parseSelectionOptions(List<SelectionOption> selectionOptions) {
-		//TODO: Finish the method
-		return null;
+		List<String> options = new ArrayList<>();
+		for(SelectionOption s: selectionOptions) {
+			if(s.getSelected()){
+				options.add(s.getLabel());
+			}
+		}
+		return options;
 	}
 
+	/*
+	 * Returns a list of CourseInfo objects which has been selected by user.
+	 */
 	public List<CourseInfo> parseSelectionTextOptions(List<SelectionTextOption> selectionTextOptions) {
 		//TODO: Finish the method.
-		return null;
+		List<CourseInfo> info = new ArrayList<>();
+		for(SelectionTextOption s : selectionTextOptions) {
+			if(s.getSelected()) {
+				info.add(new CourseInfo(s.getLabel(), s.getGrade()));
+			}
+		}
+		return info;
 	}
 
 	/*
