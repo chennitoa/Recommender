@@ -4,7 +4,7 @@ Next, open a PR to have todo.txt merged to Main. This will let everyone know you
 
 When you have finished the task, write done next to your name and open a pull request with your completed work.
 
-TODO:
+TODO: (DONE)
 =======================
 Example Task: Austin (Done)
 Combine Reset and Login to a single Scene: Austin (Done)
@@ -16,3 +16,11 @@ Create class to generate letter as String by table of values: (Ill take this bac
 Create Icons and Logos: Jason
 Clean up UI
 Clean up error handling
+
+
+TODO: (Finish by Apr 20 2023) 
+========================
+1. Create a package which contains a class that saves a string to a file
+2. Create a package, call it generate, which contains a class that creates a letter given information and 
+a class that saves and retrieves student info to and from db.
+3. Create a letter gui. 
