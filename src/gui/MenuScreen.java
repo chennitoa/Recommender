@@ -5,9 +5,9 @@ import java.io.File;
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -15,17 +15,15 @@ import javafx.stage.Stage;
 public class MenuScreen {
 	
 	@FXML
-	private Label newLetter;
+	private AnchorPane newLetter;
 	@FXML
-	private Label openLetter;
+	private AnchorPane openLetter;
 	@FXML
 	private Label settings;
 	@FXML
 	private Label logout;
 	@FXML
 	private TextField search;
-	@FXML
-	private ScrollBar recentScroll;
 	@FXML
 	private VBox recentLetters;
 	

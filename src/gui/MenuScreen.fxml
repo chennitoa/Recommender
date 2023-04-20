@@ -4,28 +4,48 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuScreen">
+<VBox prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuScreen">
   <children>
       <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DARKORANGE;">
                <children>
-                  <Label fx:id="newLetter" layoutX="47.0" layoutY="91.0" text="NEW" textFill="WHITE">
-                     <font>
-                        <Font name="Leelawadee UI" size="48.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="openLetter" layoutX="38.0" layoutY="208.0" text="OPEN" textFill="WHITE">
-                     <font>
-                        <Font name="Leelawadee UI" size="48.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane fx:id="newLetter" layoutX="10.0" layoutY="14.0" prefHeight="180.0" prefWidth="160.0" style="-fx-background-color: ORANGE;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@resources/NewFile_6.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="107.0" layoutY="147.0" text="NEW" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="20.0">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="openLetter" prefHeight="180.0" prefWidth="160.0" style="-fx-background-color: ORANGE;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="260.0">
+                     <children>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@resources/OpenFile.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="OPEN" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="20.0">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                   <Label fx:id="settings" layoutX="68.0" layoutY="359.0" text="Settings" textFill="WHITE" AnchorPane.bottomAnchor="14.0">
                      <font>
                         <Font size="18.0" />

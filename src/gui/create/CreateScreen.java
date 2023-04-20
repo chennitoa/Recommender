@@ -5,8 +5,8 @@ import java.io.IOException;
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import letter.AcademicInfo;
@@ -18,7 +18,7 @@ public class CreateScreen {
 	@FXML
 	private ScrollPane content;
 	@FXML
-	private Label back;
+	private ImageView back;
 	
 	private StudentInfo studentInfo;
 	private AcademicInfo academicInfo;
@@ -133,7 +133,7 @@ public class CreateScreen {
 		LetterInfo letterInfo = new LetterInfo(studentInfo, academicInfo);
 		
 		main.displayMenuScene(false);
-//		main.displayLetterScene(letterInfo);
+		main.displayLetterScene(letterInfo);
 		try {
 			resetTabs();
 		}
