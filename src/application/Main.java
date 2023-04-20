@@ -104,7 +104,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			styleCSS = getClass().getResource("../gui/style.css").toExternalForm();
+			styleCSS = getClass().getResource("../gui/resources/style.css").toExternalForm();
 			
 			//Loading entry page
 			entryLoader = new FXMLLoader(getClass().getResource("../gui/entry/EntryScreen.fxml"));
@@ -139,7 +139,7 @@ public class Main extends Application {
 	        VBox createRoot = createLoader.load();
 	        createController = createLoader.getController();
 	        createScene = new Scene(createRoot);
-	        createScene.getStylesheets().add(getClass().getResource("../gui/style.css").toExternalForm());
+	        createScene.getStylesheets().add(styleCSS);
 	        createController.setMain(this);
 	        
 	        mainStage = primaryStage;
