@@ -18,28 +18,28 @@
          <children>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DARKORANGE;">
                <children>
-                  <AnchorPane fx:id="newLetter" layoutX="10.0" layoutY="14.0" prefHeight="166.0" prefWidth="160.0" style="-fx-background-color: ORANGE;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                  <AnchorPane fx:id="newLetter" layoutX="10.0" layoutY="14.0" prefHeight="180.0" prefWidth="160.0" style="-fx-background-color: ORANGE;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" scaleX="0.5" scaleY="0.5" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <image>
                               <Image url="@resources/NewFile_6.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="107.0" layoutY="147.0" text="NEW" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <Label layoutX="107.0" layoutY="147.0" text="NEW" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="20.0">
                            <font>
                               <Font name="Leelawadee UI" size="24.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="openLetter" prefHeight="166.0" prefWidth="160.0" style="-fx-background-color: ORANGE;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="220.0">
+                  <AnchorPane fx:id="openLetter" prefHeight="180.0" prefWidth="160.0" style="-fx-background-color: ORANGE;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="260.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" scaleX="0.5" scaleY="0.5" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <image>
                               <Image url="@resources/OpenFile.png" />
                            </image>
                         </ImageView>
-                        <Label text="OPEN" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <Label text="OPEN" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="20.0">
                            <font>
                               <Font name="Leelawadee UI" size="24.0" />
                            </font>

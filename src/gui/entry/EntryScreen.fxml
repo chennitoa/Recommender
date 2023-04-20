@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.entry.EntryScreen">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.entry.EntryScreen">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="600.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: DARKORANGE;">
          <children>
-            <Label layoutY="3.0" prefHeight="48.0" prefWidth="490.0" text="Recommender" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../resources/Logo-V2.png" />
+               </image>
+            </ImageView>
+            <Label layoutY="3.0" prefHeight="48.0" prefWidth="490.0" text="ecommender" textFill="WHITE" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="25.0">
                <font>
                   <Font name="Lucida Fax Regular" size="54.0" />
                </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="410.0" layoutY="47.0" prefHeight="7.0" prefWidth="44.0" text="v.0.5" AnchorPane.leftAnchor="410.0" AnchorPane.topAnchor="47.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
             </Label>
          </children>
       </AnchorPane>

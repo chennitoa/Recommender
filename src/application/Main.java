@@ -12,6 +12,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import letter.LetterInfo;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
 
@@ -20,6 +21,7 @@ public class Main extends Application {
 	private Stage mainStage;
 	
 	private String styleCSS;
+	private Image favicon;
 	
 	private FXMLLoader entryLoader;
 	private Scene entryScene;
@@ -54,6 +56,7 @@ public class Main extends Application {
 		mainStage.setScene(entryScene);
 		mainStage.setResizable(false);
 		mainStage.setTitle("Recommender Login");
+		mainStage.getIcons().add(favicon);
 		mainStage.show();
 	}
 	
@@ -64,6 +67,7 @@ public class Main extends Application {
 		if (createNewStage) {
 			mainStage.close();
 			mainStage = new Stage();
+			mainStage.getIcons().add(favicon);
 		}
 		mainStage.setMaximized(true);
 		mainStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
@@ -105,6 +109,7 @@ public class Main extends Application {
 		try {
 			
 			styleCSS = getClass().getResource("../gui/resources/style.css").toExternalForm();
+			favicon = new Image(getClass().getResourceAsStream("../gui/resources/Rounded_v2.png"));
 			
 			//Loading entry page
 			entryLoader = new FXMLLoader(getClass().getResource("../gui/entry/EntryScreen.fxml"));
