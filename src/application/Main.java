@@ -2,8 +2,10 @@ package application;
 
 import java.io.IOException;
 
+import generate.LetterGenerator;
 import gui.MenuScreen;
 import gui.create.CreateScreen;
+import gui.edit.EditScreen;
 import gui.entry.EntryScreen;
 import gui.settings.SettingsScreen;
 import javafx.application.Application;
@@ -35,10 +37,13 @@ public class Main extends Application {
 	private Scene settingsScene;
 	private SettingsScreen settingsController;
 	
-	
 	private FXMLLoader createLoader;
 	private Scene createScene;
 	private CreateScreen createController;
+	
+	private FXMLLoader editLoader;
+	private Scene editScene;
+	private EditScreen editController;
 	
 	/*
 	 * Goes back to login screen
@@ -85,6 +90,9 @@ public class Main extends Application {
 		mainStage.show();
 	}
 	
+	/*
+	 * Displays create letter scene
+	 */
 	public void displayCreateScene() {
 		mainStage.setScene(createScene);
 		createController.displayStudentTab();
@@ -97,8 +105,19 @@ public class Main extends Application {
 		mainStage.show();
 	}
 	
+	/*
+	 * Compiles a letter from a LetterInfo object and shows a screen with that letter
+	 */
 	public void displayLetterScene(LetterInfo letterInfo) {
-		return;
+		String letterString = LetterGenerator.generateLetter(letterInfo);
+		Stage letterStage = new Stage();
+		letterStage.setMaximized(true);
+		letterStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
+		letterStage.setHeight(Screen.getPrimary().getBounds().getMaxY());
+		letterStage.getIcons().add(favicon);
+		letterStage.setTitle("Recommender: Edit Letter");
+		letterStage.setScene(editScene);
+		letterStage.show();
 	}
 	
 	/*
@@ -138,7 +157,6 @@ public class Main extends Application {
 	        settingsScene.getStylesheets().add(styleCSS);
 	        settingsController.setMain(this);
 	        
-	        
 	        //Loading create page
 	        createLoader = new FXMLLoader(getClass().getResource("../gui/create/CreateScreen.fxml"));
 	        VBox createRoot = createLoader.load();
@@ -146,6 +164,14 @@ public class Main extends Application {
 	        createScene = new Scene(createRoot);
 	        createScene.getStylesheets().add(styleCSS);
 	        createController.setMain(this);
+	        
+	        //Loading edit page
+	        editLoader = new FXMLLoader(getClass().getResource("../gui/edit/EditScreen.fxml"));
+	        VBox editRoot = editLoader.load();
+	        editController = editLoader.getController();
+	        editScene = new Scene(editRoot);
+	        editScene.getStylesheets().add(styleCSS);
+	        editController.setMain(this);
 	        
 	        mainStage = primaryStage;
 	        

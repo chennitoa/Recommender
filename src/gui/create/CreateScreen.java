@@ -131,8 +131,8 @@ public class CreateScreen {
 	 */
 	public void createLetter() {
 		LetterInfo letterInfo = new LetterInfo(studentInfo, academicInfo);
-		
-		main.displayMenuScene(false);
+		studentInfo = null;
+		academicInfo = null;
 		main.displayLetterScene(letterInfo);
 		try {
 			resetTabs();

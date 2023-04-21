@@ -4,15 +4,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import database.DBManager;
+import database.QueryManager;
 
 public class SettingsManager {
 	
-	private static SettingsManager sM;
-	private static DBManager dbM;
+	private static SettingsManager settingsManager;
+	private static DBManager dbManager;
 	
 	private ProfessorInfo professorInfo;
 	private List<String> semesters;
@@ -22,29 +22,12 @@ public class SettingsManager {
 	private List<String> academicCharacteristics;
 	
 	/*
-	 * Given results of query, parses them into a list, returns null if list would be empty
-	 */
-	public static List<String> parseToList(ResultSet rs, String columnTitle) throws SQLException {
-		if (rs == null || rs.next() == false) {
-			return Collections.emptyList();
-		}
-		ArrayList<String> resultsList = new ArrayList<String>();
-		resultsList.add(rs.getString(columnTitle));
-		while (rs.next() == true) {
-			if (!rs.getString(columnTitle).equals("")) {
-				resultsList.add(rs.getString(columnTitle));
-			}
-		}
-		return resultsList;
-	}
-	
-	/*
 	 * Singleton design
 	 */
 	private SettingsManager() {
-		dbM = DBManager.getDBManager();
+		dbManager = DBManager.getDBManager();
 			
-		dbM.queryQuiet(
+		dbManager.queryQuiet(
 				"CREATE TABLE IF NOT EXISTS professorInfo ("
 				+ "Lock char(1) not null DEFAULT 'X',"
 				+ "name string,"
@@ -57,16 +40,16 @@ public class SettingsManager {
 				+ "constraint CK_T1_Locked CHECK (Lock='X')"
 				+ ");"
 		);
-		dbM.queryQuiet("CREATE TABLE IF NOT EXISTS semesters(semester string);"); 
-		dbM.queryQuiet("CREATE TABLE IF NOT EXISTS courses(course string);");
-		dbM.queryQuiet("CREATE TABLE IF NOT EXISTS programs(program string);");
-		dbM.queryQuiet("CREATE TABLE IF NOT EXISTS personalCharacteristics(characteristic string);");
-		dbM.queryQuiet("CREATE TABLE IF NOT EXISTS academicCharacteristics(characteristic string);");
+		dbManager.queryQuiet("CREATE TABLE IF NOT EXISTS semesters(semester string);"); 
+		dbManager.queryQuiet("CREATE TABLE IF NOT EXISTS courses(course string);");
+		dbManager.queryQuiet("CREATE TABLE IF NOT EXISTS programs(program string);");
+		dbManager.queryQuiet("CREATE TABLE IF NOT EXISTS personalCharacteristics(characteristic string);");
+		dbManager.queryQuiet("CREATE TABLE IF NOT EXISTS academicCharacteristics(characteristic string);");
 		
 		
 
 		try {
-			ResultSet rs = dbM.query("SELECT * FROM professorInfo");
+			ResultSet rs = dbManager.query("SELECT * FROM professorInfo");
 			if (rs.getString("name") == null) {
 				professorInfo = null;
 			}
@@ -81,11 +64,11 @@ public class SettingsManager {
 				);
 			}
 			
-			semesters = parseToList(dbM.query("SELECT * FROM semesters;"), "semester");
-			courses = parseToList(dbM.query("SELECT * FROM courses;"), "course");
-			programs = parseToList(dbM.query("SELECT * FROM programs;"), "program");
-			personalCharacteristics = parseToList(dbM.query("SELECT * FROM personalCharacteristics;"), "characteristic");
-			academicCharacteristics = parseToList(dbM.query("SELECT * FROM academicCharacteristics;"), "characteristic");
+			semesters = QueryManager.parseToList(dbManager.query("SELECT * FROM semesters;"), "semester");
+			courses = QueryManager.parseToList(dbManager.query("SELECT * FROM courses;"), "course");
+			programs = QueryManager.parseToList(dbManager.query("SELECT * FROM programs;"), "program");
+			personalCharacteristics = QueryManager.parseToList(dbManager.query("SELECT * FROM personalCharacteristics;"), "characteristic");
+			academicCharacteristics = QueryManager.parseToList(dbManager.query("SELECT * FROM academicCharacteristics;"), "characteristic");
 			
 			//If there is no settings-related data
 			if (professorInfo == null && semesters.size() == 0 && courses.size() == 0 && programs.size() == 0 &&
@@ -135,10 +118,10 @@ public class SettingsManager {
 	 * Getter for SettingsManager object.
 	 */
 	public static SettingsManager getSettingsManager() {
-		if(sM == null) {
-			sM = new SettingsManager();
+		if(settingsManager == null) {
+			settingsManager = new SettingsManager();
 		}
-		return sM;
+		return settingsManager;
 	}
 	
 	/*
@@ -153,8 +136,8 @@ public class SettingsManager {
 	 */
 	public void setProfessorInfo(ProfessorInfo prof) {
 		professorInfo = prof;
-		dbM.queryQuiet("DELETE FROM professorInfo;");
-		dbM.queryQuiet(String.format("INSERT INTO professorInfo (name, title, school, department, phone, email)"
+		dbManager.queryQuiet("DELETE FROM professorInfo;");
+		dbManager.queryQuiet(String.format("INSERT INTO professorInfo (name, title, school, department, phone, email)"
 				+ " values('%s', '%s', '%s', '%s', '%s', '%s');",
 				professorInfo.getName(),
 				professorInfo.getTitle(),
@@ -177,9 +160,9 @@ public class SettingsManager {
 	 */
 	public void setSemesters(List<String> semesters) {
 		this.semesters = semesters;
-		dbM.queryQuiet("DELETE FROM semesters;");
+		dbManager.queryQuiet("DELETE FROM semesters;");
 		for(String s : semesters){
-			dbM.queryQuiet(String.format("INSERT INTO semesters (semester) values('%s');", s));
+			dbManager.queryQuiet(String.format("INSERT INTO semesters (semester) values('%s');", s));
 		}
 	}
 
@@ -195,9 +178,9 @@ public class SettingsManager {
 	 */
 	public void setCourses(List<String> courses) {
 		this.courses = courses;
-		dbM.queryQuiet("DELETE FROM courses;");
+		dbManager.queryQuiet("DELETE FROM courses;");
 		for(String s : courses){
-			dbM.queryQuiet(String.format("INSERT INTO courses (course) values('%s');", s));
+			dbManager.queryQuiet(String.format("INSERT INTO courses (course) values('%s');", s));
 		}
 	}
 
@@ -213,9 +196,9 @@ public class SettingsManager {
 	 */
 	public void setPrograms(List<String> programs) {
 		this.programs = programs;
-		dbM.queryQuiet("DELETE FROM programs;");
+		dbManager.queryQuiet("DELETE FROM programs;");
 		for(String s : programs){
-			dbM.queryQuiet(String.format("INSERT INTO programs (program) values('%s');", s));
+			dbManager.queryQuiet(String.format("INSERT INTO programs (program) values('%s');", s));
 		}
 	}
 
@@ -231,9 +214,9 @@ public class SettingsManager {
 	 */
 	public void setPersonalCharacteristics(List<String> personalCharacteristics) {
 		this.personalCharacteristics = personalCharacteristics;
-		dbM.queryQuiet("DELETE FROM personalCharacteristics;");
+		dbManager.queryQuiet("DELETE FROM personalCharacteristics;");
 		for(String s : personalCharacteristics){
-			dbM.queryQuiet(String.format("INSERT INTO personalCharacteristics (characteristic) values('%s');", s));
+			dbManager.queryQuiet(String.format("INSERT INTO personalCharacteristics (characteristic) values('%s');", s));
 		}
 	}
 
@@ -249,9 +232,9 @@ public class SettingsManager {
 	 */
 	public void setAcademicCharacteristics(List<String> academicCharacteristics) {
 		this.academicCharacteristics = academicCharacteristics;
-		dbM.queryQuiet("DELETE FROM academicCharacteristics;");
+		dbManager.queryQuiet("DELETE FROM academicCharacteristics;");
 		for(String s : academicCharacteristics){
-			dbM.queryQuiet(String.format("INSERT INTO academicCharacteristics (characteristic) values('%s');", s));
+			dbManager.queryQuiet(String.format("INSERT INTO academicCharacteristics (characteristic) values('%s');", s));
 		}
 	}
 	

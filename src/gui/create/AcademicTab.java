@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import settings.SettingsManager;
+import letter.AcademicInfo;
 import letter.CourseInfo;
 
 public class AcademicTab {
@@ -41,7 +42,7 @@ public class AcademicTab {
 	private Button back;
 	
 	private List<SelectionTextOption> firstCourseControllers;
-	private List<SelectionTextOption> otherControllers;
+	private List<SelectionTextOption> otherCourseControllers;
 	private List<SelectionOption> personalControllers;
 	private List<SelectionOption> academicControllers;
 	
@@ -55,7 +56,7 @@ public class AcademicTab {
 	public AcademicTab() {
 		settingsManager = SettingsManager.getSettingsManager();
 		firstCourseControllers = new ArrayList<SelectionTextOption>();
-		otherControllers = new ArrayList<SelectionTextOption>();
+		otherCourseControllers = new ArrayList<SelectionTextOption>();
 		personalControllers = new ArrayList<SelectionOption>();
 		academicControllers = new ArrayList<SelectionOption>();
 	}
@@ -119,7 +120,6 @@ public class AcademicTab {
 	 * Returns a list of CourseInfo objects which has been selected by user.
 	 */
 	public List<CourseInfo> parseSelectionTextOptions(List<SelectionTextOption> selectionTextOptions) {
-		//TODO: Finish the method.
 		List<CourseInfo> info = new ArrayList<>();
 		for(SelectionTextOption s : selectionTextOptions) {
 			if(s.getSelected()) {
@@ -137,7 +137,21 @@ public class AcademicTab {
 		program.setItems(FXCollections.observableList(settingsManager.getPrograms()));
 		semester.setItems(FXCollections.observableList(settingsManager.getSemesters()));
 		
+		// Get information from all fillables and use it to compile an academic info, then signal to create letter
 		compile.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+			String programName = program.getValue();
+			List<CourseInfo> firstCourses = parseSelectionTextOptions(firstCourseControllers);
+			String semesterName = semester.getValue();
+			String semesterYear = year.getText();
+			List<CourseInfo> otherCourses = parseSelectionTextOptions(otherCourseControllers);
+			List<String> personalCharacteristics = parseSelectionOptions(personalControllers);
+			List<String> academicCharacteristics = parseSelectionOptions(academicControllers);
+			
+			AcademicInfo academicInfo = new AcademicInfo(programName, firstCourses, semesterName,
+					semesterYear, otherCourses, personalCharacteristics, academicCharacteristics);
+			
+			createScreen.setAcademicInfo(academicInfo);
+			
 			createScreen.createLetter();
 		});
 		
@@ -147,7 +161,7 @@ public class AcademicTab {
 		
 		try {
 			initializeMenuTextOptions(settingsManager.getCourses(), firstCourseControllers, firstCourse);
-			initializeMenuTextOptions(settingsManager.getCourses(), otherControllers, other);
+			initializeMenuTextOptions(settingsManager.getCourses(), otherCourseControllers, other);
 			initializeMenuOptions(settingsManager.getPersonalCharacteristics(), personalControllers, personal);
 			initializeMenuOptions(settingsManager.getAcademicCharacteristics(), academicControllers, academic);
 		}
