@@ -6,9 +6,8 @@ Date: %date%
 
 To: Graduate Admissions Committee
 I am writing this letter to recommend my former student %firstName% %lastName% who is applying for the %program% in your school.
-I met %firstName% in %semester% when he enrolled in my "<First Course Taken>" course.
+I met %firstName% in %semester% when he enrolled in my %firstCourses% course%plural%.
 <Student's First Name> earned <letter grade> from this tough course, and this shows how knowledgeable and hard worker <he/she> is.
-{If the student took more courses with this professor, the coma-separated list of them plus the grades earned are listed in the following paragraph.}
 %otherCourses%
 %firstName% %academicCharacteristics%.
 %genderCapitalized% was always %personalCharacteristics%.
