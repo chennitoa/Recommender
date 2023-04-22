@@ -110,7 +110,8 @@ public class Main extends Application {
 	 * Compiles a letter from a LetterInfo object and shows a screen with that letter
 	 */
 	public void displayLetterScene(LetterInfo letterInfo) {
-		List<String> letterLines = LetterGenerator.getLetterGenerator().generateLetter(letterInfo);
+		LetterGenerator letterGenerator = new LetterGenerator();
+		List<String> letterLines = letterGenerator.generateLetter(letterInfo);
 		Stage letterStage = new Stage();
 		letterStage.setMaximized(true);
 		letterStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
