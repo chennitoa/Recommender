@@ -133,12 +133,13 @@ public class CreateScreen {
 		LetterInfo letterInfo = new LetterInfo(studentInfo, academicInfo);
 		studentInfo = null;
 		academicInfo = null;
+		main.displayMenuScene(false);
 		main.displayLetterScene(letterInfo);
 		try {
 			resetTabs();
 		}
-		catch (IOException e1) {
-			e1.printStackTrace();
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 	}

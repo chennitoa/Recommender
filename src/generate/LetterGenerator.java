@@ -32,10 +32,12 @@ public class LetterGenerator {
 			while (scanner.hasNext()) {
 				schema.add(scanner.nextLine());
 			}
+			scanner.close();
 		}
 		catch (FileNotFoundException e) {
 			schema = new ArrayList<String>();
 		}
+		
 	}
 	
 	public static LetterGenerator getLetterGenerator() {
@@ -80,7 +82,7 @@ public class LetterGenerator {
 			schemaLine = schemaLine.replaceAll("%coursePlural%", "s");
 		}
 		else {
-			schemaLine = schemaLine.replaceAll("%thesePlural%", "this");
+			schemaLine = schemaLine.replaceAll("%thisPlural%", "this");
 			schemaLine = schemaLine.replaceAll("%coursePlural%", "");
 		}
 		
