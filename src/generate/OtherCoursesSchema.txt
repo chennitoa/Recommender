@@ -1,2 +1,1 @@
-%genderCapitalized% also earned a "%grade%" from "%course%"[, "<letter grade>" from my
-"<course name>"[, ...]]] <course/courses>.
+%genderCapitalized% also earned %otherCourses% course%coursePlural%.
