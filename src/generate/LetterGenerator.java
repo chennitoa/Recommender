@@ -46,19 +46,6 @@ public class LetterGenerator {
 		schemaLine = schemaLine.replaceAll("%lastName%", letterInfo.getStudentInfo().getLastName());
 		schemaLine = schemaLine.replaceAll("%date%", letterInfo.getStudentInfo().getDate().toString());
 		
-		if (letterInfo.getStudentInfo().getGender().equals("Male")) {
-			schemaLine = schemaLine.replaceAll("%gender%", "he");
-			schemaLine = schemaLine.replaceAll("%genderCapitalized%", "He");
-		}
-		else if (letterInfo.getStudentInfo().getGender().equals("Female")) {
-			schemaLine = schemaLine.replaceAll("%gender%", "she");
-			schemaLine = schemaLine.replaceAll("%genderCapitalized%", "She");
-		}
-		else {
-			schemaLine = schemaLine.replaceAll("%gender%", "they");
-			schemaLine = schemaLine.replaceAll("%genderCapitalized%", "They");
-		}
-		
 		schemaLine = schemaLine.replaceAll("%semester%", letterInfo.getAcademicInfo().getSemesterName());
 		schemaLine = schemaLine.replaceAll("%program%", letterInfo.getAcademicInfo().getProgramName());
 		
@@ -90,6 +77,19 @@ public class LetterGenerator {
 		schemaLine = schemaLine.replaceAll("%department%", settingsManager.getProfessorInfo().getDepartment());
 		schemaLine = schemaLine.replaceAll("%email%", settingsManager.getProfessorInfo().getEmail());
 		schemaLine = schemaLine.replaceAll("%phone%", settingsManager.getProfessorInfo().getPhone());
+		
+		if (letterInfo.getStudentInfo().getGender().equals("Male")) {
+			schemaLine = schemaLine.replaceAll("%gender%", "he");
+			schemaLine = schemaLine.replaceAll("%genderCapitalized%", "He");
+		}
+		else if (letterInfo.getStudentInfo().getGender().equals("Female")) {
+			schemaLine = schemaLine.replaceAll("%gender%", "she");
+			schemaLine = schemaLine.replaceAll("%genderCapitalized%", "She");
+		}
+		else {
+			schemaLine = schemaLine.replaceAll("%gender%", "they");
+			schemaLine = schemaLine.replaceAll("%genderCapitalized%", "They");
+		}
 		
 		return schemaLine;
 	}
