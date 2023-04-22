@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.create.StudentTab">
+<VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.create.StudentTab">
    <children>
       <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: LIGHTSALMON;" VBox.vgrow="NEVER">
          <children>
@@ -32,6 +32,13 @@
                   <Font size="18.0" />
                </font>
             </TextField>
+            <ComboBox fx:id="gender" layoutX="200.0" layoutY="207.0" prefHeight="39.0" prefWidth="261.0" promptText="Select Gender..." style="-fx-font-size: 18;" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="200.0" />
+            <TextField fx:id="school" layoutX="201.0" layoutY="290.0" promptText="School Name" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="280.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <DatePicker fx:id="date" layoutX="162.0" layoutY="324.0" promptText="Date" style="-fx-font-size: 18;" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="360.0" />
             <Label layoutX="50.0" layoutY="52.0" text="First Name" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="50.0">
                <font>
                   <Font size="18.0" />
@@ -47,7 +54,6 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <DatePicker fx:id="date" layoutX="162.0" layoutY="324.0" promptText="Date" style="-fx-font-size: 18;" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="360.0" />
             <Label layoutX="60.0" layoutY="285.0" text="Target School" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="290.0">
                <font>
                   <Font size="18.0" />
@@ -58,17 +64,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="school" layoutX="201.0" layoutY="290.0" promptText="School Name" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="280.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
             <Button fx:id="next" mnemonicParsing="false" text="Next" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="480.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <ComboBox fx:id="gender" layoutX="200.0" layoutY="207.0" prefHeight="39.0" prefWidth="261.0" promptText="Select Gender..." style="-fx-font-size: 18;" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="200.0" />
          </children>
       </AnchorPane>
    </children>

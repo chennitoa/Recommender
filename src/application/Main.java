@@ -173,7 +173,6 @@ public class Main extends Application {
 	        editController = editLoader.getController();
 	        editScene = new Scene(editRoot);
 	        editScene.getStylesheets().add(styleCSS);
-	        editController.setMain(this);
 	        
 	        mainStage = primaryStage;
 	        

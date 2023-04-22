@@ -6,15 +6,14 @@ Date: %date%
 
 To: Graduate Admissions Committee
 I am writing this letter to recommend my former student %firstName% %lastName% who is applying for the %program% in your school.
-I met %firstName% in %semester% when he enrolled in my %firstCourses% course%plural%.
-<Student's First Name> earned <letter grade> from this tough course, and this shows how knowledgeable and hard worker <he/she> is.
+I met %firstName% in %semester% when he enrolled in my %firstCourses% course%coursePlural%.
+%firstName% earned %firstGrades% from %thisPlural% hard course%coursePlural%, and this shows how knowledgeable and hard worker %gender% is.
 %otherCourses%
 %firstName% %academicCharacteristics%.
 %genderCapitalized% was always %personalCharacteristics%.
 Furthermore, I noticed from the term project result, %gender% developed leadership, time management, and problem-solving skills. %genderCapitalized% worked effectively with the team members and
 delegated tasks appropriately. They were able to deliver a successful project in a timely fashion.
-I believe that %firstName% has the capacity to excel at higher education program and this
-is my pleasure to highly recommend him.
+I believe that %firstName% has the capacity to excel at higher education program and this is my pleasure to highly recommend him.
 Please do not hesitate to contact me with further questions.
 
 Very Respectfully,
