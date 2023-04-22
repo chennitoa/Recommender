@@ -36,7 +36,7 @@ public class StudentTab {
 	 * Loads default gender options
 	 */
 	public StudentTab() {
-		genderOptions = Arrays.asList("Male", "Female", "Nonbinary", "Transgender");
+		genderOptions = Arrays.asList("Male", "Female", "Other");
 	}
 	
 	/*

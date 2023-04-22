@@ -2,7 +2,6 @@ package gui.edit;
 
 import java.util.List;
 
-import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -14,8 +13,6 @@ public class EditScreen {
 	private TextArea editor;
 	@FXML
 	private Button save;
-	
-	private Main main;
 	
 	public EditScreen() {
 		
@@ -30,15 +27,11 @@ public class EditScreen {
 	public void setText(List<String> textLines) {
 		String text = "";
 		for (String line : textLines) {
-			if (!line.equals("")) {
+			if (!line.equals("%delete%")) {
 				text += line + "\n";
 			}
 		}
 		editor.setText(text);
-	}
-	
-	public void setMain(Main main) {
-		this.main = main;
 	}
 	
 }

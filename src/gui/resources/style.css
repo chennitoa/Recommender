@@ -17,3 +17,8 @@ TextArea {
 TextField {
 	-fx-focus-traversable: false
 }
+
+.text-area > .scroll-pane{
+	-fx-hbar-policy:never;
+	-fx-vbar-policy:never; 
+}
