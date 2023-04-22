@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.CustomMenuItem;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -36,6 +37,8 @@ public class AcademicTab {
 	private MenuButton personal;
 	@FXML
 	private MenuButton academic;
+	@FXML
+	private Label info;
 	@FXML
 	private Button compile;
 	@FXML
@@ -133,9 +136,9 @@ public class AcademicTab {
 	 * Adds functionality to buttons, initializes all the dropdown options
 	 */
 	public void initialize() {
-		
 		program.setItems(FXCollections.observableList(settingsManager.getPrograms()));
 		semester.setItems(FXCollections.observableList(settingsManager.getSemesters()));
+		info.setVisible(false);
 		
 		// Get information from all fillables and use it to compile an academic info, then signal to create letter
 		compile.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {

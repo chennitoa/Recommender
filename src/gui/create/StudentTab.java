@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import letter.StudentInfo;
@@ -25,6 +26,8 @@ public class StudentTab {
 	private TextField school;
 	@FXML
 	private DatePicker date;
+	@FXML
+	private Label info;
 	@FXML
 	private Button next;
 	
@@ -43,6 +46,8 @@ public class StudentTab {
 	 * Initializes buttons and dropdowns
 	 */
 	public void initialize() {
+		
+		info.setVisible(false);
 		
 		gender.setItems(FXCollections.observableList(genderOptions));
 		date.setValue(LocalDate.now());
