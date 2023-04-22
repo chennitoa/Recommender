@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.List;
 
 import generate.LetterGenerator;
 import gui.MenuScreen;
@@ -109,7 +110,7 @@ public class Main extends Application {
 	 * Compiles a letter from a LetterInfo object and shows a screen with that letter
 	 */
 	public void displayLetterScene(LetterInfo letterInfo) {
-		String letterString = LetterGenerator.getLetterGenerator().generateLetter(letterInfo);
+		List<String> letterLines = LetterGenerator.getLetterGenerator().generateLetter(letterInfo);
 		Stage letterStage = new Stage();
 		letterStage.setMaximized(true);
 		letterStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
@@ -117,7 +118,7 @@ public class Main extends Application {
 		letterStage.getIcons().add(favicon);
 		letterStage.setTitle("Recommender: Edit Letter");
 		letterStage.setScene(editScene);
-		editController.setHTMLText(letterString);
+		editController.setText(letterLines);
 		letterStage.show();
 	}
 	

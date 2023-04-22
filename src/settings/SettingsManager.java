@@ -2,8 +2,6 @@ package settings;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import database.DBManager;
@@ -73,39 +71,7 @@ public class SettingsManager {
 			//If there is no settings-related data
 			if (professorInfo == null && semesters.size() == 0 && courses.size() == 0 && programs.size() == 0 &&
 					personalCharacteristics.size() == 0 && academicCharacteristics.size() == 0) {
-				professorInfo = new ProfessorInfo();
-				semesters = new ArrayList<String>(Arrays.asList("Spring" , "Fall", "Summer"));
-				courses = new ArrayList<String>(Arrays.asList("CS151: Objected-Oriented Design",
-															"CS166: Information Security",
-															"CS154: Theory of Computation",
-															"CS160: Software Engineering",
-															"CS256: Cryptography",
-															"CS146: Data Structures and Algorithms",
-															"CS152: Programming Languages Paradigm"));
-		
-				programs = new ArrayList<String>(Arrays.asList("Master of science (MS)",
-															"Master of business administration (MBA)",
-															"Doctor of philosophy (PhD)"));
-				
-				personalCharacteristics = new ArrayList<String>((Arrays.asList("very passionate",
-																			"very enthusiastic",
-																			"punctual",
-																			"attentive",
-																			"polite")));
-		
-				academicCharacteristics = new ArrayList<String>(Arrays.asList("submitted well-written assignments",
-																			"participated in all of my class activities",
-																			"worked hard",
-																			"was very well prepared for every exam and assignment",
-																			"picked up new skills quickly",
-																			"was able to excel academically at the top of my class"));
-
-				setProfessorInfo(professorInfo);
-				setSemesters(semesters);
-				setCourses(courses);
-				setPrograms(programs);
-				setPersonalCharacteristics(personalCharacteristics);
-				setAcademicCharacteristics(academicCharacteristics);
+				SettingsInit.initializeDatabases();
 			}
 			
 		}

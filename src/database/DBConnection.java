@@ -18,7 +18,7 @@ public class DBConnection {
 		try {
 			connection = DriverManager.getConnection(url);
 		}
-		catch(SQLException e) {
+		catch (SQLException e) {
 			System.out.println("Error connecting to database.");
 			System.exit(1);
 		}
