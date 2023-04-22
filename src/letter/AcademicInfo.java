@@ -5,10 +5,10 @@ import java.util.List;
 public class AcademicInfo {
 	
 	private String programName;
-	private CourseInfo firstCourse;
+	private List<CourseInfo> firstCourses;
 	private String semesterName;
 	private String semesterYear;
-	private List<CourseInfo> courseInfoList;
+	private List<CourseInfo> otherCourses;
 	private List<String> personalCharacteristicList;
 	private List<String> academicCharacteristicList;
 	
@@ -16,12 +16,14 @@ public class AcademicInfo {
 	/*
 	 *  Java bean for academic info, includes all getters and setters
 	 */
-	public AcademicInfo(String programName, String semesterName, String semesterYear, List<CourseInfo> courseInfoList,
+	public AcademicInfo(String programName, List<CourseInfo> firstCourses, 
+			String semesterName, String semesterYear, List<CourseInfo> otherCourses,
 			List<String> personalCharacteristicList, List<String> academicCharacteristicList) {
 		this.programName = programName;
+		this.firstCourses = firstCourses;
 		this.semesterName = semesterName;
 		this.semesterYear = semesterYear;
-		this.courseInfoList = courseInfoList;
+		this.otherCourses = otherCourses;
 		this.personalCharacteristicList = personalCharacteristicList;
 		this.academicCharacteristicList = academicCharacteristicList;
 	}
@@ -34,12 +36,12 @@ public class AcademicInfo {
 		this.programName = programName;
 	}
 	
-	public CourseInfo getFirstCourse() {
-		return firstCourse;
+	public List<CourseInfo> getFirstCourse() {
+		return firstCourses;
 	}
 
-	public void setFirstCourse(CourseInfo firstCourse) {
-		this.firstCourse = firstCourse;
+	public void setFirstCourse(List<CourseInfo> firstCourses) {
+		this.firstCourses = firstCourses;
 	}
 
 	public String getSemesterName() {
@@ -59,11 +61,11 @@ public class AcademicInfo {
 	}
 	
 	public List<CourseInfo> getCourseInfoList() {
-		return courseInfoList;
+		return otherCourses;
 	}
 	
-	public void setCourseInfoList(List<CourseInfo> courseInfoList) {
-		this.courseInfoList = courseInfoList;
+	public void setCourseInfoList(List<CourseInfo> otherCourses) {
+		this.otherCourses = otherCourses;
 	}
 	
 	public List<String> getPersonalCharacteristicList() {

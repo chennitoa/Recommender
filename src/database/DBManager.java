@@ -8,27 +8,27 @@ import java.sql.ResultSet;
 
 public class DBManager {
 	
-	private static DBManager dbM;
+	private static DBManager dbManager;
 	
-	private DBConnection dbConn;
-	private Connection conn;
+	private DBConnection dbConnection;
+	private Connection connection;
 	
 	/*
 	 * Connects to singleton instance of DBConnection and gets its connection
 	 */
 	private DBManager() {
-		dbConn = DBConnection.getDBConnection();
-		conn = dbConn.getConnection();
+		dbConnection = DBConnection.getDBConnection();
+		connection = dbConnection.getConnection();
 	}
 	
 	/*
 	 * Get singleton instance of DBManager, creates a new instance if one does not exist
 	 */
 	public static DBManager getDBManager() {
-		if (dbM == null) {
-			dbM = new DBManager();
+		if (dbManager == null) {
+			dbManager = new DBManager();
 		}
-		return dbM;
+		return dbManager;
 	}
 	
 	/*
@@ -36,7 +36,7 @@ public class DBManager {
 	 */
 	public ResultSet query(String sqlQuery) {
 		try {
-			Statement stmt = conn.createStatement();
+			Statement stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(sqlQuery);
 			return rs;
 		}
@@ -51,7 +51,7 @@ public class DBManager {
 	 */
 	public void queryQuiet(String sqlQuery) {
 		try {
-			Statement stmt = conn.createStatement();
+			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(sqlQuery);
 		}
 		catch (SQLException e) {

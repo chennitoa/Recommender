@@ -8,21 +8,6 @@ public class ProfessorInfo {
 	private String email;
 	private String phoneNumber;
 	
-	/*
-	 * Default constructor
-	 */
-	public ProfessorInfo() {
-		this.setName("Ahmad Yazdankhah");
-		this.setTitle("Lecturer");
-		this.setSchool("SJSU");
-		this.setDepartment("CS Department");
-		this.setEmail("ahmad.yazdankhah@sjsu.edu");
-		this.setPhone("(123) 456-7890");
-	}
-	
-	/*
-	 * Overloaded constructor
-	 */
 	public ProfessorInfo(String name, String title, String schoolName, String department, String phoneNumber, String email) {
 		this.setName(name);
 		this.setTitle(title);

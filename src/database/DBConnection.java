@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DBConnection {
 	
-	private static DBConnection dbConn;
+	private static DBConnection dbConnection;
 	
-	private Connection conn;
+	private Connection connection;
 	
 	/*
 	 * Singleton design, the connection and passwordTable will be established just once.
@@ -16,9 +16,9 @@ public class DBConnection {
 	private DBConnection() { 
 		String url = "jdbc:sqlite:application.db";
 		try {
-			conn = DriverManager.getConnection(url);
+			connection = DriverManager.getConnection(url);
 		}
-		catch(SQLException e) {
+		catch (SQLException e) {
 			System.out.println("Error connecting to database.");
 			System.exit(1);
 		}
@@ -28,17 +28,17 @@ public class DBConnection {
 	 * Returns singleton instance of DBConnection class, creates one if not already present
 	 */
 	public static DBConnection getDBConnection() {
-		if (dbConn == null) {
-			dbConn = new DBConnection();
+		if (dbConnection == null) {
+			dbConnection = new DBConnection();
 		}
-		return dbConn;
+		return dbConnection;
 	}
 	
 	/*
 	 * Returns the Connection
 	 */
 	public Connection getConnection() {
-		return conn;
+		return connection;
 	}
 	
 }
