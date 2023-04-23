@@ -12,6 +12,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import letter.StudentInfo;
 
 public class StudentTab {
@@ -59,12 +60,47 @@ public class StudentTab {
 			String selectedGender = gender.getValue();
 			String targetSchool = school.getText();
 			LocalDate selectedDate = date.getValue();
+			boolean error = false;
+
+			/*
+			 * Input validation, user must enter all of the following information.
+			 */
+			if(firstName.length() == 0) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please enter student's first name.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(lastName.length() == 0) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please enter student's last name.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(selectedGender == null) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select student's gender.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(targetSchool.length() == 0) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please enter student's target school.");
+				info.setVisible(true);
+				error = true;
+			}
 			
-			StudentInfo studentInfo = new StudentInfo(firstName, lastName,
-					selectedGender, targetSchool, selectedDate);
-			
-			createScreen.setStudentInfo(studentInfo);
-			createScreen.displayAcademicTab();
+			if(!error) {
+				StudentInfo studentInfo = new StudentInfo(firstName, lastName,
+						selectedGender, targetSchool, selectedDate);
+				
+				createScreen.setStudentInfo(studentInfo);
+				createScreen.displayAcademicTab();
+			}
 		});
 		
 	}
