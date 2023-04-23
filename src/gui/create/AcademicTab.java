@@ -206,7 +206,7 @@ public class AcademicTab {
 			if(firstCourses.get(0).getCourseGrade().length() == 0 || firstCourses.size() > 1) {
 				info.setVisible(false);
 				info.setTextFill(Color.color(1, 0, 0));
-				info.setText("Please enter the course grade for " + firstCourses.get(0).getCourseName() + ".");
+				info.setText("Please enter the course grade for " + firstCourses.get(0).getCourseName() + " in first course tab.");
 				info.setVisible(true);
 				error = true;
 			}
@@ -214,7 +214,7 @@ public class AcademicTab {
 				if(courseInfo.getCourseGrade().length() == 0) {
 					info.setVisible(false);
 					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Please enter the course grade for " + courseInfo.getCourseName() + ".");
+					info.setText("Please enter the course grade for " + courseInfo.getCourseName() + " in other courses tab.");
 					info.setVisible(true);
 					error = true;
 				}

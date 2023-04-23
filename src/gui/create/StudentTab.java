@@ -72,21 +72,21 @@ public class StudentTab {
 				info.setVisible(true);
 				error = true;
 			}
-			if(lastName.length() == 0) {
+			else if(lastName.length() == 0) {
 				info.setVisible(false);
 				info.setTextFill(Color.color(1, 0, 0));
 				info.setText("Please enter student's last name.");
 				info.setVisible(true);
 				error = true;
 			}
-			if(selectedGender == null) {
+			else if(selectedGender == null) {
 				info.setVisible(false);
 				info.setTextFill(Color.color(1, 0, 0));
 				info.setText("Please select student's gender.");
 				info.setVisible(true);
 				error = true;
 			}
-			if(targetSchool.length() == 0) {
+			else if(targetSchool.length() == 0) {
 				info.setVisible(false);
 				info.setTextFill(Color.color(1, 0, 0));
 				info.setText("Please enter student's target school.");
