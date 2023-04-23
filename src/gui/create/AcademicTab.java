@@ -155,45 +155,48 @@ public class AcademicTab {
 			/*
 			 * First priority input validation.
 			 */
-			if(programName == null || firstCourses.isEmpty() || semesterName == null || semesterYear.length() == 0
-				|| personalCharacteristics.isEmpty() || academicCharacteristics.isEmpty()) {
+		
+			if(programName == null) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select a program.");
+				info.setVisible(true);
 				error = true;
-				if(programName == null) {
-					info.setVisible(false);
-					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Please select a program.");
-					info.setVisible(true);
-				}
-				else if(firstCourses.isEmpty()) {
-					info.setVisible(false);
-					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Please select the first course.");
-					info.setVisible(true);
-				}
-				else if(semesterName == null) {
-					info.setVisible(false);
-					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Please select a semester");
-					info.setVisible(true);
-				}
-				else if(semesterYear.length() == 0) {
-					info.setVisible(false);
-					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Please enter the semester year.");
-					info.setVisible(true);
-				}
-				else if(personalCharacteristics.isEmpty()) {
-					info.setVisible(false);
-					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Please select personal characteristics.");
-					info.setVisible(true);
-				}
-				else if(academicCharacteristics.isEmpty()) {
-					info.setVisible(false);
-					info.setTextFill(Color.color(1, 0, 0));
-					info.setText("Please select academic characteristics.");
-					info.setVisible(true);
-				}
+			}
+			else if(firstCourses.isEmpty()) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select the first course.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(semesterName == null) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select a semester");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(semesterYear.length() == 0) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please enter the semester year.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(personalCharacteristics.isEmpty()) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select personal characteristics.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(academicCharacteristics.isEmpty()) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select academic characteristics.");
+				info.setVisible(true);
+				error = true;
 			}
 
 			/*
