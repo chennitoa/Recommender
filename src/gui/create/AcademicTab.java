@@ -17,6 +17,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import settings.SettingsManager;
 import letter.AcademicInfo;
 import letter.CourseInfo;
@@ -149,13 +150,83 @@ public class AcademicTab {
 			List<CourseInfo> otherCourses = parseSelectionTextOptions(otherCourseControllers);
 			List<String> personalCharacteristics = parseSelectionOptions(personalControllers);
 			List<String> academicCharacteristics = parseSelectionOptions(academicControllers);
-			
-			AcademicInfo academicInfo = new AcademicInfo(programName, firstCourses, semesterName,
-					semesterYear, otherCourses, personalCharacteristics, academicCharacteristics);
-			
-			createScreen.setAcademicInfo(academicInfo);
-			
-			createScreen.createLetter();
+			boolean error = false;
+
+			/*
+			 * First priority input validation.
+			 */
+		
+			if(programName == null) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select a program.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(firstCourses.isEmpty()) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select the first course.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(semesterName == null) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select a semester");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(semesterYear.length() == 0) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please enter the semester year.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(personalCharacteristics.isEmpty()) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select personal characteristics.");
+				info.setVisible(true);
+				error = true;
+			}
+			else if(academicCharacteristics.isEmpty()) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please select academic characteristics.");
+				info.setVisible(true);
+				error = true;
+			}
+
+			/*
+			 * Second priority input validation.
+			 * If the first course tab has more than one selection or no grade entered, error message will display.
+			 */
+			if(firstCourses.get(0).getCourseGrade().length() == 0 || firstCourses.size() > 1) {
+				info.setVisible(false);
+				info.setTextFill(Color.color(1, 0, 0));
+				info.setText("Please enter the course grade for " + firstCourses.get(0).getCourseName() + " in first course tab.");
+				info.setVisible(true);
+				error = true;
+			}
+			for(CourseInfo courseInfo : otherCourses) {
+				if(courseInfo.getCourseGrade().length() == 0) {
+					info.setVisible(false);
+					info.setTextFill(Color.color(1, 0, 0));
+					info.setText("Please enter the course grade for " + courseInfo.getCourseName() + " in other courses tab.");
+					info.setVisible(true);
+					error = true;
+				}
+			}
+			if(!error) {
+				AcademicInfo academicInfo = new AcademicInfo(programName, firstCourses, semesterName,
+						semesterYear, otherCourses, personalCharacteristics, academicCharacteristics);
+				
+				createScreen.setAcademicInfo(academicInfo);
+				
+				createScreen.createLetter();
+			}
 		});
 		
 		back.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
