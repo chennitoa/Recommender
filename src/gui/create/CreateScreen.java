@@ -70,6 +70,7 @@ public class CreateScreen {
 		
 		studentInfo = null;
 		academicInfo = null;
+		displayStudentTab();
 	}
 	
 	/*
