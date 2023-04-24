@@ -73,7 +73,7 @@ public class AcademicTab {
 		List<CustomMenuItem> menuItems = new ArrayList<CustomMenuItem>();
 		for (String option : options) {
 			FXMLLoader optionLoader = new FXMLLoader();
-			AnchorPane optionPane = optionLoader.load(getClass().getResourceAsStream("../comboitem/SelectionOption.fxml"));
+			AnchorPane optionPane = optionLoader.load(getClass().getResourceAsStream("../components/SelectionOption.fxml"));
 			SelectionOption optionController = optionLoader.getController();
 			optionController.setLabel(option);
 			
@@ -94,7 +94,7 @@ public class AcademicTab {
 		List<CustomMenuItem> menuItems = new ArrayList<CustomMenuItem>();
 		for (String option : options) {
 			FXMLLoader textOptionLoader = new FXMLLoader();
-			AnchorPane textOptionPane = textOptionLoader.load(getClass().getResourceAsStream("../comboitem/SelectionTextOption.fxml"));
+			AnchorPane textOptionPane = textOptionLoader.load(getClass().getResourceAsStream("../components/SelectionTextOption.fxml"));
 			SelectionTextOption textOptionController = textOptionLoader.getController();
 			textOptionController.setLabel(option);
 			

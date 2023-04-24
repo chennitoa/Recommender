@@ -7,21 +7,21 @@ public class FileInfo {
 
     private String firstName;
     private String lastName;
-    private URL pathToFile;
-    private LocalDate lastModified;
     private LocalDate letterDate;
+    private LocalDate lastModified;
+    private URL pathToFile;
 
     /*
      * Public constructor
      */
-    public FileInfo(String firstName, String lastName, URL pathToFile, LocalDate lastModified, LocalDate letterDate) {
+    public FileInfo(String firstName, String lastName, LocalDate letterDate, LocalDate lastModified, URL pathToFile) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.pathToFile = pathToFile;
-        this.lastModified = lastModified;
         this.letterDate = letterDate;
+        this.lastModified = lastModified;
+        this.pathToFile = pathToFile;
     }
-
+    
     /*
      * Setters and getters
      */
@@ -41,14 +41,6 @@ public class FileInfo {
         this.lastName = lastName;
     }
 
-    public URL getPathToFile() {
-        return pathToFile;
-    }
-
-    public void setPathToFile(URL pathToFile) {
-        this.pathToFile = pathToFile;
-    }
-
     public LocalDate getLastModified() {
         return lastModified;
     }
@@ -63,5 +55,13 @@ public class FileInfo {
 
     public void setLetterDate(LocalDate letterDate) {
         this.letterDate = letterDate;
+    }
+    
+    public URL getPathToFile() {
+        return pathToFile;
+    }
+
+    public void setPathToFile(URL pathToFile) {
+        this.pathToFile = pathToFile;
     }
 }
