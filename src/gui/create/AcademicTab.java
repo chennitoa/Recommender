@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import gui.comboitem.SelectionOption;
-import gui.comboitem.SelectionTextOption;
+import gui.components.SelectionOption;
+import gui.components.SelectionTextOption;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

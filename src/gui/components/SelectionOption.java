@@ -1,4 +1,4 @@
-package gui.comboitem;
+package gui.components;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;

@@ -1,5 +1,6 @@
 package gui.edit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -26,6 +27,14 @@ public class EditScreen {
 	
 	public EditScreen() {
 		
+	}
+	
+	public List<String> exportToList() {
+		List<String> letterParagraphs = new ArrayList<String>();
+		for (CharSequence line : editor.getParagraphs()) {
+			letterParagraphs.add(line.toString());
+		}
+		return letterParagraphs;
 	}
 	
 	public void initialize() {
