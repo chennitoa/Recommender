@@ -46,11 +46,11 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Label fx:id="settings" layoutX="68.0" layoutY="359.0" text="Settings" textFill="WHITE" AnchorPane.bottomAnchor="14.0">
+                  <Label fx:id="settings" layoutX="91.0" layoutY="559.0" text="Settings" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="91.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="logout" layoutX="72.0" layoutY="327.0" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="72.0">
+                  <Label fx:id="logout" layoutX="94.0" layoutY="524.0" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="94.0">
                      <font>
                         <Font size="18.0" />
                      </font></Label>

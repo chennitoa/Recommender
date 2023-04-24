@@ -3,10 +3,11 @@ package gui.edit;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 
 public class EditScreen {
 	
@@ -16,6 +17,8 @@ public class EditScreen {
 	private MenuItem save;
 	@FXML
 	private MenuItem saveAs;
+	@FXML
+	private MenuItem export;
 	@FXML
 	private MenuItem close;
 	@FXML
@@ -39,28 +42,55 @@ public class EditScreen {
 	
 	public void initialize() {
 		
-		open.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-			
+		//Menu items require setOnAction() method to function, do not respond to EventHandler
+		
+		open.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
 		});
 		
-		save.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-			
+		save.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
 		});
 		
-		saveAs.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-			
+		saveAs.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
 		});
 		
-		close.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-
+		export.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
 		});
 		
-		redo.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-			editor.redo();
+		close.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
 		});
 		
-		undo.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-			editor.undo();
+		undo.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				editor.redo();
+			}
+		});
+		
+		undo.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				editor.undo();
+			}
 		});
 		
 	}

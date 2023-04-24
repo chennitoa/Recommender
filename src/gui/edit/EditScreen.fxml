@@ -22,14 +22,15 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
                   <MenuItem fx:id="saveAs" mnemonicParsing="false" text="Save As" />
+                  <MenuItem fx:id="export" mnemonicParsing="false" text="Export" />
                   <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem fx:id="redo" mnemonicParsing="false" text="Redo (Ctrl + Y)" />
-              <MenuItem fx:id="undo" mnemonicParsing="false" text="Undo (Ctrl + Z)" />
+                  <MenuItem fx:id="undo" mnemonicParsing="false" text="Undo" />
+              <MenuItem fx:id="redo" mnemonicParsing="false" text="Redo" />
             </items>
           </Menu>
         </menus>

@@ -203,13 +203,16 @@ public class AcademicTab {
 			 * Second priority input validation.
 			 * If the first course tab has more than one selection or no grade entered, error message will display.
 			 */
-			if(firstCourses.get(0).getCourseGrade().length() == 0 || firstCourses.size() > 1) {
-				info.setVisible(false);
-				info.setTextFill(Color.color(1, 0, 0));
-				info.setText("Please enter the course grade for " + firstCourses.get(0).getCourseName() + " in first course tab.");
-				info.setVisible(true);
-				error = true;
+			for (CourseInfo courseInfo : firstCourses) {
+				if(courseInfo.getCourseGrade().length() == 0) {
+					info.setVisible(false);
+					info.setTextFill(Color.color(1, 0, 0));
+					info.setText("Please enter the course grade for " + courseInfo.getCourseName() + " in first course tab.");
+					info.setVisible(true);
+					error = true;
+				}
 			}
+			
 			for(CourseInfo courseInfo : otherCourses) {
 				if(courseInfo.getCourseGrade().length() == 0) {
 					info.setVisible(false);
