@@ -11,14 +11,9 @@ PasswordField {
 }
 
 TextArea {
-	-fx-focus-traversable: false
+	-fx-focus-traversable: false;
 }
 
 TextField {
 	-fx-focus-traversable: false
-}
-
-.text-area > .scroll-pane{
-	-fx-hbar-policy:never;
-	-fx-vbar-policy:never; 
 }

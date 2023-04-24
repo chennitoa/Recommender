@@ -32,6 +32,7 @@ public class LetterGenerator {
 			scanner.close();
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			schema = new ArrayList<String>();
 		}
 		

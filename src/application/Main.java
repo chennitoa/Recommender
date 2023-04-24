@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Main extends Application {
 	
 	private Stage mainStage;
 	
+	private String editCSS;
 	private String styleCSS;
 	private Image favicon;
 	
@@ -41,10 +43,6 @@ public class Main extends Application {
 	private FXMLLoader createLoader;
 	private Scene createScene;
 	private CreateScreen createController;
-	
-	private FXMLLoader editLoader;
-	private Scene editScene;
-	private EditScreen editController;
 	
 	/*
 	 * Goes back to login screen
@@ -110,8 +108,23 @@ public class Main extends Application {
 	 * Compiles a letter from a LetterInfo object and shows a screen with that letter
 	 */
 	public void displayLetterScene(LetterInfo letterInfo) {
+		FXMLLoader editLoader = new FXMLLoader();
+        VBox editRoot;
+        try {
+        	editRoot = editLoader.load(getClass().getResourceAsStream("../gui/edit/EditScreen.fxml"));
+        }
+        catch (IOException e) {
+        	e.printStackTrace();
+        	editRoot = new VBox();
+        }
+        EditScreen editController = editLoader.getController();
+        Scene editScene = new Scene(editRoot);
+        editScene.getStylesheets().add(styleCSS);
+		editScene.getStylesheets().add(editCSS);
+        
 		LetterGenerator letterGenerator = new LetterGenerator();
 		List<String> letterLines = letterGenerator.generateLetter(letterInfo);
+		
 		Stage letterStage = new Stage();
 		letterStage.setMaximized(true);
 		letterStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
@@ -123,6 +136,10 @@ public class Main extends Application {
 		letterStage.show();
 	}
 	
+	public void displayLetterScene(File letterFile) {
+		
+	}
+	
 	/*
 	 * Loads all pages, links them to names and opens the primary stage
 	 */
@@ -130,6 +147,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
+			editCSS = getClass().getResource("../gui/resources/edit.css").toExternalForm();
 			styleCSS = getClass().getResource("../gui/resources/style.css").toExternalForm();
 			favicon = new Image(getClass().getResourceAsStream("../gui/resources/Rounded_v2.png"));
 			
@@ -169,11 +187,7 @@ public class Main extends Application {
 	        createController.setMain(this);
 	        
 	        //Loading edit page
-	        editLoader = new FXMLLoader(getClass().getResource("../gui/edit/EditScreen.fxml"));
-	        VBox editRoot = editLoader.load();
-	        editController = editLoader.getController();
-	        editScene = new Scene(editRoot);
-	        editScene.getStylesheets().add(styleCSS);
+	        
 	        
 	        mainStage = primaryStage;
 	        
