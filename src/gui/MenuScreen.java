@@ -42,9 +42,8 @@ public class MenuScreen {
 		letterManager = LetterManager.getLetterManager();
 	}
 	
-	/*
+	/**
 	 * Adds settings and logout functionality as well
-	 * TODO: Create open letter and new letter functionality
 	 */
 	@FXML
 	public void initialize() {
