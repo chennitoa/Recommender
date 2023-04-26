@@ -24,7 +24,6 @@ public class SettingsManager {
 	 */
 	private SettingsManager() {
 		dbManager = DBManager.getDBManager();
-			
 		dbManager.queryQuiet(
 				"CREATE TABLE IF NOT EXISTS professorInfo ("
 				+ "Lock char(1) not null DEFAULT 'X',"
@@ -67,13 +66,6 @@ public class SettingsManager {
 			programs = QueryManager.parseToList(dbManager.query("SELECT * FROM programs;"), "program");
 			personalCharacteristics = QueryManager.parseToList(dbManager.query("SELECT * FROM personalCharacteristics;"), "characteristic");
 			academicCharacteristics = QueryManager.parseToList(dbManager.query("SELECT * FROM academicCharacteristics;"), "characteristic");
-			
-			//If there is no settings-related data
-			if (professorInfo == null && semesters.size() == 0 && courses.size() == 0 && programs.size() == 0 &&
-					personalCharacteristics.size() == 0 && academicCharacteristics.size() == 0) {
-				SettingsInit.initializeDatabases();
-			}
-			
 		}
 		catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -84,8 +76,14 @@ public class SettingsManager {
 	 * Getter for SettingsManager object.
 	 */
 	public static SettingsManager getSettingsManager() {
-		if(settingsManager == null) {
+		if (settingsManager == null) {
 			settingsManager = new SettingsManager();
+			//If there is no settings-related data
+			if (settingsManager.professorInfo == null && settingsManager.semesters.size() == 0 && 
+					settingsManager.courses.size() == 0 && settingsManager.programs.size() == 0 &&
+					settingsManager.personalCharacteristics.size() == 0 && settingsManager.academicCharacteristics.size() == 0) {
+				SettingsInit.initializeDatabases();
+			}
 		}
 		return settingsManager;
 	}
