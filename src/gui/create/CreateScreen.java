@@ -135,7 +135,7 @@ public class CreateScreen {
 		studentInfo = null;
 		academicInfo = null;
 		main.displayMenuScene(false);
-		main.displayLetterScene(letterInfo);
+		main.openLetterWithInfo(letterInfo);
 		try {
 			resetTabs();
 		}

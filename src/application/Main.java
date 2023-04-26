@@ -1,9 +1,12 @@
 package application;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import filetracker.FileInfo;
+import filetracker.MetadataManager;
 import generate.LetterGenerator;
 import gui.MenuScreen;
 import gui.create.CreateScreen;
@@ -15,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import letter.LetterInfo;
+import util.FileHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
@@ -104,26 +108,21 @@ public class Main extends Application {
 		mainStage.show();
 	}
 	
-	/*
-	 * Compiles a letter from a LetterInfo object and shows a screen with that letter
-	 */
-	public void displayLetterScene(LetterInfo letterInfo) {
+	private void displayLetterScene(List<String> letterText, FileInfo fileInfo) {
 		FXMLLoader editLoader = new FXMLLoader();
         VBox editRoot;
-        try {
+		try {
         	editRoot = editLoader.load(getClass().getResourceAsStream("../gui/edit/EditScreen.fxml"));
         }
         catch (IOException e) {
         	e.printStackTrace();
         	editRoot = new VBox();
         }
-        EditScreen editController = editLoader.getController();
+		
+		EditScreen editController = editLoader.getController();
         Scene editScene = new Scene(editRoot);
         editScene.getStylesheets().add(styleCSS);
 		editScene.getStylesheets().add(editCSS);
-        
-		LetterGenerator letterGenerator = new LetterGenerator();
-		List<String> letterLines = letterGenerator.generateLetter(letterInfo);
 		
 		Stage letterStage = new Stage();
 		letterStage.setMaximized(true);
@@ -132,12 +131,41 @@ public class Main extends Application {
 		letterStage.getIcons().add(favicon);
 		letterStage.setTitle("Recommender: Edit Letter");
 		letterStage.setScene(editScene);
-		editController.setText(letterLines);
+		
+		editController.setText(letterText);
+		editController.setFileInfo(fileInfo);
+		editController.setMain(this);
+		
 		letterStage.show();
 	}
 	
-	public void displayLetterScene(File letterFile) {
+	/*
+	 * Compiles a letter from a LetterInfo object and shows a screen with that letter
+	 */
+	public void openLetterWithInfo(LetterInfo letterInfo) {
+		LetterGenerator letterGenerator = new LetterGenerator();
+		List<String> letterText = letterGenerator.generateLetter(letterInfo);
 		
+		FileInfo incompleteFileInfo = new FileInfo(
+			letterInfo.getStudentInfo().getFirstName(),
+			letterInfo.getStudentInfo().getLastName(),
+			letterInfo.getAcademicInfo().getSemesterYear(),
+			null
+		);
+		displayLetterScene(letterText, incompleteFileInfo);
+	}
+	
+	public void openLetterWithFile(File letterFile) throws FileNotFoundException {
+		List<String> letterText = FileHandler.getFileHandler().getFileContents(letterFile);
+		FileInfo fileInfo;
+		
+		if (MetadataManager.containsMetadata(letterText)) {
+			fileInfo = MetadataManager.splitMetadata(letterText);
+		}
+		else {
+			fileInfo = null;
+		}
+		displayLetterScene(letterText, fileInfo);
 	}
 	
 	/*

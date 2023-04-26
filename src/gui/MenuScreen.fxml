@@ -54,6 +54,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
+                  <Label fx:id="info" layoutX="109.0" layoutY="507.0" text="info" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="500.0" />
                </children>
             </AnchorPane>
             <VBox prefHeight="375.0" prefWidth="426.0" HBox.hgrow="ALWAYS">

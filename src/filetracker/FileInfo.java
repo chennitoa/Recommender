@@ -1,24 +1,19 @@
 package filetracker;
 
-import java.net.URL;
-import java.time.LocalDate;
-
 public class FileInfo {
 
     private String firstName;
     private String lastName;
-    private LocalDate letterDate;
-    private LocalDate lastModified;
-    private URL pathToFile;
+    private String letterYear;
+    private String pathToFile;
 
     /*
-     * Public constructor
+     * Java bean for file info
      */
-    public FileInfo(String firstName, String lastName, LocalDate letterDate, LocalDate lastModified, URL pathToFile) {
+    public FileInfo(String firstName, String lastName, String letterYear, String pathToFile) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.letterDate = letterDate;
-        this.lastModified = lastModified;
+        this.letterYear = letterYear;
         this.pathToFile = pathToFile;
     }
     
@@ -41,27 +36,19 @@ public class FileInfo {
         this.lastName = lastName;
     }
 
-    public LocalDate getLastModified() {
-        return lastModified;
+    public String getLetterYear() {
+        return letterYear;
     }
 
-    public void setLastModified(LocalDate lastModified) {
-        this.lastModified = lastModified;
-    }
-
-    public LocalDate getLetterDate() {
-        return letterDate;
-    }
-
-    public void setLetterDate(LocalDate letterDate) {
-        this.letterDate = letterDate;
+    public void setLetterDate(String letterYear) {
+        this.letterYear = letterYear;
     }
     
-    public URL getPathToFile() {
+    public String getPathToFile() {
         return pathToFile;
     }
 
-    public void setPathToFile(URL pathToFile) {
+    public void setPathToFile(String pathToFile) {
         this.pathToFile = pathToFile;
     }
 }

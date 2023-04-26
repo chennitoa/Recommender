@@ -41,9 +41,8 @@ public class DBManager {
 			return rs;
 		}
 		catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
         }
-		return null;
 	}
 	
 	/*
@@ -55,7 +54,7 @@ public class DBManager {
 			stmt.executeUpdate(sqlQuery);
 		}
 		catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 	
