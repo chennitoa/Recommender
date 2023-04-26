@@ -1,29 +1,37 @@
 package generate;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import letter.CourseInfo;
+import util.FileHandler;
 
 public class OtherCoursesGenerator {
 	
+	private static OtherCoursesGenerator otherCoursesGenerator;
+	
 	private String schema;
 	
-	public OtherCoursesGenerator() {
-		try {
-			File file = new File(getClass().getResource("OtherCoursesSchema.txt").toURI());
-			Scanner scanner = new Scanner(file);
-			schema = scanner.nextLine();
-			scanner.close();
-		}
-		catch (Exception e) {
-			schema = "";
-		}
-		
+	private OtherCoursesGenerator() {
+		schema = FileHandler.getFileHandler().getFileContents("generate/OtherCoursesSchema.txt").get(0);
 	}
 	
+	/**
+	 * Returns the singleton instance of OtherCoursesGenerator.
+	 * @return An instance of OtherCoursesGenerator
+	 */
+	public static OtherCoursesGenerator getOtherCoursesGenerator() {
+		if (otherCoursesGenerator == null) {
+			otherCoursesGenerator = new OtherCoursesGenerator();
+		}
+		return otherCoursesGenerator;
+	}
+	
+	/**
+	 * Generates a string from a list of courses.
+	 * @param courses The list of courses to generate a string from
+	 * @return The string as a grammatically correct list of strings
+	 */
 	public String generateOtherCoursesList(List<CourseInfo> courses) {
 		if (courses == null || courses.size() == 0) {
 			schema = "%delete%";
@@ -41,7 +49,6 @@ public class OtherCoursesGenerator {
 		else {
 			schema = schema.replaceAll("%coursePlural%", "");
 		}
-		
 		return schema;
 	}
 	

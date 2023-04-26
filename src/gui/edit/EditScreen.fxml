@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -18,18 +19,17 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem fx:id="open" mnemonicParsing="false" text="Open" />
+                  <MenuItem mnemonicParsing="false" onAction="#open" text="Open" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
-                  <MenuItem fx:id="saveAs" mnemonicParsing="false" text="Save As" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Save As" />
+                  <MenuItem mnemonicParsing="false" onAction="#export" text="Export" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <MenuItem fx:id="redo" mnemonicParsing="false" text="Redo (Ctrl + Y)" />
-              <MenuItem fx:id="undo" mnemonicParsing="false" text="Undo (Ctrl + Z)" />
+                  <MenuItem mnemonicParsing="false" onAction="#undo" text="Undo" />
+              <MenuItem mnemonicParsing="false" onAction="#redo" text="Redo" />
             </items>
           </Menu>
         </menus>
@@ -39,7 +39,7 @@
       </MenuBar>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="830.0" prefHeight="200.0" style="-fx-focus-color: TRANSPARENT; -fx-faint-focus-color: TRANSPARENT; -fx-background-color: TRANSPARENT;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="830.0" prefHeight="200.0" style="-fx-focus-color: TRANSPARENT; -fx-faint-focus-color: TRANSPARENT; -fx-background-color: TRANSPARENT; -fx-background-color: TRANSPARENT;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DARKGRAY;">
                      <center>
@@ -57,6 +57,20 @@
                      </center></BorderPane>
                </content>
             </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: DARKORANGE;" VBox.vgrow="NEVER">
+         <children>
+            <Label layoutX="37.0" layoutY="6.0" text="Recommender" textFill="WHITE" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="6.0">
+               <font>
+                  <Font name="Lucida Fax Regular" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="info" layoutX="819.0" layoutY="12.0" text="path" textFill="WHITE" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

@@ -1,13 +1,11 @@
 package generate;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import letter.CourseInfo;
 import letter.LetterInfo;
 import settings.SettingsManager;
+import util.FileHandler;
 
 public class LetterGenerator {
 	
@@ -20,21 +18,9 @@ public class LetterGenerator {
 	 * Finds a schema in the same folder, if not found, defaults to empty schema
 	 */
 	public LetterGenerator() {
-		schema = new ArrayList<String>();
+		schema = FileHandler.getFileHandler().getFileContents("generate/LetterSchema.txt");
 		settingsManager = SettingsManager.getSettingsManager();
-		otherCoursesGenerator = new OtherCoursesGenerator();
-		try {
-			File file = new File(getClass().getResource("LetterSchema.txt").toURI());
-			Scanner scanner = new Scanner(file);
-			while (scanner.hasNext()) {
-				schema.add(scanner.nextLine());
-			}
-			scanner.close();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			schema = new ArrayList<String>();
-		}
+		otherCoursesGenerator = OtherCoursesGenerator.getOtherCoursesGenerator();
 		
 	}
 	

@@ -1,5 +1,7 @@
 package gui.components;
 
+import filetracker.FileInfo;
+import gui.MenuScreen;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -15,9 +17,10 @@ public class FileOption {
 	@FXML
 	private Label date;
 	@FXML
-	private Label lastModified;
-	@FXML
-	private Label pathToFile;
+	private Label path;
+	
+	private FileInfo fileInfo;
+	private MenuScreen menuScreen;
 	
 	public FileOption() {
 		
@@ -25,13 +28,24 @@ public class FileOption {
 	
 	public void initialize() {
 		
-		fileSelect.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
-			
+		fileSelect.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+			if (event.getClickCount() >= 2) {
+				menuScreen.openLetter(fileInfo.getPathToFile());
+			}
 		});
 	}
 	
-	public void setFileInfo() {
+	public void setFileInfo(FileInfo fileInfo) {
+		firstName.setText(fileInfo.getFirstName());
+		lastName.setText(fileInfo.getLastName());
+		date.setText(fileInfo.getLetterYear());
+		path.setText(fileInfo.getPathToFile());
 		
+		this.fileInfo = fileInfo;
+	}
+	
+	public void setMenuScreen(MenuScreen menuScreen) {
+		this.menuScreen = menuScreen;
 	}
 	
 }

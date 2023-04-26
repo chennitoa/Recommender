@@ -80,13 +80,13 @@ public class CreateScreen {
 		
 		displayStudentTab();
 		
-		back.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		back.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			main.displayMenuScene(false);
 			try {
 				resetTabs();
 			}
-			catch (IOException e1) {
-				e1.printStackTrace();
+			catch (IOException e) {
+				e.printStackTrace();
 			}
 		});
 		
@@ -135,7 +135,7 @@ public class CreateScreen {
 		studentInfo = null;
 		academicInfo = null;
 		main.displayMenuScene(false);
-		main.displayLetterScene(letterInfo);
+		main.openLetterWithInfo(letterInfo);
 		try {
 			resetTabs();
 		}

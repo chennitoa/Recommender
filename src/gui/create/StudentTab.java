@@ -53,7 +53,7 @@ public class StudentTab {
 		gender.setItems(FXCollections.observableList(genderOptions));
 		date.setValue(LocalDate.now());
 		
-		next.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		next.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			
 			String firstName = first.getText();
 			String lastName = last.getText();
