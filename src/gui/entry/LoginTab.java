@@ -46,7 +46,7 @@ public class LoginTab {
 			firstAid.setVisible(false);
 		}
 		
-		firstAid.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		firstAid.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			info.setTextFill(Color.color(0, 0, 0));
 			info.setText("Hint: Enter default password \"p\" to continue");
 			info.setVisible(true);
@@ -56,7 +56,7 @@ public class LoginTab {
 		 * Checks if password is correct, redirects to Menu normally but to Reset if it is the first time logging in
 		 * Modifies text at bottom that gives information
 		 */
-		loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		loginButton.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			String passwordAttempt = password.getCharacters().toString();
 			password.clear();
 			if (lM.checkPassword(passwordAttempt)) {
@@ -77,7 +77,7 @@ public class LoginTab {
 			}
 		});
 		
-		passwordChange.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		passwordChange.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			entryScreen.displayResetScreen();
 			password.clear();
 		});

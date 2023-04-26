@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import letter.LetterInfo;
+import search.LetterManager;
 import util.FileHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -47,6 +48,12 @@ public class Main extends Application {
 	private FXMLLoader createLoader;
 	private Scene createScene;
 	private CreateScreen createController;
+	
+	private LetterManager letterManager;
+	
+	public Main() {
+		letterManager = LetterManager.getLetterManager();
+	}
 	
 	/*
 	 * Goes back to login screen
@@ -137,6 +144,8 @@ public class Main extends Application {
 		editController.setMain(this);
 		
 		letterStage.show();
+		
+		letterManager.insertIfAbsent(fileInfo);
 	}
 	
 	/*

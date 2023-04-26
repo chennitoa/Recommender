@@ -50,7 +50,7 @@ public class ResetTab {
 		/*
 		 * Checks if the old password is correct, and the two new passwords are the same
 		 */
-		reset.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		reset.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			
 			String oldPass = oldPassword.getCharacters().toString();
 			String newPass = newPassword.getCharacters().toString();
@@ -72,8 +72,8 @@ public class ResetTab {
 					try {
 						resetSuccessful = lM.resetPassword(oldPass, newPass);
 					}
-					catch (Exception e1) {
-						e1.printStackTrace();
+					catch (Exception e) {
+						e.printStackTrace();
 					}
 					if (!resetSuccessful) {
 						info.setVisible(false);
@@ -93,8 +93,8 @@ public class ResetTab {
 						
 						entryScreen.displayLoginScreen();
 					}
-					catch (IOException e1) {
-						e1.printStackTrace();
+					catch (IOException e) {
+						e.printStackTrace();
 					}
 				}
 			}

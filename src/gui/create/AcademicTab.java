@@ -142,7 +142,7 @@ public class AcademicTab {
 		info.setVisible(false);
 		
 		// Get information from all fillables and use it to compile an academic info, then signal to create letter
-		compile.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		compile.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			String programName = program.getValue();
 			List<CourseInfo> firstCourses = parseSelectionTextOptions(firstCourseControllers);
 			String semesterName = semester.getValue();
@@ -232,7 +232,7 @@ public class AcademicTab {
 			}
 		});
 		
-		back.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		back.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			createScreen.displayStudentTab();
 		});
 		
@@ -242,8 +242,8 @@ public class AcademicTab {
 			initializeMenuOptions(settingsManager.getPersonalCharacteristics(), personalControllers, personal);
 			initializeMenuOptions(settingsManager.getAcademicCharacteristics(), academicControllers, academic);
 		}
-		catch (IOException e1) {
-			e1.printStackTrace();
+		catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 	}

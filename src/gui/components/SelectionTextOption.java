@@ -21,7 +21,7 @@ public class SelectionTextOption {
 	 */
 	public void initialize() {
 		
-		selection.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+		selection.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			grade.setEditable(selection.isSelected());
 		});
 		

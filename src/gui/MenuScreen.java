@@ -2,15 +2,20 @@ package gui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import application.Main;
+import filetracker.FileInfo;
+import gui.components.FileOption;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import search.LetterManager;
 import util.FileSelector;
 
 public class MenuScreen {
@@ -30,10 +35,11 @@ public class MenuScreen {
 	@FXML
 	private Label info;
 	
+	private LetterManager letterManager;
 	private Main main;
 	
 	public MenuScreen() {
-		
+		letterManager = LetterManager.getLetterManager();
 	}
 	
 	/*
@@ -44,21 +50,30 @@ public class MenuScreen {
 	public void initialize() {
 		info.setVisible(false);
 		
+		recentLetters.getChildren().clear();
+	    for (FileInfo fileInfo : letterManager.getMatching("")) {
+	    	try {
+	    		FXMLLoader fileOptionLoader = new FXMLLoader();
+				AnchorPane fileOption = fileOptionLoader.load(getClass().getResourceAsStream("components/FileOption.fxml"));
+				FileOption fileOptionController = fileOptionLoader.getController();
+				
+				fileOptionController.setFileInfo(fileInfo);
+				fileOptionController.setMenuScreen(this);
+				
+				recentLetters.getChildren().add(fileOption);
+			}
+	    	catch (IOException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+	    }
+		
 		newLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
 			main.displayCreateScene();
 		});
 		
 		openLetter.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-			info.setVisible(false);
 			String pathToFile = FileSelector.getChooseFilePath(FileSelector.LETTER_FILTER);
-			if (pathToFile != null) { 
-				try {
-					main.openLetterWithFile(new File(pathToFile));
-				}
-				catch (FileNotFoundException e) {
-					displayErrorMessage("Failed to open file");
-				}
-			}
+			openLetter(pathToFile);
 		});
 		
 		settings.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
@@ -69,6 +84,38 @@ public class MenuScreen {
 			main.logout();
 		});
 		
+		search.textProperty().addListener((observable, oldValue, newValue) -> {
+		    String pattern = search.getText();
+		    recentLetters.getChildren().clear();
+		    for (FileInfo fileInfo : letterManager.getMatching(pattern)) {
+		    	try {
+		    		FXMLLoader fileOptionLoader = new FXMLLoader();
+					AnchorPane fileOption = fileOptionLoader.load(getClass().getResourceAsStream("components/FileOption.fxml"));
+					FileOption fileOptionController = fileOptionLoader.getController();
+					
+					fileOptionController.setFileInfo(fileInfo);
+					fileOptionController.setMenuScreen(this);
+					
+					recentLetters.getChildren().add(fileOption);
+				}
+		    	catch (IOException e) {
+					throw new RuntimeException(e.getMessage());
+				}
+		    }
+		});
+		
+	}
+	
+	public void openLetter(String pathToFile) {
+		info.setVisible(false);
+		if (pathToFile != null) { 
+			try {
+				main.openLetterWithFile(new File(pathToFile));
+			}
+			catch (FileNotFoundException e) {
+				displayErrorMessage("Failed to open file");
+			}
+		}
 	}
 	
 	public void displayErrorMessage(String message) {

@@ -12,6 +12,7 @@ import filetracker.MetadataManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import search.LetterManager;
 import util.FileHandler;
 import util.FileSelector;
 
@@ -25,11 +26,12 @@ public class EditScreen {
 	private FileInfo fileInfo;
 	
 	private FileHandler fileHandler;
+	private LetterManager letterManager;
 	private Main main;
 	
 	public EditScreen() {
 		fileHandler = FileHandler.getFileHandler();
-		
+		letterManager = LetterManager.getLetterManager();
 	}
 	
 	public void initialize() {
@@ -79,7 +81,10 @@ public class EditScreen {
 			return;
 		}
 		info.setText(filePath);
+		fileInfo = new FileInfo(fileInfo);
 		fileInfo.setPathToFile(filePath);
+		
+		letterManager.insertIfAbsent(fileInfo);
 		
 		//Write to file with metadata
 		MetadataManager.addMetadata(textContent, fileInfo);
