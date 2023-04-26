@@ -1,6 +1,8 @@
 /bin/
 /.settings/
 /.vscode/
+/build/
+/build.fxbuild
 /password.txt
 /application.db
 /.classpath
